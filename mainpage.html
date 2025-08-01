@@ -1,315 +1,359 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matus TCT</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: #000;
-      color: #fff;
-      font-family: 'Oswald', sans-serif;
-    }
-
-    /* HEADER */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 30px;
-      z-index: 100;
-    }
-
-    header img {
-      height: 40px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    header img:hover {
-      transform: scale(1.05);
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #fff;
-      margin: 0 15px;
-      font-weight: 400;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ff4444;
-    }
-
-    /* HERO */
-    .hero {
-      height: 100vh;
-      background: url('mainpagephotos/foto1.png') center/cover no-repeat;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      text-align: left;
-      padding: 0 10%;
-      position: relative;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-    }
-
-    .logo-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .hero .tct-logo {
-      width: 150px;
-    }
-
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 25px;
-      max-width: 600px;
-    }
-
-    /* ENHANCED BUTTON STYLES */
-    .hero button {
-      padding: 30px 50px;
-      background: #640000;
-      color: #fff;
-      border: none;
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero button:hover {
-      background: #330404;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(51, 2, 2, 0.6);
-    }
-
-    .hero button:active {
-      transform: translateY(1px);
-    }
-
-    .hero button::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
-    }
-
-    .hero button:hover::after {
-      left: 100%;
-    }
-
-    /* WORKSHOPS SECTION */
-    .section {
-      padding: 80px 20px;
-      text-align: center;
-      background: #111;
-    }
-
-    .section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .section p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto 30px;
-    }
-
-    .workshops {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .workshop-card {
-      background: #222;
-      border-radius: 10px;
-      padding: 20px;
-      transition: transform 0.3s;
-    }
-
-    .workshop-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .workshop-card img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-
-    /* VIDEO SECTION */
-    .video-section {
-      padding: 80px 20px;
-      text-align: center;
-      background: #000;
-    }
-
-    .video-section iframe {
-      width: 80%;
-      height: 400px;
-      border: none;
-      border-radius: 10px;
-    }
-
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
-    
-    .footer-link {
-      color: #3498db;
-      text-decoration: none;
-      margin-top: 10px;
-      display: inline-block;
-      transition: color 0.3s;
-    }
-    
-    .footer-link:hover {
-      color: #2980b9;
-      text-decoration: underline;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 3rem;
-      }
-      .hero p {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tricking Workshopy - Slovensko</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+      .schedule-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 30px 0;
         font-size: 1.1rem;
+        background: rgba(255,255,255,0.07);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(49,0,0,0.10);
       }
-      .hero button {
-        padding: 12px 25px;
-        font-size: 1rem;
+      .schedule-table th {
+        background: #680000;
+        color: #fff;
+        font-weight: 700;
+        padding: 16px 10px;
+        border: none;
+        letter-spacing: 1px;
       }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 2.5rem;
+      .schedule-table td {
+        padding: 14px 10px;
+        border: none;
+        background: rgba(0,0,0,0.04);
+        color: #222;
+        transition: background 0.2s;
       }
-      .hero button {
-        padding: 10px 20px;
-        font-size: 0.9rem;
+      .schedule-table tbody tr {
+        transition: background 0.2s, box-shadow 0.2s;
       }
-    }
-  </style>
+      .schedule-table tbody tr:hover {
+        background: #ffe5e5;
+        box-shadow: 0 2px 12px rgba(104,0,0,0.10);
+      }
+      .schedule-table td a {
+        padding: 7px 18px;
+        border-radius: 8px;
+        background: #fff6f6;
+        color: #680000;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+      }
+      .schedule-table td a:hover {
+        background: #680000;
+        color: #fff;
+      }
+      .register-btn {
+        padding: 8px 22px;
+        border-radius: 8px;
+        background: #680000;
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .register-btn:hover {
+        background: #3d0404;
+        transform: translateY(-2px);
+      }
+    </style>
 </head>
+
 <body>
+    <div class="top-bar">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/matus_tct/" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.tiktok.com/@matus_tct" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" class="social-icon">
+            </a>
+            <a href="https://www.youtube.com/@matus_tct" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" class="social-icon">
+            </a>
+        </div>
+        
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="photos/TCT logo.png" alt="Tricking Workshopy Logo" class="logo-img">
+            </a>
+        </div>
 
-  <header>
-    <a href="mainpage.html">
-      <img src="photos/TCT logo.png" alt="Matus TCT Logo">
+        
+        <!-- Pomocný element pre vyváženie -->
+        <div class="right-spacer"></div>
+    </div>
+
+    <!-- Ostatný obsah zostáva rovnaký... -->
+    <div class="header-container">
+        <div class="header-background"></div>
+        <div class="header">
+            <span style="font-size:5rem; font-weight:700; letter-spacing:2px; color:#fff; font-family:inherit; display:inline-block; line-height:1.05;">Matus TCT<br>Tricking Workshop</span>
+        </div>
+    </div>
+
+    <div class="text-section">
+    <h2><img src="ikonky/about.svg" alt="Info" style="height:1.5em;vertical-align:middle;margin-right:8px;">Čo je Tricking Workshop?</h2>
+        <p>
+            Nabitá akcia plná tréningu, energie a nových zručností. Počas workshopu sa naučíš nielen základy parkouru a trickingu, ale aj nové triky pod vedením skúsených trénerov. Nechýba ani autogramiáda, merch a skvelá komunita.
+        </p>
+        <p>
+            Tréning prebieha podľa bezpečnej metodiky a je vhodný pre úplných začiatočníkov aj pokročilých. Nezáleží na výške, váhe ani skúsenostiach – hlavná je chuť sa hýbať!
+        </p>
+    </div>
+
+    <div class="map-container">
+        <a href="bratislava.html" class="clickable-city" style="top: 66%; left: 5%;">Bratislava</a>
+        <a href="nitra.html" class="clickable-city" style="top: 62%; left: 20%;">Nitra</a>
+        <a href="kosice.html"  class="clickable-city" style="top: 48%; left: 72%;">Košice</a>
+        <a href="poprad.html" class="clickable-city" style="top: 28%; left: 55%;">Poprad</a>
+
+        <svg style="display: none;">
+            <filter id="remove-white" color-interpolation-filters="sRGB">
+                <feColorMatrix type="matrix" values="1 0 0 0 0
+                                                    0 1 0 0 0
+                                                    0 0 1 0 0
+                                                   -1 -1 -1 3 0"/>
+            </filter>
+        </svg>
+
+        <img src="photos\mapa 2.svg" 
+             alt="Mapa Slovenska" 
+             class="slovakia-map">
+    </div>
+
+    <div class="text-section">
+    <h2><img src="ikonky/calendar_icon.png" alt="Termíny" style="height:1.5em;vertical-align:middle;margin-right:8px;">Termíny a Registrácie</h2>
+    <table class="schedule-table">
+        <thead>
+            <tr>
+                <th>Mesto</th>
+                <th>Dátum</th>
+                <th>Prihlásení</th>
+                <th>Akcia</th>
+                <th>Viac info</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-capacity="40" data-registered="12">
+                <td>Bratislava – Skill Lab</td>
+                <td>14.9</td>
+                <td class="registered-count">0 / 40</td>
+                <td><button class="register-btn">Registrovať</button></td>
+                <td><a href="bratislava.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
+            </tr>
+            <tr data-capacity="40" data-registered="10">
+                <td>Košice – Gymnasion</td>
+                <td>21.9</td>
+                <td class="registered-count">0 / 40</td>
+                <td><button class="register-btn">Registrovať</button></td>
+                <td><a href="kosice.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
+            </tr>
+            <tr data-capacity="40" data-registered="8">
+                <td>Nitra – Jump Park</td>
+                <td>28.9</td>
+                <td class="registered-count">0 / 40</td>
+                <td><button class="register-btn">Registrovať</button></td>
+                <td><a href="nitra.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
+            </tr>
+            <tr data-capacity="40" data-registered="5">
+                <td>Poprad – Extreme Arena</td>
+                <td>5.10</td>
+                <td class="registered-count">0 / 40</td>
+                <td><button class="register-btn">Registrovať</button></td>
+                <td><a href="poprad.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+    <div class="text-section">
+    <h2><img src="ikonky/clock.svg" alt="Program" style="height:1.5em;vertical-align:middle;margin-right:8px;">Program Tricking Workshopu</h2>
+        <p><strong>12:00 – Začiatok registrácie</strong> (prineste si podpísanú prihlášku)</p>
+        <ul>
+            <li>možnosť zakúpiť si Matus TCT merch</li>
+            <li>Tricking vystúpenie</li>
+            <li>spoločné fotenie a autogramiáda</li>
+            <li>tréning Tricking základov v skupinách </li>
+            <li>posilňovacie cvičenia s vlastnou váhou na spevnenie tela</li>
+            <li>nácvik sált s istením (dobrovoľné)</li>
+        </ul>
+        <p><strong>16:00 – Ukončenie workshopu</strong></p>
+    </div>
+
+    <div class="text-section">
+    <h2><img src="ikonky/bag.svg" alt="Čo si vziať" style="height:1.5em;vertical-align:middle;margin-right:8px;">Čo si vziať so sebou?</h2>
+        <ul>
+            <li>podpísanú prihlášku od rodičov (bez nej nie je možné trénovať!)</li>
+            <li>športové oblečenie a obuv</li>
+            <li>kartičku poistenca</li>
+            <li>svačinu a dostatok pitnej vody</li>
+            <li>ak si chceš kúpiť merch, nezabudni na peniaze</li>
+        </ul>
+    </div>
+
+    <div class="text-section">
+    <h2><img src="ikonky/info.svg" alt="Info" style="height:1.5em;vertical-align:middle;margin-right:8px;">Ďalšie informácie</h2>
+        <p>
+            Workshopu sa môžeš zúčastniť aj ako divák!  
+            Vstupné pre divákov je <strong>300 Kč</strong> a platí sa v hotovosti na mieste.
+        </p>
+        <p>
+            <em>(Pre rodičov: túto sumu neplatí jeden sprievod účastníka, ktorý dieťa priváža na akciu.)</em>
+        </p>
+    </div>
+
+    <div class="text-section">
+    <h2><img src="ikonky/form.svg" alt="Registrácia" style="height:1.5em;vertical-align:middle;margin-right:8px;">Chceš sa zúčastniť?</h2>
+    <p>Vyplň jednoduchý registračný formulár a zaisti si miesto na workshope.</p>
+    <a href="registracia.html">
+        <button class="register-btn">
+        Registrovať sa
+        </button>
     </a>
-    <nav>
-      <a href="#workshopy">Workshopy</a>
-      <a href="#video">Video</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="hero-content">
-      <h1>MATUS TCT</h1>
-      <p>SOM PROFESIONÁLNY TRICKING ATLÉT A TVORCA VIDEÍ. ZABÁVAM A MOTIVUJEM ĽUDÍ K POHYBU A K PREKONANIU KOMFORTNEJ ZÓNY.</p>
-      <button onclick="window.location.href='index.html'">Tricking Workshop</button>
     </div>
-  </section>
 
-  <section id="workshopy" class="section">
-    <h2>Matus TCT Workshopy</h2>
-    <p>Organizujem workshopy po celom Slovensku. Naučím ťa triky, techniky a mindset, ktorý posunie tvoje schopnosti.</p>
-    <div class="workshops">
-      <div class="workshop-card" onclick="window.location.href='bratislava.html'">
-        <img src="photos/mainfoto/1.jpg" alt="Workshop 1">
-        <h3>Bratislava</h3>
-        <p>1.8.2025</p>
-      </div>
-      <div class="workshop-card" onclick="window.location.href='kosice.html'">
-        <img src="photos/mainfoto/2.jpg" alt="Workshop 2">
-        <h3>Košice</h3>
-        <p>8.8.2025</p>
-      </div>
-      <div class="workshop-card" onclick="window.location.href='zilina.html'">
-        <img src="photos/mainfoto/3.jpg" alt="Workshop 3">
-        <h3>Žilina</h3>
-        <p>15.8.2025</p>
-      </div>
-    </div>
-</section>
+    <footer id="kontakt">
+        <p>© 2025 Matus TCT | Kontakt: matustct@gmail.com</p>
+        <a href="obchodne-podmienky.pdf" class="footer-link">Obchodné podmienky</a>
+    </footer>
 
-  <section id="video" class="video-section">
-    <h2>Najnovšie Video</h2>
-    <iframe src="https://www.youtube.com/watch?v=dRK8hnoCQhc&ab_channel=MatusTCT" allowfullscreen></iframe>
-  </section>
+    <script>
+        // Animácie pri scrollovaní
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.text-section, .map-container');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
 
-  <footer id="kontakt">
-    <p>© 2025 Matus TCT | Kontakt: matustct@gmail.com</p>
-    <a href="obchodne-podmienky.pdf" class="footer-link">Obchodné podmienky</a>
-  </footer>
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Animácia pre nadpisy
+            const headings = document.querySelectorAll('.text-section h2');
+            headings.forEach((heading, index) => {
+                heading.style.animation = `fadeIn 0.5s ease-out ${index * 0.2 + 0.3}s forwards`;
+                heading.style.opacity = '0';
+            });
+        });
+
+        // Efekt pre tlačidlá miest
+        const cityButtons = document.querySelectorAll('.clickable-city');
+        cityButtons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.animation = 'none';
+            });
+            button.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    button.style.animation = 'pulse 2s infinite';
+                }, 50);
+            });
+        });
+
+       // Funkcia na zvýšenie počtu prihlásených a presmerovanie
+        function handleRegistration(button) {
+            const row = button.closest('tr');
+            const capacity = parseInt(row.dataset.capacity);
+            let registered = parseInt(row.dataset.registered);
+            const registeredCountCell = row.querySelector('.registered-count');
+            
+            // Skontrolujeme, či ešte nie je plné
+            if (registered >= capacity) {
+                button.disabled = true;
+                button.textContent = 'Plné';
+                return;
+            }
+            
+            // Zvýšime počet prihlásených
+            registered++;
+            row.dataset.registered = registered;
+            registeredCountCell.textContent = `${registered} / ${capacity}`;
+            
+            // Ak je plné, deaktivujeme tlačidlo
+            if (registered >= capacity) {
+                button.disabled = true;
+                button.textContent = 'Plné';
+                row.classList.add('full');
+            }
+            
+            // Presmerujeme na registračný formulár
+            window.location.href = "registracia.html";
+        }
+
+        // Inicializácia počtov pri načítaní stránky
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('.schedule-table tbody tr');
+            
+            rows.forEach(row => {
+                const registered = parseInt(row.dataset.registered);
+                const capacity = parseInt(row.dataset.capacity);
+                const registeredCountCell = row.querySelector('.registered-count');
+                const button = row.querySelector('.register-btn');
+                
+                // Nastavíme počiatočný text
+                registeredCountCell.textContent = `${registered} / ${capacity}`;
+                
+                // Ak je plné, deaktivujeme tlačidlo
+                if (registered >= capacity) {
+                    button.disabled = true;
+                    button.textContent = 'Plné';
+                    row.classList.add('full');
+                } else {
+                    // Pridáme event listener
+                    button.addEventListener('click', function() {
+                        handleRegistration(this);
+                    });
+                }
+            });
+        });
+
+        const photos = [
+            'photos/mainfoto/1.jpg',
+            'photos/mainfoto/2.jpg',
+            'photos/mainfoto/3.jpg',
+            'photos/mainfoto/4.jpg',
+            'photos/mainfoto/5.jpg',
+            'photos/mainfoto/6.jpg',
+            'photos/mainfoto/7.jpg',
+            'photos/mainfoto/8.jpg',
+            'photos/mainfoto/9.jpg',
+        ];
+        
+        const bgElement = document.querySelector('.header-background');
+        let currentPhoto = 0;
+        
+        // Nastavíme prvú fotku
+        bgElement.style.backgroundImage = `url('${photos[currentPhoto]}')`;
+        
+        // Meníme fotky každé 2 sekundy
+        setInterval(() => {
+            currentPhoto = (currentPhoto + 1) % photos.length;
+            bgElement.style.backgroundImage = `url('${photos[currentPhoto]}')`;
+        }, 4000);
+
+    </script>
 
 </body>
 </html>
+
+

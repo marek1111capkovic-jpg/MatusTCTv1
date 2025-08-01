@@ -352,31 +352,40 @@
   </div>
 
   <script>
+    // Funkcia na kontrolu veku
     function checkAge() {
       const birthDate = new Date(document.getElementById('birthDate').value);
       const today = new Date();
       let age = today.getFullYear() - birthDate.getFullYear();
       const monthDiff = today.getMonth() - birthDate.getMonth();
-      
       if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
         age--;
       }
-      
       const parentSection = document.getElementById('parentInfoSection');
       if (age < 15) {
         parentSection.style.display = 'block';
-        // Make parent fields required
         document.getElementById('parentFirstName').required = true;
         document.getElementById('parentLastName').required = true;
         document.getElementById('parentPhone').required = true;
       } else {
         parentSection.style.display = 'none';
-        // Remove required from parent fields
         document.getElementById('parentFirstName').required = false;
         document.getElementById('parentLastName').required = false;
         document.getElementById('parentPhone').required = false;
       }
     }
+
+    // Funkcia na automatické vybratie mesta podľa URL parametra
+    window.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const city = params.get('city');
+      if (city) {
+        const radio = document.querySelector('input[name="workshopCity"][value="' + city + '"]');
+        if (radio) {
+          radio.checked = true;
+        }
+      }
+    });
   </script>
 
 </body>
