@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrácia na workshop</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Background image for the whole page */
+    body {
+      background: url('photos/vertigo ja 3.png') 25% center/cover no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    /* Additional styles specific to the form */
+    .registration-form {
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #000000;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.418);
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ffffff;
+    }
+
+    .form-section h2 {
+      color: #ffffff;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="tel"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 90%;
+      padding: 12px;
+      background-color: #333;
+      border: 1px solid #444;
+      border-radius: 6px;
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .submit-btn {
+      padding: 15px 30px;
+      background: #680000;
+      color: #fff;
+      border: none;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 20px;
+    }
+
+    .submit-btn:hover {
+      background: #3d0404;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(49, 0, 0, 0.6);
+    }
+
+    #parentInfoSection {
+      display: none;
+    }
+
+    /* Overlay to improve readability */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    /* Terms checkbox styles */
+    .terms-checkbox {
+      margin: 20px 0;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .terms-checkbox input {
+      width: auto;
+      margin-right: 10px;
+      margin-top: 3px;
+    }
+
+    .terms-checkbox label {
+      display: inline;
+      font-size: 0.9rem;
+    }
+
+    .terms-link {
+      color: #ff4444;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .terms-link:hover {
+      color: #ff0000;
+      text-decoration: underline;
+    }
+    
+    /* Workshop location styles */
+    .workshop-option {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: background-color 0.3s;
+    }
+    
+    .workshop-option:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .workshop-option input {
+      margin-right: 15px;
+    }
+    
+    .workshop-info {
+      flex: 1;
+    }
+    
+    .workshop-info h3 {
+      margin: 0 0 5px 0;
+      color: #fff;
+    }
+    
+    .workshop-info p {
+      margin: 0;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="registration-form">
+    <h1 style="color: white; text-align: center;">Registrácia na Workshop</h1>
+    
+    <form action="#" method="post">
+      <!-- New Section: Workshop Selection -->
+      <div class="form-section">
+        <h2>Výber workshopu</h2>
+        
+        <div class="form-group">
+          <label>Vyberte mesto konania:</label>
+          
+          <div class="workshop-option">
+            <input type="radio" id="bratislava" name="workshopCity" value="Bratislava" required>
+            <div class="workshop-info">
+              <h3>Bratislava</h3>
+              <p>Dátum: 14.9.2025 | Miesto: Skill Lab</p>
+            </div>
+          </div>
+          
+          <div class="workshop-option">
+            <input type="radio" id="kosice" name="workshopCity" value="Košice">
+            <div class="workshop-info">
+              <h3>Košice</h3>
+              <p>Dátum: 21.9.2025 | Miesto: Gymnasion</p>
+            </div>
+          </div>
+          
+          <div class="workshop-option">
+            <input type="radio" id="nitra" name="workshopCity" value="Nitra">
+            <div class="workshop-info">
+              <h3>Nitra</h3>
+              <p>Dátum: 28.9.2025 | Miesto: Jump Park</p>
+            </div>
+          </div>
+          
+          <div class="workshop-option">
+            <input type="radio" id="poprad" name="workshopCity" value="Poprad">
+            <div class="workshop-info">
+              <h3>Poprad</h3>
+              <p>Dátum: 5.10.2025 | Miesto: Extreme Arena</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section 1: Personal Information -->
+      <div class="form-section">
+        <h2>Osobné údaje účastníka</h2>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">Meno</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="lastName">Priezvisko</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="Tel.cislo">Telefónne Číslo</label>
+            <input type="text" id="Tel.cislo" name="Tel.cislo" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="gender">Pohlavie</label>
+            <select id="gender" name="gender" required>
+              <option value="">Vyberte pohlavie</option>
+              <option value="male">Muž</option>
+              <option value="female">Žena</option>
+              <option value="other">Iné</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="birthDate">Dátum narodenia</label>
+            <input type="date" id="birthDate" name="birthDate" required onchange="checkAge()">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section 2: Address -->
+      <div class="form-section">
+        <h2>Adresa trvalého bydliska</h2>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="street">Ulica</label>
+            <input type="text" id="street" name="street" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="streetNumber">Číslo popisné</label>
+            <input type="text" id="streetNumber" name="streetNumber" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">Mesto</label>
+            <input type="text" id="city" name="city" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="zipCode">PSČ</label>
+            <input type="text" id="zipCode" name="zipCode" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="country">Štát</label>
+          <select id="country" name="country" required>
+            <option value="">Vyberte štát</option>
+            <option value="SK">Slovensko</option>
+            <option value="CZ">Česká republika</option>
+            <option value="other">Iný</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Section 3: Health Information -->
+      <div class="form-section">
+        <h2>Zdravotné informácie</h2>
+        
+        <div class="form-group">
+          <label for="healthIssues">Zdravotné obmedzenia účastníka (ak nie sú - nevyplňujte)</label>
+          <textarea id="healthIssues" name="healthIssues" rows="4"></textarea>
+        </div>
+      </div>
+      
+      <!-- Section 4: Parent Information -->
+      <div class="form-section" id="parentInfoSection">
+        <h2>Údaje o rodičovi</h2>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="parentFirstName">Meno rodiča</label>
+            <input type="text" id="parentFirstName" name="parentFirstName">
+          </div>
+          
+          <div class="form-group">
+            <label for="parentLastName">Priezvisko rodiča</label>
+            <input type="text" id="parentLastName" name="parentLastName">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="parentPhone">Telefónne číslo na rodiča</label>
+          <input type="tel" id="parentPhone" name="parentPhone">
+        </div>
+      </div>
+      
+      <!-- Terms and conditions checkbox -->
+      <div class="terms-checkbox">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">Súhlasím s <a href="obchodne-podmienky.pdf" class="terms-link" target="_blank">obchodnými podmienkami</a> a spracovaním osobných údajov</label>
+      </div>
+      
+      <button type="submit" class="submit-btn">Odoslať prihlášku</button>
+    </form>
+  </div>
+
+  <script>
+    function checkAge() {
+      const birthDate = new Date(document.getElementById('birthDate').value);
+      const today = new Date();
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+      
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      
+      const parentSection = document.getElementById('parentInfoSection');
+      if (age < 15) {
+        parentSection.style.display = 'block';
+        // Make parent fields required
+        document.getElementById('parentFirstName').required = true;
+        document.getElementById('parentLastName').required = true;
+        document.getElementById('parentPhone').required = true;
+      } else {
+        parentSection.style.display = 'none';
+        // Remove required from parent fields
+        document.getElementById('parentFirstName').required = false;
+        document.getElementById('parentLastName').required = false;
+        document.getElementById('parentPhone').required = false;
+      }
+    }
+  </script>
+
+</body>
+</html>

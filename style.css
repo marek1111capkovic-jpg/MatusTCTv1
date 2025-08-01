@@ -1,0 +1,572 @@
+body {
+    text-transform: uppercase;
+    margin: 0;
+    background-color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    overflow-x: hidden;
+}
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+.header-container {
+    position: relative;
+    height: 70vh; /* 70% of viewport height */
+    overflow: hidden;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+/* Full height for main page */
+.header-container.main-page {
+    height: 100vh;
+}
+
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.7;
+    transition: background-image 1s ease-in-out;
+    transform: scale(1.4);;
+}
+footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+    
+    .footer-link {
+      color: #3498db;
+      text-decoration: none;
+      margin-top: 10px;
+      display: inline-block;
+      transition: color 0.3s;
+    }
+    
+    .footer-link:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+
+.copyright {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/* Základné responzívne nastavenia */
+@media (max-width: 768px) {
+    /* Header a navigácia */
+    .top-bar {
+        height: 50px;
+        padding: 0 10px;
+    }
+    
+    .social-icon {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .logo-img {
+        height: 35px;
+    }
+    
+    /* Hlavný obsah */
+    .header {
+        font-size: 2.5em;
+        padding: 20px;
+    }
+    
+    .header-container {
+        height: 60vh;
+    }
+    
+    .header-background {
+        transform: scale(1.2);
+    }
+    
+    /* Textové sekcie */
+    .text-section {
+        padding: 20px;
+        margin: 30px auto;
+        font-size: 0.95em;
+    }
+    
+    .text-section h2 {
+        font-size: 1.8em;
+    }
+    
+    /* Mapa */
+    .clickable-city {
+        padding: 4px 8px;
+        font-size: 0.7em;
+    }
+    
+    /* Tabuľka */
+    .schedule-table {
+        font-size: 0.9em;
+    }
+    
+    .schedule-table th, 
+    .schedule-table td {
+        padding: 6px;
+    }
+    
+    /* Tlačidlá */
+    .register-btn {
+        padding: 10px 18px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra malé obrazovky */
+    .header {
+        font-size: 2em;
+    }
+    
+    .header-container {
+        height: 50vh;
+    }
+    
+    .text-section {
+        padding: 15px;
+        margin: 20px 10px;
+    }
+    
+    .text-section h2 {
+        font-size: 1.5em;
+    }
+    
+    /* Optimalizácia tabuľky */
+    .schedule-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    /* Mapa - zmena pozície tlačidiel */
+    .clickable-city {
+        font-size: 0.6em;
+    }
+    
+    /* Bratislava */
+    .clickable-city:nth-child(1) {
+        top: 65%;
+        left: 5%;
+    }
+    
+    /* Nitra */
+    .clickable-city:nth-child(2) {
+        top: 60%;
+        left: 18%;
+    }
+    
+    /* Košice */
+    .clickable-city:nth-child(3) {
+        top: 45%;
+        left: 70%;
+    }
+    
+    /* Poprad */
+    .clickable-city:nth-child(4) {
+        top: 25%;
+        left: 53%;
+    }
+}
+
+/* Špeciálne úpravy pre dotykové zariadenia */
+@media (hover: none) {
+    .clickable-city, 
+    .register-btn, 
+    .social-icon, 
+    .logo-img {
+        animation: none !important;
+    }
+    
+    .clickable-city:hover, 
+    .register-btn:hover, 
+    .social-icon:hover, 
+    .logo-img:hover {
+        transform: none !important;
+    }
+}
+
+/* Optimalizácia pre vertikálne zobrazenie */
+@media (orientation: portrait) {
+    .header-container {
+        height: 60vh;
+    }
+    
+    .header-background {
+        transform: scale(1.3);
+    }
+}
+
+/* Optimalizácia pre horizontálne zobrazenie */
+@media (orientation: landscape) and (max-height: 500px) {
+    .header-container {
+        height: 100vh;
+    }
+    
+    .header {
+        font-size: 3em;
+    }
+}
+.workshop-card {
+    cursor: pointer;
+    /* ostatné štýly ostávajú rovnaké */
+}
+@font-face {
+    font-family: 'Europa';
+    src: url('fonts\fonnts.com-Europa-Bold.ttf') format('truetype');
+    font-weight: bold;
+    
+}
+@font-face {
+    font-family: 'Shlop';
+    src: url('fonts/shlop rg.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+    @font-face {
+    font-family: 'Typewriter';
+    src: url('fonts/JMH Typewriter.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* Animácie */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes colorChange {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hlavička s animáciou */
+.header {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    padding: 40px 20px;
+    font-weight: 1000;
+    text-align: center;
+    font-size: 5em;  /* Zväčšené */
+    letter-spacing: 0x; 
+    position: relative;
+    animation: fadeIn 1s ease-out;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7); /* Priesvitné čierne pozadie */
+    backdrop-filter: blur(1px); /* Efekt rozostrenia */
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
+    background-size: 200% 200%;
+    animation: colorChange 3s ease infinite;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+.social-icon:hover {
+    transform: scale(1.15) rotate(10deg);
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.7));
+}
+
+.logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+    .right-spacer {
+    width: calc(15px * 3 + 28px * 3); /* Rovnaká šírka ako sociálne ikonky */
+}
+
+/* Textové sekcie s animáciami */
+.text-section {
+    max-width: 850px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    line-height: 1.7;
+    font-size: 1.05em;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.text-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.text-section h2 {
+    letter-spacing: 0.2px;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    font-weight: 1000;
+    position: relative;
+    display: inline-block;
+}
+
+.text-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #000000, transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.text-section:hover h2::after {
+    transform: scaleX(1);
+}
+
+.text-section ul {
+    padding-left: 20px;
+    text-align: left;
+}
+p {
+    font-family: 'Montserrat', monospace;
+    font-size: 1.1em; /* Môžete upraviť veľkosť */
+    line-height: 1.6; /* Lepšia čitateľnosť pre typewriter font */
+}
+
+/* Pre zoznamy */
+.text-section ul li {
+    font-family: 'Montserrat', monospace;
+}
+
+/* Pre tabuľky */
+.schedule-table td {
+    font-family: 'Montserrat', monospace;
+}
+
+/* Pre zvýraznený text */
+strong {
+    font-family: 'Montserrat', monospace;
+    font-weight: bold; /* Typewriter fonty často nemajú rôzne weighty */
+}
+
+/* Mapa s animáciou */
+.map-container {
+    margin: 60px auto 30px;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease;
+}
+
+.map-container.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.slovakia-map {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3)) url('#remove-white');
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.slovakia-map:hover {
+    transform: scale(1.01);
+}
+
+/* Tlačidlá s animáciami */
+.clickable-city {
+    position: absolute;
+    background: linear-gradient(135deg, #000000, #252525);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    animation: pulse 2s infinite;
+}
+
+.clickable-city:hover {
+    animation: none;
+    transform: scale(1.08);
+    background: linear-gradient(135deg, #000000, #2b2a2a);
+    box-shadow: 0 0 15px rgba(5, 0, 0, 0.8);
+}
+
+/* Registračné tlačidlo */
+.register-btn {
+    padding: 12px 24px;
+    font-size: 1em;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #020000, #363636);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.register-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s ease;
+}
+
+.register-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.register-btn:hover::before {
+    left: 100%;
+}
+
+/* Ostatné štýly */
+strong {
+    color: #1f1e1e;
+    transition: all 0.3s ease;
+}
+
+strong:hover {
+    text-shadow: 0 0 5px rgba(53, 53, 53, 0.5);
+}
+
+em {
+    color: #000000;
+    font-style: italic;
+}
+
+/* Responzívne štýly */
+@media (max-width: 600px) {
+    .text-section {
+        padding: 20px;
+        font-size: 1em;
+    }
+
+    .header {
+        font-size: 2em;
+    }
+    
+    .clickable-city {
+        font-size: 0.7em;
+        padding: 4px 8px;
+    }
+}
+.schedule-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+text-align: center;
+}
+
+.schedule-table th, .schedule-table td {
+    border: 1px solid #000000;
+    padding: 10px;
+}
+
+.schedule-table tr.full td {
+    background-color: rgba(44, 43, 43, 0.4);
+    color: #000000;
+}
+
+.schedule-table button[disabled] {
+    background: #777;
+    cursor: not-allowed;
+    box-shadow: none;
+}
