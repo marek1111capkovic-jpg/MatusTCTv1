@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrácia úspešná | Tricking Workshop</title>
+  <style>
+    body {
+      background: url('photos/vertigo ja 3.png') 25% center/cover no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Oswald', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+    
+    .success-container {
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
+      padding: 40px;
+      max-width: 700px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(104, 0, 0, 0.5);
+      border: 1px solid #680000;
+      margin: 20px;
+    }
+    
+    h1 {
+      color: #fff;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .success-icon {
+      font-size: 5rem;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .highlight {
+      color: #ff4444;
+      font-weight: bold;
+    }
+    
+    .contact-email {
+      color: #ff4444;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    .contact-email:hover {
+      text-decoration: underline;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      background: #680000;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    
+    .back-btn:hover {
+      background: #3d0404;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(49, 0, 0, 0.6);
+    }
+    
+    .info-box {
+      background: rgba(104, 0, 0, 0.2);
+      border-left: 4px solid #680000;
+      padding: 15px;
+      margin: 25px 0;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="success-container">
+    <div class="success-icon">✓</div>
+    <h1>Registrácia úspešná!</h1>
+    
+    <p>Ďakujeme za vašu registráciu na Tricking Workshop.</p>
+    
+    <div class="info-box">
+      <p>Na váš email sme vám poslali potvrdzovaciu správu so všetkými podrobnosťami o workshope.</p>
+      <p>Ak email neobdržíte do <span class="highlight">15 minút</span>, skontrolujte si priečinok <span class="highlight">SPAM</span> alebo nás kontaktujte na <a href="mailto:matustctworkshop@gmail.com" class="contact-email">matustctworkshop@gmail.com</a>.</p>
+    </div>
+    
+    <p>Tešíme sa na vás na workshope!</p>
+    
+    <a href="index.html" class="back-btn">Späť na hlavnú stránku</a>
+  </div>
+</body>
+</html>
