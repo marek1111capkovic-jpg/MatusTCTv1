@@ -182,7 +182,12 @@
   <div class="registration-form">
     <h1 style="color: white; text-align: center;">Registrácia na Workshop</h1>
     
-    <form action="#" method="post">
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+    <form action="https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec"
+          method="POST"
+          target="hidden_iframe"
+          onsubmit="submitted = true;">
       <!-- New Section: Workshop Selection -->
       <div class="form-section">
         <h2>Výber workshopu</h2>
@@ -386,6 +391,15 @@
         }
       }
     });
+
+    let submitted = false;
+
+    // Wait for iframe to load after submission
+    document.getElementById('hidden_iframe').addEventListener('load', function () {
+      if (submitted) {
+      // Redirect only after submission completes
+        window.location.href = 'mainpage.html';
+    }});
   </script>
 
 </body>

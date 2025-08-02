@@ -146,23 +146,30 @@
             </tr>
         </thead>
         <tbody>
-            <tr data-capacity="40" data-registered="0">
-                <td>Bratislava – Inter Gymnastika Bratislava</td>
-                <td>14.9. 12:00</td>
+            <tr data-capacity="40" data-registered="12">
+                <td>Bratislava – Skill Lab</td>
+                <td>14.9</td>
                 <td class="registered-count">0 / 40</td>
                 <td><button class="register-btn">Registrovať</button></td>
                 <td><a href="bratislava.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
             </tr>
-            <tr data-capacity="40" data-registered="0">
-                <td>Nitra – Skill Lab Nitra</td>
-                <td>21.9. 12:00</td>
+            <tr data-capacity="40" data-registered="10">
+                <td>Košice – Gymnasion</td>
+                <td>21.9</td>
+                <td class="registered-count">0 / 40</td>
+                <td><button class="register-btn">Registrovať</button></td>
+                <td><a href="kosice.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
+            </tr>
+            <tr data-capacity="40" data-registered="8">
+                <td>Nitra – Jump Park</td>
+                <td>28.9</td>
                 <td class="registered-count">0 / 40</td>
                 <td><button class="register-btn">Registrovať</button></td>
                 <td><a href="nitra.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
             </tr>
-            <tr data-capacity="40" data-registered="0">
-                <td>Prievidza – Gymnastiké centrum Prievidza</td>
-                <td>28.9. 12:00</td>
+            <tr data-capacity="40" data-registered="5">
+                <td>Poprad – Extreme Arena</td>
+                <td>5.10</td>
                 <td class="registered-count">0 / 40</td>
                 <td><button class="register-btn">Registrovať</button></td>
                 <td><a href="prievidza.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
@@ -239,6 +246,26 @@
     </footer>
 
     <script>
+        fetch("https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec")
+            .then(res => res.json())
+            .then(data => {
+                const rows = document.querySelectorAll("tr[data-capacity][data-registered]");
+
+                rows.forEach(row => {
+                const cityName = row.querySelector("td").textContent.trim();
+                const registered = data[cityName];
+
+                if (registered !== undefined) {
+                    row.setAttribute("data-registered", registered);
+                    const capacity = parseInt(row.getAttribute("data-capacity"), 10);
+                    row.querySelector(".registered-count").textContent = `${registered} / ${capacity}`;
+                }
+                });
+            })
+            .catch(err => {
+                console.error("Chyba pri načítaní údajov:", err);
+        });
+
         // Animácie pri scrollovaní
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('.text-section, .map-container');
