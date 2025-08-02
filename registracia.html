@@ -353,6 +353,15 @@
       </div>
       
       <button type="submit" class="submit-btn">Odoslať prihlášku</button>
+      <div id="loading-spinner" style="display:none; text-align:center; margin-top:20px;">
+        <div style="display:inline-block;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="20" stroke="#680000" stroke-width="6" stroke-linecap="round" stroke-dasharray="31.4 31.4"/>
+            <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="1s" repeatCount="indefinite"/>
+          </svg>
+        </div>
+        <div style="color:#fff; margin-top:10px; font-size:1.1rem;">Odosielam...</div>
+      </div>
     </form>
   </div>
 
@@ -393,6 +402,17 @@
     });
 
     let submitted = false;
+
+    // Po kliknutí na submit skryje tlačidlo a zobrazí spinner
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      const submitBtn = document.querySelector('.submit-btn');
+      const spinner = document.getElementById('loading-spinner');
+      form.addEventListener('submit', function(e) {
+        submitBtn.style.display = 'none';
+        spinner.style.display = 'block';
+      });
+    });
 
     // Wait for iframe to load after submission
     document.getElementById('hidden_iframe').addEventListener('load', function () {
