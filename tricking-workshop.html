@@ -6,6 +6,7 @@
     <title>Tricking Workshopy - Slovensko</title>
     <link rel="stylesheet" href="style.css"> 
     <style>
+      /* Pôvodné štýly... */
       .schedule-table {
         width: 100%;
         border-collapse: separate;
@@ -66,177 +67,216 @@
         background: #3d0404;
         transform: translateY(-2px);
       }
+      .registered-count {
+        font-weight: 700;
+        color: #222;
+        letter-spacing: 1px;
+      }
+      .full .registered-count {
+        color: #b30000;
+        font-weight: 700;
+      }
+      
+      /* Nové štýly pre pozadie */
+      body {
+        position: relative;
+        background-color: #f9f9f9;
+      }
+      
+      .page-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('photos/pozadia/pozadie_workshopy.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        opacity: 0.99; /* Nižšia priehľadnosť, aby neodvádzal pozornosť */
+        z-index: -1;
+        pointer-events: none;
+      }
+      
+      .content-wrapper {
+        position: relative;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.85);
+      }
     </style>
 </head>
 
 <body>
-    <div class="top-bar">
-        <div class="social-icons">
-            <a href="https://www.instagram.com/matus_tct/" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="social-icon">
-            </a>
-            <a href="https://www.tiktok.com/@matus_tct" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" class="social-icon">
-            </a>
-            <a href="https://www.youtube.com/@matus_tct" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" class="social-icon">
-            </a>
-        </div>
+    <div class="main-background"></div>
+    <div class="content-wrapper">
+        <!-- Pridané pozadie stránky -->
+        <div class="page-background"></div>
         
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="photos/TCT logo.png" alt="Tricking Workshopy Logo" class="logo-img">
-            </a>
+        <div class="top-bar">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/matus_tct/" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://www.tiktok.com/@matus_tct" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" class="social-icon">
+                </a>
+                <a href="https://www.youtube.com/@matus_tct" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" class="social-icon">
+                </a>
+            </div>
+            
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="photos/TCT logo.png" alt="Tricking Workshopy Logo" class="logo-img">
+                </a>
+            </div>
+
+            <!-- Pomocný element pre vyváženie -->
+            <div class="right-spacer"></div>
         </div>
 
-        
-        <!-- Pomocný element pre vyváženie -->
-        <div class="right-spacer"></div>
-    </div>
-
-    <!-- Ostatný obsah zostáva rovnaký... -->
-    <div class="header-container">
-        <div class="header-background"></div>
-        <div class="header">
-            <span style="font-size:5rem; font-weight:700; letter-spacing:2px; color:#fff; font-family:inherit; display:inline-block; line-height:1.05;">Matus TCT<br>Tricking Workshop</span>
+        <div class="header-container">
+            <div class="header-background"></div>
+            <div class="header">
+                <span style="font-size:5rem; font-weight:700; letter-spacing:2px; color:#fff; font-family:inherit; display:inline-block; line-height:1.05;">Matus TCT<br>Tricking Workshop</span>
+            </div>
         </div>
-    </div>
 
-    <div class="text-section">
-<h2><img src="photos/ikonky/info_icon.png" alt="Info" style="height:1.5em;vertical-align:-0.35em;margin-right:8px;">Čo je Tricking Workshop?</h2>
-        <p>
-            Nabitá akcia plná tréningu, energie a nových zručností. Počas workshopu sa naučíš nielen základy parkouru a trickingu, ale aj nové triky pod vedením skúsených trénerov. Nechýba ani autogramiáda, merch a skvelá komunita.
-        </p>
-        <p>
-            Tréning prebieha podľa bezpečnej metodiky a je vhodný pre úplných začiatočníkov aj pokročilých. Nezáleží na výške, váhe ani skúsenostiach – hlavná je chuť sa hýbať!
-        </p>
-    </div>
+        <!-- Ostatný obsah zostáva rovnaký... -->
+        <div class="text-section">
+            <h2><img src="photos/ikonky/info_icon.png" alt="Info" style="height:1.5em;vertical-align:-0.35em;margin-right:8px;">Čo je Tricking Workshop?</h2>
+            <p>
+                Nabitá akcia plná tréningu, energie a nových zručností. Počas workshopu sa naučíš nielen základy parkouru a trickingu, ale aj nové triky pod vedením skúsených trénerov. Nechýba ani autogramiáda, merch a skvelá komunita.
+            </p>
+            <p>
+                Tréning prebieha podľa bezpečnej metodiky a je vhodný pre úplných začiatočníkov aj pokročilých. Nezáleží na výške, váhe ani skúsenostiach - hlavná je chuť sa hýbať!
+            </p>
+        </div>
 
-    <div class="map-container">
-        <a href="bratislava.html" class="clickable-city" style="top: 66%; left: 5%;">Bratislava</a>
-        <a href="nitra.html" class="clickable-city" style="top: 62%; left: 20%;">Nitra</a>
-        <a href="prievidza.html" class="clickable-city" style="top: 70%; left: 32%;">Prievidza</a>
-        <a href="kosice.html"  class="clickable-city" style="top: 48%; left: 72%;">Košice</a>
-        <a href="poprad.html" class="clickable-city" style="top: 28%; left: 55%;">Poprad</a>
+        <div class="map-container">
+            <a href="bratislava.html" class="clickable-city" style="top: 66%; left: 5%;">Bratislava</a>
+            <a href="nitra.html" class="clickable-city" style="top: 62%; left: 20%;">Nitra</a>
+            <a href="prievidza.html" class="clickable-city" style="top: 70%; left: 32%;">Prievidza</a>
+            <a href="kosice.html"  class="clickable-city" style="top: 48%; left: 72%;">Košice</a>
+            <a href="poprad.html" class="clickable-city" style="top: 28%; left: 55%;">Poprad</a>
 
-        <svg style="display: none;">
-            <filter id="remove-white" color-interpolation-filters="sRGB">
-                <feColorMatrix type="matrix" values="1 0 0 0 0
+            <svg style="display: none;">
+                <filter id="remove-white" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="matrix" values="1 0 0 0 0
                                                     0 1 0 0 0
                                                     0 0 1 0 0
                                                    -1 -1 -1 3 0"/>
-            </filter>
-        </svg>
+                </filter>
+            </svg>
 
-        <img src="photos\mapa 2.svg" 
-             alt="Mapa Slovenska" 
-             class="slovakia-map">
-    </div>
+            <img src="photos\mapa 2.svg" 
+                 alt="Mapa Slovenska" 
+                 class="slovakia-map">
+        </div>
 
-    <div class="text-section">
-    <h2><img src="photos/ikonky/calendar_icon.png" alt="Termíny" style="height:1.5em;vertical-align:middle;margin-right:8px;">Termíny a Registrácie</h2>
-    <table class="schedule-table">
-        <thead>
-            <tr>
-                <th>Mesto</th>
-                <th>Dátum</th>
-                <th>Prihlásení</th>
-                <th>Akcia</th>
-                <th>Viac info</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-capacity="40" data-registered="0">
-                <td>Bratislava – Inter Gymnastika Bratislava</td>
-                <td>14.9. 12:00</td>
-                <td class="registered-count">VOLNÉ MIESTA</td>
-                <td><button class="register-btn">Registrovať</button></td>
-                <td><a href="bratislava.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
-            </tr>
-            <tr data-capacity="40" data-registered="0">
-                <td>Nitra – Skill Lab Nitra</td>
-                <td>21.9. 12:00</td>
-                <td class="registered-count">VOLNÉ MIESTA</td>
-                <td><button class="register-btn">Registrovať</button></td>
-                <td><a href="nitra.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
-            </tr>
-            <tr data-capacity="40" data-registered="0">
-                <td>Prievidza – Gymnastiké centrum Prievidza</td>
-                <td>28.9. 12:00</td>
-                <td class="registered-count">VOLNÉ MIESTA</td>
-                <td><button class="register-btn">Registrovať</button></td>
-                <td><a href="prievidza.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
-            </tr>
-            <tr data-capacity="30" data-registered="0">
-                <td>Poprad – Skill Lab Poprad</td>
-                <td>5.10. 12:00</td>
-                <td class="registered-count">VOLNÉ MIESTA</td>
-                <td><button class="register-btn">Registrovať</button></td>
-                <td><a href="poprad.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
-            </tr>
-            <tr data-capacity="40" data-registered="0">
-                <td>Košice – Gymnastik Košice</td>
-                <td>12.10. 12:00</td>
-                <td class="registered-count">VOLNÉ MIESTA</td>
-                <td><button class="register-btn">Registrovať</button></td>
-                <td><a href="kosice.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+        <div class="text-section">
+            <h2><img src="photos/ikonky/calendar_icon.png" alt="Termíny" style="height:1.5em;vertical-align:middle;margin-right:8px;">Termíny a Registrácie</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Mesto</th>
+                        <th>Dátum</th>
+                        <th>Prihlásení</th>
+                        <th>Akcia</th>
+                        <th>Viac info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-capacity="40" data-registered="0">
+                        <td><strong>Bratislava - Inter Gymnastika Bratislava</strong></td>
+                        <td>14.9. 12:00</td>
+                        <td class="registered-count">VOLNÉ MIESTA</td>
+                        <td><button class="register-btn">Registrovať</button></td>
+                        <td><a href="bratislava.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
+                    </tr>
+                    <tr data-capacity="40" data-registered="0">
+                        <td><strong>Nitra - Skill Lab Nitra</strong></td>
+                        <td>21.9. 12:00</td>
+                        <td class="registered-count">VOLNÉ MIESTA</td>
+                        <td><button class="register-btn">Registrovať</button></td>
+                        <td><a href="nitra.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
+                    </tr>
+                    <tr data-capacity="40" data-registered="0">
+                        <td><strong>Prievidza - Gymnastiké centrum Prievidza</strong></td>
+                        <td>28.9. 12:00</td>
+                        <td class="registered-count">VOLNÉ MIESTA</td>
+                        <td><button class="register-btn">Registrovať</button></td>
+                        <td><a href="prievidza.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
+                    </tr>
+                    <tr data-capacity="30" data-registered="30">
+                        <td><strong>Poprad - Skill Lab Poprad</strong></td>
+                        <td>5.10. 12:00</td>
+                        <td class="registered-count">VOLNÉ MIESTA</td>
+                        <td><button class="register-btn">Registrovať</button></td>
+                        <td><a href="poprad.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
+                    </tr>
+                    <tr data-capacity="40" data-registered="0">
+                        <td><strong>Košice - Gymnastik Košice</strong></td>
+                        <td>12.10. 12:00</td>
+                        <td class="registered-count">VOLNÉ MIESTA</td>
+                        <td><button class="register-btn">Registrovať</button></td>
+                        <td><a href="kosice.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
+        <div class="text-section">
+            <h2><img src="photos/ikonky/time_icon.png" alt="Program" style="height:1.5em;vertical-align:middle;margin-right:8px;">Program Tricking Workshopu</h2>
+            <p><strong>12:00 - Začiatok registrácie</strong> (prineste si podpísanú prihlášku)</p>
+            <ul>
+                <li>možnosť zakúpiť si Matus TCT merch</li>
+                <li>spoločné fotenie</li>
+                <li>Tricking vystúpenie</li>
+                <li>tréning Tricking základov v skupinách</li>
+                <li>nácvik sált s istením</li>
+                <li>posilňovacie cvičenia s vlastnou váhou na spevnenie tela</li>
+            </ul>
+            <p><strong>16:00 - Ukončenie workshopu</strong></p>
+        </div>
 
+        <div class="text-section">
+            <h2><img src="photos/ikonky/backpack_icon.png" alt="Čo si vziať" style="height:1.5em;vertical-align:middle;margin-right:8px;">Čo si vziať so sebou?</h2>
+            <ul>
+                <li>podpísanú prihlášku od rodičov (bez nej nie je možné trénovať!)</li>
+                <li>športové oblečenie</li>
+                <li>kartičku poistenca</li>
+                <li>malinké občerstvenie a dostatok pitnej vody</li>
+                <li>ak si chceš kúpiť merch, nezabudni na hotovosť</li>
+            </ul>
+        </div>
 
-    <div class="text-section">
-    <h2><img src="photos/ikonky/time_icon.png" alt="Program" style="height:1.5em;vertical-align:middle;margin-right:8px;">Program Tricking Workshopu</h2>
-        <p><strong>12:00 – Začiatok registrácie</strong> (prineste si podpísanú prihlášku)</p>
-        <ul>
-            <li>možnosť zakúpiť si Matus TCT merch</li>
-            <li>Tricking vystúpenie</li>
-            <li>spoločné fotenie a autogramiáda</li>
-            <li>tréning Tricking základov v skupinách </li>
-            <li>posilňovacie cvičenia s vlastnou váhou na spevnenie tela</li>
-            <li>nácvik sált s istením (dobrovoľné)</li>
-        </ul>
-        <p><strong>16:00 – Ukončenie workshopu</strong></p>
-    </div>
+        <div class="text-section">
+            <h2><img src="photos/ikonky/info_icon.png" alt="Info" style="height:1.5em;vertical-align:-0.35em;margin-right:8px;">Ďalšie informácie</h2>
+            <p>
+                Workshopu sa môžeš zúčastniť aj ako divák!  
+                Vstupné pre divákov je <strong>10€</strong> a platí sa v hotovosti na mieste.
+            </p>
+            <p>
+                <em>(Pre rodičov: túto sumu neplatí jeden sprievod účastníka, ktorý dieťa priváža na akciu.)</em>
+            </p>
+        </div>
 
-    <div class="text-section">
-    <h2><img src="photos/ikonky/backpack_icon.png" alt="Čo si vziať" style="height:1.5em;vertical-align:middle;margin-right:8px;">Čo si vziať so sebou?</h2>
-        <ul>
-            <li>podpísanú prihlášku od rodičov (bez nej nie je možné trénovať!)</li>
-            <li>športové oblečenie a obuv</li>
-            <li>kartičku poistenca</li>
-            <li>svačinu a dostatok pitnej vody</li>
-            <li>ak si chceš kúpiť merch, nezabudni na peniaze</li>
-        </ul>
-    </div>
+        <div class="text-section">
+            <h2><img src="photos/ikonky/registracia_icon.png" alt="Registrácia" style="height:1.5em;vertical-align:middle;margin-right:8px;">Chceš sa zúčastniť?</h2>
+            <p>Vyplň jednoduchý registračný formulár a zaisti si miesto na workshope.</p>
+            <a href="registracia.html">
+                <button class="register-btn">
+                Registrovať sa
+                </button>
+            </a>
+        </div>
 
-    <div class="text-section">
-<h2><img src="photos/ikonky/info_icon.png" alt="Info" style="height:1.5em;vertical-align:-0.35em;margin-right:8px;">Ďalšie informácie</h2>
-        <p>
-            Workshopu sa môžeš zúčastniť aj ako divák!  
-            Vstupné pre divákov je <strong>10€</strong> a platí sa v hotovosti na mieste.
-        </p>
-        <p>
-            <em>(Pre rodičov: túto sumu neplatí jeden sprievod účastníka, ktorý dieťa priváža na akciu.)</em>
-        </p>
-    </div>
-
-    <div class="text-section">
-    <h2><img src="photos/ikonky/registracia_icon.png" alt="Registrácia" style="height:1.5em;vertical-align:middle;margin-right:8px;">Chceš sa zúčastniť?</h2>
-    <p>Vyplň jednoduchý registračný formulár a zaisti si miesto na workshope.</p>
-    <a href="registracia.html">
-        <button class="register-btn">
-        Registrovať sa
-        </button>
-    </a>
-    </div>
-
-    <footer id="kontakt">
-        <p>© 2025 Matus TCT | Kontakt: matustct@gmail.com</p>
-        <a href="obchodne-podmienky.pdf" class="footer-link">Obchodné podmienky</a>
-    </footer>
+        <footer id="kontakt">
+            <p>© 2025 Matus TCT | Kontakt: matustctworkshop@gmail.com</p>
+            <a href="obchodne-podmienky.pdf" class="footer-link">Obchodné podmienky</a>
+        </footer>
+    </div> <!-- Koniec content-wrapper -->
 
     <script>
         fetch("https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec")
@@ -339,7 +379,7 @@
                 const button = row.querySelector('.register-btn');
                 // Nastavíme počiatočný text
                 if (registered >= capacity) {
-                    registeredCountCell.textContent = 'Prihlasovanie uzavreté';
+                    registeredCountCell.textContent = 'Kapacita naplnená';
                     button.disabled = true;
                     button.textContent = 'Uzavreté';
                     row.classList.add('full');
@@ -350,6 +390,7 @@
                     button.addEventListener('click', function() {
                         handleRegistration(this);
                     });
+                    registeredCountCell.style.color = '#1bb300'; // zelená len ak sú voľné miesta
                 }
             });
         });
@@ -377,9 +418,7 @@
             currentPhoto = (currentPhoto + 1) % photos.length;
             bgElement.style.backgroundImage = `url('${photos[currentPhoto]}')`;
         }, 4000);
-
     </script>
-
 </body>
 </html>
 
