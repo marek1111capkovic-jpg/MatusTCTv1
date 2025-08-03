@@ -226,6 +226,14 @@
               <p>Dátum: 5.10.2025 | Miesto: Extreme Arena</p>
             </div>
           </div>
+
+          <div class="workshop-option">
+            <input type="radio" id="prievidza" name="workshopCity" value="Prievidza">
+            <div class="workshop-info">
+              <h3>Prievidza</h3>
+              <p>Dátum: 28.9.2025 | Miesto: Gymnastiké centrum Prievidza </p>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -376,6 +384,15 @@
         age--;
       }
       const parentSection = document.getElementById('parentInfoSection');
+      if (age < 6) {
+        alert('Účastník nesplňa podmienky na účasť na workshope. Musí mať aspoň 6 rokov.');
+        document.getElementById('birthDate').value = '';
+        parentSection.style.display = 'none';
+        document.getElementById('parentFirstName').required = false;
+        document.getElementById('parentLastName').required = false;
+        document.getElementById('parentPhone').required = false;
+        return;
+      }
       if (age < 15) {
         parentSection.style.display = 'block';
         document.getElementById('parentFirstName').required = true;
@@ -407,8 +424,37 @@
     document.addEventListener('DOMContentLoaded', function() {
       const form = document.querySelector('form');
       const submitBtn = document.querySelector('.submit-btn');
-      const spinner = document.getElementById('loading-spinner');
+
+      // Vytvoríme element na chybové hlásenie
+      let errorMsg = document.createElement('div');
+      errorMsg.id = 'age-error';
+      errorMsg.style.color = '#ff4444';
+      errorMsg.style.fontWeight = '700';
+      errorMsg.style.marginTop = '18px';
+      errorMsg.style.textAlign = 'center';
+      errorMsg.style.fontSize = '1.1rem';
+      errorMsg.style.display = 'none';
+      submitBtn.parentNode.insertBefore(errorMsg, submitBtn);
+
       form.addEventListener('submit', function(e) {
+        const birthDateInput = document.getElementById('birthDate');
+        const birthDate = new Date(birthDateInput.value);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+        }
+        if (age < 6) {
+          e.preventDefault();
+          errorMsg.textContent = 'Účastník nesplňa podmienky na účasť na workshope. Musí mať aspoň 6 rokov.';
+          errorMsg.style.display = 'block';
+          return false;
+        } else {
+          errorMsg.style.display = 'none';
+        }
+        // ...spinner code...
+        const spinner = document.getElementById('loading-spinner');
         submitBtn.style.display = 'none';
         spinner.style.display = 'block';
       });
