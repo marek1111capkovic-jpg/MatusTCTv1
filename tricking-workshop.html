@@ -200,7 +200,6 @@
           padding: 12px 0 !important;
         }
         .schedule-table td[data-label="Mesto"] strong {
-          color: #680000;
           font-size: 1em;
           white-space: normal;
           word-break: break-word;
@@ -252,7 +251,7 @@
         </div>
 
         <div class="header">
-        <h1 class="workshop-title">Matus TCT</h1>
+            <h1 class="workshop-title">Matus TCT</h1>
             <h2 class="workshop-subtitle">Tricking Workshop</h2>
         </div>
 
@@ -324,7 +323,7 @@
                         <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
                         <td data-label="Viac info"><a href="prievidza.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
                     </tr>
-                    <tr data-capacity="30" data-registered="30">
+                    <tr data-capacity="30" data-registered="0">
                         <td data-label="Dátum">5.10. 12:00</td>
                         <td data-label="Mesto"><strong>Poprad - Skill Lab Poprad</strong></td>
                         <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
@@ -408,24 +407,56 @@
     </div> <!-- Koniec content-wrapper -->
 
     <script>
-        fetch("https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec")
-            .then(res => res.json())
-            .then(data => {
-                const rows = document.querySelectorAll("tr[data-capacity][data-registered]");
+        const scriptURL = "https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec"; // Replace with your real URL
 
-                rows.forEach(row => {
-                const cityName = row.querySelector("td").textContent.trim();
-                const registered = data[cityName];
+        // Match city names in your Google Sheet keys to strings in the <strong> text
+        const cityMap = {
+            "Bratislava": "Bratislava - Inter Gymnastika Bratislava",
+            "Nitra": "Nitra - Skill Lab Nitra",
+            "Prievidza": "Prievidza - Gymnastiké centrum Prievidza",
+            "Poprad": "Poprad - Skill Lab Poprad",
+            "Košice": "Košice - Gymnastik Košice"
+        };
 
-                if (registered !== undefined) {
-                    row.setAttribute("data-registered", registered);
-                    const capacity = parseInt(row.getAttribute("data-capacity"), 10);
-                    row.querySelector(".registered-count").textContent = `${registered} / ${capacity}`;
+        fetch(scriptURL)
+            .then(response => response.json())
+            .then(registeredData => {
+            document.querySelectorAll("tr[data-capacity]").forEach(row => {
+                const cityCellText = row.querySelector("td[data-label='Mesto'] strong")?.textContent || "";
+                
+                // Find matching city key
+                const matchingCityKey = Object.keys(cityMap).find(city =>
+                cityCellText.includes(cityMap[city])
+                );
+
+                if (matchingCityKey) {
+                const registeredCount = registeredData[matchingCityKey];
+                row.setAttribute("data-registered", registeredCount);
+
+                // Optionally update the "Prihlásení" column
+                const capacity = parseInt(row.getAttribute("data-capacity"), 10);
+                const statusCell = row.querySelector(".registered-count");
+
+                if (registeredCount >= capacity) {
+                    statusCell.textContent = "Kapacita naplnená";
+                    statusCell.style.color = "red";
+
+                    const button = row.querySelector(".register-btn");
+                    if (button) {
+                        button.disabled = true;
+                        button.textContent = "Uzavreté";
+                        button.style.opacity = "0.5";
+                        button.style.cursor = "not-allowed";
+                    }
+                } else {
+                    statusCell.textContent = `Voľné miesta`;
+                    statusCell.style.color = "green";
                 }
-                });
-            })
-            .catch(err => {
-                console.error("Chyba pri načítaní údajov:", err);
+                }
+            });
+        })
+            .catch(error => {
+                console.error("Error fetching registration data:", error);
         });
 
         // Animácie pri scrollovaní
@@ -464,63 +495,6 @@
                 setTimeout(() => {
                     button.style.animation = 'pulse 2s infinite';
                 }, 50);
-            });
-        });
-
-       // Funkcia na zvýšenie počtu prihlásených a presmerovanie
-        function handleRegistration(button) {
-            const row = button.closest('tr');
-            const capacity = parseInt(row.dataset.capacity);
-            let registered = parseInt(row.dataset.registered);
-            const registeredCountCell = row.querySelector('.registered-count');
-            
-            // Skontrolujeme, či ešte nie je plné
-            if (registered >= capacity) {
-                button.disabled = true;
-                button.textContent = 'Uzavreté';
-                registeredCountCell.textContent = 'Prihlasovanie uzavreté';
-                row.classList.add('full');
-                return;
-            }
-            
-            // Zvýšime počet prihlásených
-            registered++;
-            row.dataset.registered = registered;
-            if (registered >= capacity) {
-                button.disabled = true;
-                button.textContent = 'Uzavreté';
-                registeredCountCell.textContent = 'Prihlasovanie uzavreté';
-                row.classList.add('full');
-            } else {
-                registeredCountCell.textContent = 'VOLNÉ MIESTA';
-            }
-            // Presmerujeme na registračný formulár
-            window.location.href = "registracia.html";
-        }
-
-        // Inicializácia počtov pri načítaní stránky
-        document.addEventListener('DOMContentLoaded', function() {
-            const rows = document.querySelectorAll('.schedule-table tbody tr');
-            rows.forEach(row => {
-                const registered = parseInt(row.dataset.registered);
-                const capacity = parseInt(row.dataset.capacity);
-                const registeredCountCell = row.querySelector('.registered-count');
-                const button = row.querySelector('.register-btn');
-                // Nastavíme počiatočný text
-                if (registered >= capacity) {
-                    registeredCountCell.textContent = 'Kapacita naplnená';
-                    button.disabled = true;
-                    button.textContent = 'Uzavreté';
-                    row.classList.add('full');
-                } else {
-                    registeredCountCell.textContent = 'VOLNÉ MIESTA';
-                    button.disabled = false;
-                    button.textContent = 'Registrovať';
-                    button.addEventListener('click', function() {
-                        handleRegistration(this);
-                    });
-                    registeredCountCell.style.color = '#1bb300'; // zelená len ak sú voľné miesta
-                }
             });
         });
 
