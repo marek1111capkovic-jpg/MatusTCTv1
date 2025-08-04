@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+chcem aby pozadie ktore mam nahodene sa dalo aj scrolovat <!DOCTYPE html>
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
@@ -6,118 +6,102 @@
     <title>Tricking Workshopy - Slovensko</title>
     <link rel="stylesheet" href="style.css"> 
     <style>
-      /* Upravené štýly pre tabuľku */
+      /* Pôvodné štýly... */
       .schedule-table {
         width: 100%;
         border-collapse: separate;
         border-spacing: 0;
         margin: 30px 0;
         font-size: 1.1rem;
-        background: rgba(255,255,255,0.15);
+        background: rgba(255,255,255,0.07);
         border-radius: 16px;
         overflow: hidden;
-        box-shadow: 0 4px 24px rgba(49,0,0,0.15);
-        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 24px rgba(49,0,0,0.10);
       }
-      
       .schedule-table th {
-        background: rgba(43, 0, 0, 0.9);
+        background: #000000;
         color: #fff;
         font-weight: 700;
         padding: 16px 10px;
         border: none;
         letter-spacing: 1px;
-        text-align: left;
       }
-      
       .schedule-table td {
         padding: 14px 10px;
         border: none;
-        background: rgba(255, 255, 255, 0.1);
-        color: #fff;
-        transition: all 0.2s ease;
+        background: rgba(0,0,0,0.04);
+        color: #222;
+        transition: background 0.2s;
       }
-      
       .schedule-table tbody tr {
-        transition: all 0.2s ease;
+        transition: background 0.2s, box-shadow 0.2s;
       }
-      
       .schedule-table tbody tr:hover {
-        background: rgba(255, 229, 229, 0.2);
-        box-shadow: 0 2px 12px rgba(104,0,0,0.15);
+        background: #ffe5e5;
+        box-shadow: 0 2px 12px rgba(104,0,0,0.10);
       }
-      
       .schedule-table td a {
-        padding: 8px 16px;
+        padding: 7px 18px;
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.2);
-        color: #fff;
+        background: #fff6f6;
+        color: #2b0000;
         font-weight: 600;
         text-decoration: none;
-        transition: all 0.2s ease;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        display: inline-block;
-        min-width: 80px;
-        text-align: center;
+        transition: background 0.2s, color 0.2s;
       }
-      
       .schedule-table td a:hover {
-        background: rgba(43, 0, 0, 0.8);
+        background: #2b0000;
         color: #fff;
-        transform: translateY(-1px);
       }
-      
       .register-btn {
-        padding: 8px 16px;
+        padding: 8px 22px;
         border-radius: 8px;
-        background: rgba(43, 0, 0, 0.8);
+        background: #2b0000;
         color: #fff;
         font-weight: 600;
         border: none;
         cursor: pointer;
-        transition: all 0.2s ease;
-        width: 100%;
-        max-width: 120px;
+        transition: background 0.2s, transform 0.2s;
       }
-      
       .register-btn:hover {
-        background: rgba(61, 4, 4, 0.9);
+        background: #3d0404;
         transform: translateY(-2px);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       }
-      
       .registered-count {
         font-weight: 700;
-        color: #fff;
+        color: #222;
         letter-spacing: 1px;
       }
-      
       .full .registered-count {
-        color: #ff6b6b;
+        color: #b30000;
         font-weight: 700;
       }
       
-      /* Špeciálny štýl pre bunku s "Viac info" */
-      .schedule-table td:last-child {
-        text-align: center;
+      /* Nové štýly pre pozadie */
+      body {
+        position: relative;
+        background-color: #f9f9f9;
       }
       
-      /* Responzívne úpravy */
-      @media (max-width: 768px) {
-        .schedule-table {
-          font-size: 0.9rem;
-        }
-        
-        .schedule-table th, 
-        .schedule-table td {
-          padding: 10px 8px;
-        }
-        
-        .schedule-table td a,
-        .register-btn {
-          padding: 6px 10px;
-          font-size: 0.8rem;
-        }
+      .page-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('photos/pozadia/pozadie_workshopy.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+        opacity: 0.99; /* Nižšia priehľadnosť, aby neodvádzal pozornosť */
+        z-index: -1;
+        pointer-events: none;
+      }
+      
+      .content-wrapper {
+        position: relative;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.199);
       }
     </style>
 </head>

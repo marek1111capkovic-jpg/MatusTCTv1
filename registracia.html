@@ -191,10 +191,7 @@
 </head>
 <body>
 
-  <div id="fullMessage" class="error-message" style="display:none;">
-    Momentálne nie je voľné miesto pre účastníka v tomto termíne.
-  </div>
-  <div class="registration-form" id="registrationForm">
+  <div class="registration-form">
     <h1 style="color: white; text-align: center;">Registrácia na Workshop</h1>
     
     <!-- Custom error message div -->
@@ -467,32 +464,6 @@
       if (document.querySelector('.submit-btn').style.display === 'none') {
         // Redirect only after submission completes
         window.location.href = 'uspesna-platba.html';
-      }
-    });
-
-    const capacities = {
-      'Bratislava': 40,
-      'Kosice': 40,
-      'Nitra': 40,
-      'Poprad': 30,
-      'Prievidza': 40
-    };
-    // Simulácia získania počtu prihlásených (v praxi z API)
-    const registered = {
-      'Bratislava': 40,
-      'Kosice': 0,
-      'Nitra': 0,
-      'Poprad': 30,
-      'Prievidza': 0
-    };
-    window.addEventListener('DOMContentLoaded', function() {
-      const params = new URLSearchParams(window.location.search);
-      const city = params.get('city');
-      if (city && capacities[city] !== undefined) {
-        if (registered[city] >= capacities[city]) {
-          document.getElementById('registrationForm').style.display = 'none';
-          document.getElementById('fullMessage').style.display = 'block';
-        }
       }
     });
   </script>

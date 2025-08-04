@@ -242,6 +242,7 @@ footer {
     cursor: pointer;
     /* ostatné štýly ostávajú rovnaké */
 }
+
 /* Animácie */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -577,22 +578,25 @@ text-align: center;
     cursor: not-allowed;
     box-shadow: none;
 }
-    .main-background {
-        position: fixed;
-        top: 0; /* začína od vrchu stránky */
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 0;
-        background: url('photos/pozadia/pozadie_workshopy.png') center/cover no-repeat;
-        opacity: 1;
-        pointer-events: none;
-    }
-      .content-wrapper {
-        position: relative;
-        z-index: 1;
-    }
-      .header-container, .top-bar {
-        position: relative;
-        z-index: 2;
-    }
+.main-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background: url('photos/pozadia/pozadie_workshopy.png') center/cover no-repeat;
+    opacity: 1;
+    pointer-events: none;
+    will-change: transform; /* Optimalizácia pre animáciu */
+    transform: translateZ(0); /* Aktivuje hardvérové zrýchlenie */
+    background-attachment: fixed; /* Dôležité pre paralax */
+}
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+.header-container, .top-bar {
+    position: relative;
+    z-index: 2;
+}
