@@ -753,18 +753,3 @@ text-align: center;
         padding: 12px 0 !important;
     }
 }
-
-@media (max-width: 800px) {
-    .header {
-        font-size: 1.3em !important;
-        padding: 12px 6px !important;
-        line-height: 1.15 !important;
-    }
-    .header span {
-        font-size: 1.3em !important;
-        letter-spacing: 1px !important;
-        padding: 0 4px !important;
-        display: block !important;
-        word-break: break-word !important;
-    }
-}
