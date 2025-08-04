@@ -194,6 +194,31 @@
       pointer-events: none;
       cursor: not-allowed;
     }
+
+    .loading-spinner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      font-family: sans-serif;
+      color: #333;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #ddd;
+      border-top: 4px solid #680000;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 </head>
 <body>
@@ -209,7 +234,12 @@
     
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-    <form action="https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec"
+    <div id="loading" class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Načítavam dostupnosť...</p>
+    </div>
+
+    <form id = "form" style="display: none;" action="https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec"
           method="POST"
           target="hidden_iframe"
           onsubmit="return validateForm()">
@@ -499,8 +529,12 @@
               input.closest('.workshop-option')?.classList.add('disabled');
             }
           });
+
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('form').style.display = 'block';
         })
         .catch(error => {
+          document.getElementById('loading').innerHTML = "<p>Chyba pri načítaní údajov.</p>";
           console.error("Error fetching registration data:", error);
         });
     });
