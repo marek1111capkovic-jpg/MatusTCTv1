@@ -36,8 +36,8 @@ body {
 /* Základné štýly pre nadpis */
 .workshop-title {
     font-size: 4rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-weight: 1000;
+    letter-spacing: -1px;
     color: #fff;
     margin: 0;
     line-height: 1;
@@ -46,12 +46,17 @@ body {
 
 .workshop-subtitle {
     font-size: 3.5rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-weight: 1000;
+    letter-spacing: -1px;
     color: #fff;
     margin: 10px 0 0 0;
     line-height: 1;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.workshop-title, .workshop-subtitle {
+    font-stretch: condensed;
+    letter-spacing: -1px;
 }
 
 /* Responzívne úpravy */
@@ -261,8 +266,8 @@ footer {
         padding: 20px;
         margin: 30px auto;
         font-size: 0.95em;
-    }
-    
+    }  
+
     .text-section h2 {
         font-size: 1.8em;
     }

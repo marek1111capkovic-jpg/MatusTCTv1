@@ -5,6 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tricking Workshop - Bratislava</title>
     <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* Pridané štýly pre pozadie celej stránky */
+        body {
+            background-image: url('photos/pozadia/BRATISLAVA_POZADIE.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Pridané pre lepšiu čitateľnosť obsahu */
+        .text-section, .top-bar, footer {
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .header {
+            font-family: 'Oswald', sans-serif;
+            color: #ffffff;
+            padding: 100px 20px;
+            font-weight: 1000;
+            text-align: center;
+            font-size: 5em;
+            letter-spacing: 2px;
+            position: relative;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Responzívne úpravy */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 3em;
+                padding: 80px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                font-size: 2.5em;
+                padding: 60px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="top-bar">
@@ -26,14 +71,11 @@
             </a>
         </div>
 
-        
         <!-- Pomocný element pre vyváženie -->
         <div class="right-spacer"></div>
     </div>
 
-    <!-- Ostatný obsah zostáva rovnaký... -->
     <div class="header-container">
-        <div class="header-background"></div>
         <div class="header">
             BRATISLAVA
         </div>
