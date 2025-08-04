@@ -6,36 +6,39 @@
     <title>Tricking Workshopy - Slovensko</title>
     <link rel="stylesheet" href="style.css"> 
     <style>
-      html {
-        scroll-behavior: smooth;
-      }
       /* Pôvodné štýly... */
-      .schedule-table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        margin: 30px 0;
-        font-size: 1.1rem;
-        background: rgba(255,255,255,0.07);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 4px 24px rgba(49,0,0,0.10);
-      }
-      .schedule-table th {
-        background: #000000;
-        color: #fff;
-        font-weight: 700;
-        padding: 16px 10px;
-        border: none;
-        letter-spacing: 1px;
-      }
-      .schedule-table td {
-        padding: 14px 10px;
-        border: none;
-        background: rgba(0,0,0,0.04);
-        color: #ffffff;
-        transition: background 0.2s;
-      }
+       .schedule-table {
+          width: 100%;
+          border-collapse: separate;
+          border-spacing: 0;
+          margin: 30px 0;
+          font-size: 1.1rem;
+          background: rgba(255,255,255,0.07);
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 4px 24px rgba(49,0,0,0.10);
+        }
+        
+        .schedule-table th, 
+        .schedule-table td {
+          padding: 14px 10px;
+          border: none;
+        }
+        
+        .schedule-table th {
+          background: #000000;
+          color: #fff;
+          font-weight: 700;
+        }
+        
+        .schedule-table td {
+          background: rgba(0,0,0,0.04);
+          color: #ffffff;
+        }
+        
+        .schedule-table .actions-row {
+          display: none; /* Skryjeme actions-row na desktope */
+        }
       .schedule-table tbody tr {
         transition: background 0.2s, box-shadow 0.2s;
       }
@@ -79,7 +82,76 @@
         color: #b30000;
         font-weight: 700;
       }
-      
+      .schedule-container {
+        margin: 30px 0;
+      }
+
+      .schedule-card {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      .schedule-date {
+        background: #2b0000;
+        color: white;
+        padding: 12px 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .schedule-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+      }
+
+      .schedule-status {
+        padding: 12px 15px;
+        text-align: center;
+        font-weight: bold;
+        color: #2b0000;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .schedule-actions {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+        background: white;
+        border-top: 1px solid #eee;
+      }
+
+      .register-btn, .info-btn {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        flex: 1;
+        margin: 0 5px;
+      }
+
+      .register-btn {
+        background: #2b0000;
+        color: white;
+      }
+
+      .info-btn {
+        background: #680000;
+        color: white;
+      }
+
+      .register-btn:hover, .info-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
       /* Nové štýly pre pozadie */
       body {
         position: relative;
@@ -147,8 +219,22 @@
       .info-button:hover {
         background-color: #a80000;     /* Darker on hover */
       }
-      
       @media (max-width: 800px) {
+        .content-wrapper {
+          padding: 0 15px;
+        }
+        
+        .schedule-card {
+          border-radius: 10px;
+        }
+        
+        .register-btn, .info-btn {
+          padding: 10px 15px;
+          font-size: 0.9rem;
+        }
+      }
+      @media (max-width: 800px) {
+        
         .header {
             font-size: 2.1em !important;
             padding: 18px 10px 10px 10px !important;
@@ -198,44 +284,90 @@
           padding: 2px 6px !important;
         }
         .schedule-table {
-          display: block;
-          width: 100%;
-          overflow-x: auto;
-          font-size: 0.98rem;
-        }
-        .schedule-table thead {
-          display: none;
-        }
-        .schedule-table tbody, .schedule-table tr {
-          display: block;
-          width: 100%;
-        }
-        .schedule-table tr {
-          margin-bottom: 18px;
-          border-radius: 12px;
-          box-shadow: 0 2px 8px rgba(49,0,0,0.08);
-          background: rgba(255,255,255,0.13);
-          padding: 10px 8px;
-        }
-        .schedule-table td {
-          display: block;
-          width: 100%;
-          padding: 8px 6px;
-          border: none;
-          background: none;
-          color: #222;
-          font-size: 1em;
-        }
-        .schedule-table td:before {
-          content: "";
-          display: none;
-        }
-        .register-btn {
-          width: 100%;
-          font-size: 1rem !important;
-          margin-top: 6px;
-          padding: 10px 0 !important;
-        }
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: transparent;
+      box-shadow: none;
+    }
+    
+    .schedule-table thead {
+      display: none;
+    }
+    
+    .schedule-table tbody,
+    .schedule-table tr {
+      display: flex;
+      flex-direction: column;
+      background: #1f1f1f;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .schedule-table td {
+      display: block;
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: none;
+      color: #333;
+    }
+    
+    .schedule-table td[data-label="Dátum"] {
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 12px 10px 6px;
+      background: #1f1f1f;
+      color: #222;
+    }
+    
+    .schedule-table td[data-label="Obrázok"] img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .schedule-table td[data-label="Stav"] {
+      text-align: center;
+      font-weight: bold;
+      color: #444;
+      padding: 8px;
+      background: #1f1f1f;
+    }
+    
+    .schedule-table .actions-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      background: #1f1f1f;
+      border-top: 1px solid #ddd;
+    }
+    
+    .register-btn {
+      background: #680000;
+      color: #fff;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      min-width: 45%;
+      text-align: center;
+    }
+    
+    .more-info-btn {
+      background: #6c757d;
+      color: #fff;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      min-width: 45%;
+      text-align: center;
+    }
+      
         .registered-count {
           font-size: 1rem !important;
           margin-bottom: 4px;
@@ -261,17 +393,7 @@
           display: inline-block;
           color: #ffffff;
         }
-        .register-btn {
-          width: auto !important;
-          min-width: 90px !important;
-          max-width: 140px !important;
-          font-size: 0.95rem !important;
-          padding: 8px 0 !important;
-          margin: 8px 0 !important;
-          display: block !important;
-          margin-left: auto !important;
-          margin-right: auto !important;
-        }
+        
       }
     </style>
 </head>
@@ -314,9 +436,7 @@
         <div class="text-section">
             <h2><img src="photos/ikonky/info_ikona.png" alt="Info" style="height:1.5em;vertical-align:-0.35em;margin-right:8px;">Čo je Tricking Workshop?</h2>
             <p>
-                Akcia, na ktorej ti otvoríme dvere do sveta 
-                <a href="#tricking-section" style="color:#fff; text-decoration: underline;"><strong>Trickingu</strong></a> 
-                 a pre tých skúsenejších poradíme ako sa stať ešte lepšími. 
+                Akcia, na ktorej ti otvoríme dvere do sveta <strong>Trickingu</strong> a pre tých skúsenejších poradíme ako sa stať ešte lepšími. 
                 Okrem naučenia sa základov Trickingu si odnesieš aj vedomosti, ktoré využiješ vo svojom tréningu. 
                 Taktiež bude možnosť si zakúpiť exkluzívny <strong>Matus TCT merch</strong>, ktorý sa bude predávať iba na workshopoch.
             </p>
@@ -328,7 +448,7 @@
             </p>
         </div>
 
-        <div class="text-section" id="tricking-section">
+        <div class="text-section">
             <h2><img src="photos/ikonky/info_ikona.png" alt="Tricking" style="height:1.5em;vertical-align:middle;margin-right:8px;">Čo je tricking?</h2>
             <p>
                 Tricking je moderná pohybová disciplína, ktorá spája akrobatické prvky z gymnastiky, bojových umení a tanca.
@@ -364,54 +484,73 @@
 
         <div class="text-section">
             <h2><img src="photos/ikonky/calendar_ikona.png" alt="Termíny" style="height:1.5em;vertical-align:middle;margin-right:8px;">Termíny a Registrácie</h2>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Dátum</th>
-                        <th>Mesto</th>
-                        <th>Prihlásení</th>
-                        <th>Akcia</th>
-                        <th>Viac info</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-capacity="40" data-registered="0">
-                        <td data-label="Dátum">14.9. 12:00</td>
-                        <td data-label="Mesto"><strong>Bratislava - Inter Gymnastika Bratislava</strong></td>
-                        <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
-                        <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
-                        <td data-label="Viac info"><a href="bratislava.html" class="info-button">Viac info</a></td>
-                    </tr>
-                    <tr data-capacity="40" data-registered="0">
-                        <td data-label="Dátum">21.9. 12:00</td>
-                        <td data-label="Mesto"><strong>Nitra - Skill Lab Nitra</strong></td>
-                        <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
-                        <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
-                        <td data-label="Viac info"><a href="nitra.html" class="info-button">Viac info</a></td>
-                    </tr>
-                    <tr data-capacity="40" data-registered="0">
-                        <td data-label="Dátum">28.9. 12:00</td>
-                        <td data-label="Mesto"><strong>Prievidza - Gymnastiké centrum Prievidza</strong></td>
-                        <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
-                        <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
-                        <td data-label="Viac info"><a href="prievidza.html" class="info-button">Viac info</a></td>
-                    </tr>
-                    <tr data-capacity="30" data-registered="0">
-                        <td data-label="Dátum">5.10. 12:00</td>
-                        <td data-label="Mesto"><strong>Poprad - Skill Lab Poprad</strong></td>
-                        <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
-                        <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
-                        <td data-label="Viac info"><a href="poprad.html" class="info-button">Viac info</a></td>
-                    </tr>
-                    <tr data-capacity="40" data-registered="0">
-                        <td data-label="Dátum">12.10. 12:00</td>
-                        <td data-label="Mesto"><strong>Košice - Gymnastik Košice</strong></td>
-                        <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
-                        <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
-                        <td data-label="Viac info"><a href="kosice.html" class="info-button">Viac info</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <div class="schedule-container">
+                <!-- Bratislava -->
+                <div class="schedule-card">
+                    <div class="schedule-date">14.9. 12:00 - Bratislava</div>
+                    <div class="schedule-image">
+                        <img src="photos/pozadia/pozadiashortcut/BRATISLAVA.png" alt="Bratislava">
+                    </div>
+                    <div class="schedule-status">Voľné miesta</div>
+                    <div class="schedule-actions">
+                        <button class="register-btn">Registrovať</button>
+                        <button class="info-btn">Viac info</button>
+                    </div>
+                </div>
+                
+                <!-- Nitra -->
+                <div class="schedule-card">
+                    <div class="schedule-date">21.9. 12:00 - Nitra</div>
+                    <div class="schedule-image">
+                        <img src="photos/pozadia/pozadiashortcut/NITRA.png" alt="Nitra">
+                    </div>
+                    <div class="schedule-status">Voľné miesta</div>
+                    <div class="schedule-actions">
+                        <button class="register-btn">Registrovať</button>
+                        <button class="info-btn">Viac info</button>
+                    </div>
+                </div>
+                
+                <!-- Prievidza -->
+                <div class="schedule-card">
+                    <div class="schedule-date">28.9. 12:00 - Prievidza</div>
+                    <div class="schedule-image">
+                        <img src="photos/pozadia/pozadiashortcut/PRIEVIDZA.png" alt="Prievidza">
+                    </div>
+                    <div class="schedule-status">Voľné miesta</div>
+                    <div class="schedule-actions">
+                        <button class="register-btn">Registrovať</button>
+                        <button class="info-btn">Viac info</button>
+                    </div>
+                </div>
+                
+                <!-- Poprad -->
+                <div class="schedule-card">
+                    <div class="schedule-date">5.10. 12:00 - Poprad</div>
+                    <div class="schedule-image">
+                        <img src="photos/pozadia/pozadiashortcut/POPRAD.png" alt="Poprad">
+                    </div>
+                    <div class="schedule-status">Voľné miesta</div>
+                    <div class="schedule-actions">
+                        <button class="register-btn">Registrovať</button>
+                        <button class="info-btn">Viac info</button>
+                    </div>
+                </div>
+                
+                <!-- Košice -->
+                <div class="schedule-card">
+                    <div class="schedule-date">12.10. 12:00 - Košice</div>
+                    <div class="schedule-image">
+                        <img src="photos/pozadia/pozadiashortcut/KOSICE.png" alt="Košice">
+                    </div>
+                    <div class="schedule-status">Voľné miesta</div>
+                    <div class="schedule-actions">
+                        <button class="register-btn">Registrovať</button>
+                        <button class="info-btn">Viac info</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="text-section">
@@ -431,7 +570,7 @@
         <div class="text-section">
             <h2><img src="photos/ikonky/backpack_ikona.png" alt="Čo si vziať" style="height:1.5em;vertical-align:middle;margin-right:8px;">Čo si vziať so sebou?</h2>
             <ul>
-                <li>podpísanú prihlášku od rodičov (bez nej nie je možné trénovať!)</li>
+                <li>podpísanú prihlášku (v prípade veku pod 15 podpisuje rodič), bez nej nie je možné trénovať!</li>
                 <li>športové oblečenie</li>
                 <li>kartičku poistenca</li>
                 <li>malinké občerstvenie a dostatok pitnej vody</li>

@@ -8,7 +8,7 @@
   <style>
     /* Background image for the whole page */
     body {
-      background: url('photos/vertigo ja 3.png') 25% center/cover no-repeat;
+      background: url('photos/pozadia/registracia_pozadiee.png') center/cover no-repeat;
       background-attachment: fixed;
       min-height: 100vh;
       margin: 0;
@@ -22,7 +22,7 @@
       max-width: 800px;
       margin: 40px auto;
       padding: 30px;
-      background-color: #000000;
+      background-color: #00000062;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.418);
       position: relative;
@@ -219,6 +219,11 @@
       border-radius: 50%;
       animation: spin 1s linear infinite;
       margin-bottom: 1rem;
+    }
+    @media (max-width: 800px) {
+      body {
+        background: url('photos/pozadia/mobil_registracia_pozadie.png') center/cover no-repeat;
+      }
     }
 
     @keyframes spin {
