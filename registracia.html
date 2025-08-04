@@ -152,6 +152,13 @@
       background-color: rgba(255, 255, 255, 0.1);
       transition: background-color 0.3s;
     }
+
+    /* Selected (checked) option */
+    .workshop-option input[type="radio"]:checked + .workshop-info {
+      border: 2px solid #680000;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+}
     
     .workshop-option:hover {
       background-color: rgba(255, 255, 255, 0.2);
@@ -254,15 +261,7 @@
             <input type="radio" id="bratislava" name="workshopCity" value="Bratislava" required>
             <div class="workshop-info">
               <h3>Bratislava</h3>
-              <p>Dátum: 14.9.2025 | Miesto: Skill Lab</p>
-            </div>
-          </label>
-          
-          <label class="workshop-option">
-            <input type="radio" id="kosice" name="workshopCity" value="Košice">
-            <div class="workshop-info">
-              <h3>Košice</h3>
-              <p>Dátum: 21.9.2025 | Miesto: Gymnasion</p>
+              <p>Dátum: 14.9.2025 | Miesto: Inter Gymnastika Bratislava</p>
             </div>
           </label>
           
@@ -270,15 +269,7 @@
             <input type="radio" id="nitra" name="workshopCity" value="Nitra">
             <div class="workshop-info">
               <h3>Nitra</h3>
-              <p>Dátum: 28.9.2025 | Miesto: Jump Park</p>
-            </div>
-          </label>
-          
-          <label class="workshop-option">
-            <input type="radio" id="poprad" name="workshopCity" value="Poprad">
-            <div class="workshop-info">
-              <h3>Poprad</h3>
-              <p>Dátum: 5.10.2025 | Miesto: Extreme Arena</p>
+              <p>Dátum: 21.9.2025 | Miesto: Skill Lab Nitra</p>
             </div>
           </label>
 
@@ -289,6 +280,22 @@
               <p>Dátum: 28.9.2025 | Miesto: Gymnastiké centrum Prievidza </p>
             </div>
           </label>
+
+          <label class="workshop-option">
+            <input type="radio" id="poprad" name="workshopCity" value="Poprad">
+            <div class="workshop-info">
+              <h3>Poprad</h3>
+              <p>Dátum: 5.10.2025 | Miesto: Skill Lab Poprad</p>
+            </div>
+          </label>
+
+          <label class="workshop-option">
+            <input type="radio" id="kosice" name="workshopCity" value="Košice">
+            <div class="workshop-info">
+              <h3>Košice</h3>
+              <p>Dátum: 12.10.2025 | Miesto: Gymnastik Košice</p>
+            </div>
+          </label>                  
         </div>
       </div>
       
@@ -509,7 +516,7 @@
 
     const capacities = {
       'Bratislava': 40,
-      'Kosice': 40,
+      'Košice': 40,
       'Nitra': 40,
       'Poprad': 30,
       'Prievidza': 40
