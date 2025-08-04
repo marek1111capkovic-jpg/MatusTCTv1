@@ -175,19 +175,37 @@
       color: #ccc;
       font-size: 0.9rem;
     }
+
+    /* Custom error message */
+    .error-message {
+      color: #ff4444;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+      text-align: center;
+      font-weight: bold;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <div class="registration-form">
+  <div id="fullMessage" class="error-message" style="display:none;">
+    Momentálne nie je voľné miesto pre účastníka v tomto termíne.
+  </div>
+  <div class="registration-form" id="registrationForm">
     <h1 style="color: white; text-align: center;">Registrácia na Workshop</h1>
+    
+    <!-- Custom error message div -->
+    <div id="ageError" class="error-message"></div>
     
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <form action="https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec"
           method="POST"
           target="hidden_iframe"
-          onsubmit="submitted = true;">
+          onsubmit="return validateForm()">
       <!-- New Section: Workshop Selection -->
       <div class="form-section">
         <h2>Výber workshopu</h2>
@@ -384,15 +402,7 @@
         age--;
       }
       const parentSection = document.getElementById('parentInfoSection');
-      if (age < 6) {
-        alert('Účastník nesplňa podmienky na účasť na workshope. Musí mať aspoň 6 rokov.');
-        document.getElementById('birthDate').value = '';
-        parentSection.style.display = 'none';
-        document.getElementById('parentFirstName').required = false;
-        document.getElementById('parentLastName').required = false;
-        document.getElementById('parentPhone').required = false;
-        return;
-      }
+      
       if (age < 15) {
         parentSection.style.display = 'block';
         document.getElementById('parentFirstName').required = true;
@@ -404,6 +414,40 @@
         document.getElementById('parentLastName').required = false;
         document.getElementById('parentPhone').required = false;
       }
+    }
+
+    // Funkcia na validáciu formulára pred odoslaním
+    function validateForm() {
+      const birthDateInput = document.getElementById('birthDate');
+      const birthDate = new Date(birthDateInput.value);
+      const today = new Date();
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+      
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      
+      if (age < 6) {
+        // Zobrazíme vlastnú chybovú hlášku namiesto alertu
+        const errorDiv = document.getElementById('ageError');
+        errorDiv.textContent = 'Účastník nesplňa podmienky na účasť na workshope. Musí mať aspoň 6 rokov.';
+        errorDiv.style.display = 'block';
+        
+        // Posunieme sa na chybovú hlášku
+        errorDiv.scrollIntoView({ behavior: 'smooth' });
+        
+        return false; // Zabráni odoslaniu formulára
+      }
+      
+      // Ak je vek OK, skryjeme chybovú hlášku ak bola zobrazená
+      document.getElementById('ageError').style.display = 'none';
+      
+      // Zobrazíme spinner a skryjeme tlačidlo
+      document.querySelector('.submit-btn').style.display = 'none';
+      document.getElementById('loading-spinner').style.display = 'block';
+      
+      return true; // Povolíme odoslanie formulára
     }
 
     // Funkcia na automatické vybratie mesta podľa URL parametra
@@ -418,54 +462,39 @@
       }
     });
 
-    let submitted = false;
-
-    // Po kliknutí na submit skryje tlačidlo a zobrazí spinner
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.querySelector('form');
-      const submitBtn = document.querySelector('.submit-btn');
-
-      // Vytvoríme element na chybové hlásenie
-      let errorMsg = document.createElement('div');
-      errorMsg.id = 'age-error';
-      errorMsg.style.color = '#ff4444';
-      errorMsg.style.fontWeight = '700';
-      errorMsg.style.marginTop = '18px';
-      errorMsg.style.textAlign = 'center';
-      errorMsg.style.fontSize = '1.1rem';
-      errorMsg.style.display = 'none';
-      submitBtn.parentNode.insertBefore(errorMsg, submitBtn);
-
-      form.addEventListener('submit', function(e) {
-        const birthDateInput = document.getElementById('birthDate');
-        const birthDate = new Date(birthDateInput.value);
-        const today = new Date();
-        let age = today.getFullYear() - birthDate.getFullYear();
-        const monthDiff = today.getMonth() - birthDate.getMonth();
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-          age--;
-        }
-        if (age < 6) {
-          e.preventDefault();
-          errorMsg.textContent = 'Účastník nesplňa podmienky na účasť na workshope. Musí mať aspoň 6 rokov.';
-          errorMsg.style.display = 'block';
-          return false;
-        } else {
-          errorMsg.style.display = 'none';
-        }
-        // ...spinner code...
-        const spinner = document.getElementById('loading-spinner');
-        submitBtn.style.display = 'none';
-        spinner.style.display = 'block';
-      });
-    });
-
     // Wait for iframe to load after submission
     document.getElementById('hidden_iframe').addEventListener('load', function () {
-      if (submitted) {
-      // Redirect only after submission completes
+      if (document.querySelector('.submit-btn').style.display === 'none') {
+        // Redirect only after submission completes
         window.location.href = 'uspesna-platba.html';
-    }});
+      }
+    });
+
+    const capacities = {
+      'Bratislava': 40,
+      'Kosice': 40,
+      'Nitra': 40,
+      'Poprad': 30,
+      'Prievidza': 40
+    };
+    // Simulácia získania počtu prihlásených (v praxi z API)
+    const registered = {
+      'Bratislava': 40,
+      'Kosice': 0,
+      'Nitra': 0,
+      'Poprad': 30,
+      'Prievidza': 0
+    };
+    window.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const city = params.get('city');
+      if (city && capacities[city] !== undefined) {
+        if (registered[city] >= capacities[city]) {
+          document.getElementById('registrationForm').style.display = 'none';
+          document.getElementById('fullMessage').style.display = 'block';
+        }
+      }
+    });
   </script>
 
 </body>

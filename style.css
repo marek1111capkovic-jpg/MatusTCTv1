@@ -242,24 +242,6 @@ footer {
     cursor: pointer;
     /* ostatné štýly ostávajú rovnaké */
 }
-@font-face {
-    font-family: 'Europa';
-    src: url('fonts\fonnts.com-Europa-Bold.ttf') format('truetype');
-    font-weight: bold;
-    
-}
-@font-face {
-    font-family: 'Shlop';
-    src: url('fonts/shlop rg.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-    @font-face {
-    font-family: 'Typewriter';
-    src: url('fonts/JMH Typewriter.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 /* Animácie */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
