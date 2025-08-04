@@ -23,12 +23,17 @@ body {
     padding: 0 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
-
+.text-section h2 {
+    font-size: 2.5rem;
+    font-weight: 750;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
 /* Header Container */
 .header-container {
     position: relative;
-    min-height: 70vh;
     height: auto;
+    min-height: 20vh;
     overflow: hidden;
     padding-top: 60px;
     box-sizing: border-box;
@@ -49,11 +54,11 @@ body {
 }
 
 .workshop-title, .header-title {
-    font-size: 5rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-size: 3.5rem;
+    font-weight: 1000;
+    letter-spacing: -1px;
     color: #fff;
-    line-height: 1.05;
+    line-height: 1;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
     margin: 0;
 }
@@ -349,17 +354,23 @@ footer p {
         line-height: 1.1;
     }
     .workshop-subtitle {
-        font-size: 2.3rem;
+        font-size: 2.8rem;
     }
     .header-container {
         min-height: 50vh;
     }
     
     /* Mobile Top Bar */
+    body {
+    padding-top: 40px;
+    }
     .top-bar {
         height: 60px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
         display: flex;
-        flex-direction: row;
         align-items: center;
         padding: 0 15px;
         background: rgba(0, 0, 0, 0.9);
@@ -368,17 +379,21 @@ footer p {
     }
     
     .logo-container {
-        margin-right: auto; /* logo ide úplne vľavo */
+        margin-left: -160px; /* logo ide úplne vľavo */
     }
 
     .logo-img {
-        height: 60px; /* zväčšenie loga */
+        transform:scale(1.6); /* mierne zväčšenie loga */
+        height: 50px; /* zväčšenie loga */
     }
-
+    .logo-img:hover{
+        transform:scale(1.7); 
+    }
     .social-icons {
         display: flex;
         gap: 12px;
-        margin-left: auto; /* ikonky idú úplne vpravo */
+        margin-left: 250px; /* ikonky idú úplne vpravo */
+
         align-items: center;
     }
 
@@ -387,9 +402,11 @@ footer p {
         height: 24px;
     }
     
-    .header-container {
-        padding-top: 60px;
+    .header-container,
+    .content-wrapper {
+        padding-top: 30px; /* alebo viac, podľa potreby */
     }
+
 }
 
 @media (max-width: 480px) {

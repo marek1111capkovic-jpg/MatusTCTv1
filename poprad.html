@@ -39,14 +39,22 @@
         @media (max-width: 768px) {
             .header {
                 font-size: 3em;
-                padding: 80px 20px;
+                padding: 20px; /* no extra top padding */
+            }
+
+            .header-container {
+                padding-top: 60px; /* height of top-bar */
             }
         }
         
         @media (max-width: 480px) {
             .header {
                 font-size: 2.5em;
-                padding: 60px 15px;
+                padding: 15px; /* no extra top padding */
+            }
+
+            .header-container {
+                padding-top: 60px;
             }
         }
     </style>
@@ -75,14 +83,11 @@
         <div class="right-spacer"></div>
     </div>
 
-    <div class="header-container">
-        <div class="header">
-            POPRAD
-        </div>
-    </div>
 
     <div class="text-section">
-        <h2>Workshop v Poprade</h2>
+        <div class="header">
+            POPRAD
+        </div>   
         <p><strong>Začiatok akcie:</strong> 5.10. 12:00</p>
         <p><strong>Miesto konania:</strong> Skill Lab Poprad</p>
         <p><strong>Adresa:</strong> Dlhé Hony 3522, 058 01 Poprad</p>
