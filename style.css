@@ -53,6 +53,10 @@ footer {
       font-size: 0.9rem;
     }
     
+    footer p {
+    color: #fff;
+}
+
     .footer-link {
       color: #3498db;
       text-decoration: none;
