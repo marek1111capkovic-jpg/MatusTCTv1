@@ -187,6 +187,13 @@
       font-weight: bold;
       display: none;
     }
+
+    .workshop-option input:disabled + .workshop-info,
+    .workshop-option.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -477,23 +484,25 @@
       'Poprad': 30,
       'Prievidza': 40
     };
-    // Simulácia získania počtu prihlásených (v praxi z API)
-    const registered = {
-      'Bratislava': 40,
-      'Kosice': 0,
-      'Nitra': 0,
-      'Poprad': 30,
-      'Prievidza': 0
-    };
-    window.addEventListener('DOMContentLoaded', function() {
-      const params = new URLSearchParams(window.location.search);
-      const city = params.get('city');
-      if (city && capacities[city] !== undefined) {
-        if (registered[city] >= capacities[city]) {
-          document.getElementById('registrationForm').style.display = 'none';
-          document.getElementById('fullMessage').style.display = 'block';
-        }
-      }
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec"; // Replace with your actual URL
+
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch(scriptURL)
+        .then(response => response.json())
+        .then(registered => {
+          Object.keys(capacities).forEach(city => {
+            const isFull = registered[city] >= capacities[city];
+            const input = document.querySelector(`input[name="workshopCity"][value="${city}"]`);
+            if (input && isFull) {
+              input.disabled = true;
+              input.closest('.workshop-option')?.classList.add('disabled');
+            }
+          });
+        })
+        .catch(error => {
+          console.error("Error fetching registration data:", error);
+        });
     });
   </script>
 
