@@ -191,7 +191,10 @@
 </head>
 <body>
 
-  <div class="registration-form">
+  <div id="fullMessage" class="error-message" style="display:none;">
+    Momentálne nie je voľné miesto pre účastníka v tomto termíne.
+  </div>
+  <div class="registration-form" id="registrationForm">
     <h1 style="color: white; text-align: center;">Registrácia na Workshop</h1>
     
     <!-- Custom error message div -->
@@ -210,45 +213,45 @@
         <div class="form-group">
           <label>Vyberte mesto konania:</label>
           
-          <div class="workshop-option">
+          <label class="workshop-option">
             <input type="radio" id="bratislava" name="workshopCity" value="Bratislava" required>
             <div class="workshop-info">
               <h3>Bratislava</h3>
               <p>Dátum: 14.9.2025 | Miesto: Skill Lab</p>
             </div>
-          </div>
+          </label>
           
-          <div class="workshop-option">
+          <label class="workshop-option">
             <input type="radio" id="kosice" name="workshopCity" value="Košice">
             <div class="workshop-info">
               <h3>Košice</h3>
               <p>Dátum: 21.9.2025 | Miesto: Gymnasion</p>
             </div>
-          </div>
+          </label>
           
-          <div class="workshop-option">
+          <label class="workshop-option">
             <input type="radio" id="nitra" name="workshopCity" value="Nitra">
             <div class="workshop-info">
               <h3>Nitra</h3>
               <p>Dátum: 28.9.2025 | Miesto: Jump Park</p>
             </div>
-          </div>
+          </label>
           
-          <div class="workshop-option">
+          <label class="workshop-option">
             <input type="radio" id="poprad" name="workshopCity" value="Poprad">
             <div class="workshop-info">
               <h3>Poprad</h3>
               <p>Dátum: 5.10.2025 | Miesto: Extreme Arena</p>
             </div>
-          </div>
+          </label>
 
-          <div class="workshop-option">
+          <label class="workshop-option">
             <input type="radio" id="prievidza" name="workshopCity" value="Prievidza">
             <div class="workshop-info">
               <h3>Prievidza</h3>
               <p>Dátum: 28.9.2025 | Miesto: Gymnastiké centrum Prievidza </p>
             </div>
-          </div>
+          </label>
         </div>
       </div>
       
@@ -464,6 +467,32 @@
       if (document.querySelector('.submit-btn').style.display === 'none') {
         // Redirect only after submission completes
         window.location.href = 'uspesna-platba.html';
+      }
+    });
+
+    const capacities = {
+      'Bratislava': 40,
+      'Kosice': 40,
+      'Nitra': 40,
+      'Poprad': 30,
+      'Prievidza': 40
+    };
+    // Simulácia získania počtu prihlásených (v praxi z API)
+    const registered = {
+      'Bratislava': 40,
+      'Kosice': 0,
+      'Nitra': 0,
+      'Poprad': 30,
+      'Prievidza': 0
+    };
+    window.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const city = params.get('city');
+      if (city && capacities[city] !== undefined) {
+        if (registered[city] >= capacities[city]) {
+          document.getElementById('registrationForm').style.display = 'none';
+          document.getElementById('fullMessage').style.display = 'block';
+        }
       }
     });
   </script>
