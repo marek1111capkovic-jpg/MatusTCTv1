@@ -206,7 +206,6 @@
           word-break: break-word;
           max-width: 180px;
           display: inline-block;
-          color: #680000;
         }
         .register-btn {
           width: auto !important;
@@ -497,6 +496,23 @@
                 setTimeout(() => {
                     button.style.animation = 'pulse 2s infinite';
                 }, 50);
+            });
+        });
+
+        // Funkcia na zvýšenie počtu prihlásených a presmerovanie
+        function handleRegistration(button) {
+            // Presmerujeme na registračný formulár
+            window.location.href = "registracia.html";
+        }
+
+        // Inicializácia počtov pri načítaní stránky
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('.schedule-table tbody tr');
+            rows.forEach(row => {
+                const button = row.querySelector('.register-btn');
+                button.addEventListener('click', function() {
+                    handleRegistration(this);
+                });
             });
         });
 
