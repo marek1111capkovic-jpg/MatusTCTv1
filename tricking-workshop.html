@@ -109,45 +109,40 @@
           display: block;
           width: 100%;
           overflow-x: auto;
-          font-size: 0.95rem;
-        }
-        .schedule-table thead, .schedule-table tbody, .schedule-table tr {
-          display: block;
-          width: 100%;
+          font-size: 0.98rem;
         }
         .schedule-table thead {
           display: none;
+        }
+        .schedule-table tbody, .schedule-table tr {
+          display: block;
+          width: 100%;
         }
         .schedule-table tr {
           margin-bottom: 18px;
           border-radius: 12px;
           box-shadow: 0 2px 8px rgba(49,0,0,0.08);
           background: rgba(255,255,255,0.13);
-          display: flex;
-          flex-direction: column;
           padding: 10px 8px;
         }
         .schedule-table td {
-          display: flex;
+          display: block;
           width: 100%;
           padding: 8px 6px;
-          align-items: center;
           border: none;
           background: none;
           color: #222;
           font-size: 1em;
         }
-        .schedule-table td strong {
-          font-size: 1.1em;
-        }
         .schedule-table td:before {
-          content: attr(data-label);
-          flex: 0 0 120px;
+          content: attr(data-label) ": ";
           font-weight: 700;
           color: #680000;
-          margin-right: 10px;
+          margin-right: 6px;
           font-size: 0.98em;
           letter-spacing: 1px;
+          display: inline-block;
+          min-width: 110px;
         }
         .schedule-table td:last-child {
           justify-content: flex-end;
@@ -231,8 +226,8 @@
             <table class="schedule-table">
                 <thead>
                     <tr>
-                        <th>Mesto</th>
                         <th>Dátum</th>
+                        <th>Mesto</th>
                         <th>Prihlásení</th>
                         <th>Akcia</th>
                         <th>Viac info</th>
@@ -240,36 +235,36 @@
                 </thead>
                 <tbody>
                     <tr data-capacity="40" data-registered="0">
-                        <td data-label="Mesto"><strong>Bratislava - Inter Gymnastika Bratislava</strong></td>
                         <td data-label="Dátum">14.9. 12:00</td>
+                        <td data-label="Mesto"><strong>Bratislava - Inter Gymnastika Bratislava</strong></td>
                         <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
                         <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
                         <td data-label="Viac info"><a href="bratislava.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
                     </tr>
                     <tr data-capacity="40" data-registered="0">
-                        <td data-label="Mesto"><strong>Nitra - Skill Lab Nitra</strong></td>
                         <td data-label="Dátum">21.9. 12:00</td>
+                        <td data-label="Mesto"><strong>Nitra - Skill Lab Nitra</strong></td>
                         <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
                         <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
                         <td data-label="Viac info"><a href="nitra.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
                     </tr>
                     <tr data-capacity="40" data-registered="0">
-                        <td data-label="Mesto"><strong>Prievidza - Gymnastiké centrum Prievidza</strong></td>
                         <td data-label="Dátum">28.9. 12:00</td>
+                        <td data-label="Mesto"><strong>Prievidza - Gymnastiké centrum Prievidza</strong></td>
                         <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
                         <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
                         <td data-label="Viac info"><a href="prievidza.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
                     </tr>
                     <tr data-capacity="30" data-registered="30">
-                        <td data-label="Mesto"><strong>Poprad - Skill Lab Poprad</strong></td>
                         <td data-label="Dátum">5.10. 12:00</td>
+                        <td data-label="Mesto"><strong>Poprad - Skill Lab Poprad</strong></td>
                         <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
                         <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
                         <td data-label="Viac info"><a href="poprad.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
                     </tr>
                     <tr data-capacity="40" data-registered="0">
-                        <td data-label="Mesto"><strong>Košice - Gymnastik Košice</strong></td>
                         <td data-label="Dátum">12.10. 12:00</td>
+                        <td data-label="Mesto"><strong>Košice - Gymnastik Košice</strong></td>
                         <td data-label="Prihlásení" class="registered-count">VOLNÉ MIESTA</td>
                         <td data-label="Akcia"><button class="register-btn">Registrovať</button></td>
                         <td data-label="Viac info"><a href="kosice.html" style="color:#680000; font-weight:600; text-decoration:underline;">Viac info</a></td>
