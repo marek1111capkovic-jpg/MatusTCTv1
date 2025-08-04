@@ -152,37 +152,88 @@
           padding: 2px 6px !important;
         }
         .schedule-table {
-          display: block;
-          width: 100%;
-          overflow-x: auto;
-          font-size: 0.98rem;
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            font-size: 0.95rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
         }
+        
         .schedule-table thead {
-          display: none;
+            display: none;
         }
-        .schedule-table tbody, .schedule-table tr {
-          display: block;
-          width: 100%;
+        
+        .schedule-table tbody {
+            display: block;
+            width: 100%;
         }
+        
         .schedule-table tr {
-          margin-bottom: 18px;
-          border-radius: 12px;
-          box-shadow: 0 2px 8px rgba(49,0,0,0.08);
-          background: rgba(255,255,255,0.13);
-          padding: 10px 8px;
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            background: rgba(255,255,255,0.95);
         }
+        
         .schedule-table td {
-          display: block;
-          width: 100%;
-          padding: 8px 6px;
-          border: none;
-          background: none;
-          color: #222;
-          font-size: 1em;
+            display: flex;
+            width: 100%;
+            padding: 8px 0;
+            border: none;
+            background: none;
+            color: #333;
+            font-size: 1em;
+            align-items: center;
+            justify-content: space-between;
         }
+        
         .schedule-table td:before {
-          content: "";
-          display: none;
+            content: attr(data-label);
+            font-weight: bold;
+            color: #680000;
+            margin-right: 10px;
+            flex: 0 0 100px;
+            text-align: left;
+        }
+        
+        .schedule-table td > * {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .register-btn {
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 8px;
+            padding: 10px 0;
+            background: #680000;
+            color: white;
+        }
+        
+        .registered-count {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .schedule-table td[data-label="Mesto"] strong {
+            font-size: 1.1em;
+            white-space: normal;
+            word-break: break-word;
+            text-align: left;
+            display: block;
+        }
+        
+        .schedule-table a {
+            color: #680000;
+            text-decoration: underline;
+            font-weight: bold;
+        }
         }
         .register-btn {
           width: 100%;
@@ -217,7 +268,7 @@
           margin-left: auto !important;
           margin-right: auto !important;
         }
-      }
+      
     </style>
 </head>
 
