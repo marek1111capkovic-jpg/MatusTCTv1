@@ -75,6 +75,77 @@ footer {
     opacity: 0.8;
     margin-top: 15px;
 }
+/* Základné štýly pre header */
+.header-container {
+  position: relative;
+  min-height: 70vh;
+  height: auto;
+  overflow: hidden;
+  padding-top: 60px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.header-title {
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  display: inline-block;
+  line-height: 1.05;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Responzívne úpravy */
+@media (max-width: 1024px) {
+  .header-title {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+  
+  .header-container {
+    min-height: 50vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 2.2rem;
+    line-height: 1.15;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .header-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Zabránenie pretekaniu textu */
+.header-title br {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header-title br {
+    display: block;
+  }
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
