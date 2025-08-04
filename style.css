@@ -128,7 +128,7 @@ body {
 
 /* Content Sections */
 .text-section {
-    max-width: 850px;
+     max-width: 850px;
     margin: 50px auto;
     padding: 30px;
     background-color: rgba(255, 255, 255, 0.048);
