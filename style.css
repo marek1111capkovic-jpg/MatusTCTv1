@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
     text-transform: uppercase;
     margin: 0;
@@ -6,6 +7,8 @@ body {
     color: #ffffff;
     overflow-x: hidden;
 }
+
+/* Top Bar */
 .top-bar {
     position: fixed;
     top: 0;
@@ -19,29 +22,40 @@ body {
     align-items: center;
     padding: 0 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
+}
+
+/* Header Container */
 .header-container {
     position: relative;
-    height: 70vh; /* 70% of viewport height */
+    min-height: 70vh;
+    height: auto;
     overflow: hidden;
     padding-top: 60px;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Full height for main page */
 .header-container.main-page {
     height: 100vh;
 }
 
-/* Základné štýly pre nadpis */
-.workshop-title {
-    font-size: 4rem;
-    font-weight: 1000;
-    letter-spacing: -1px;
+/* Header Content */
+.header {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.workshop-title, .header-title {
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
     color: #fff;
-    margin: 0;
-    line-height: 1;
+    line-height: 1.05;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    margin: 0;
 }
 
 .workshop-subtitle {
@@ -54,61 +68,7 @@ body {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
-.workshop-title, .workshop-subtitle {
-    font-stretch: condensed;
-    letter-spacing: -1px;
-}
-
-/* Responzívne úpravy */
-@media (max-width: 1024px) {
-    .workshop-title {
-        font-size: 3.5rem;
-    }
-    .workshop-subtitle {
-        font-size: 3rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .workshop-title {
-        font-size: 2.8rem;
-    }
-    .workshop-subtitle {
-        font-size: 2.3rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .workshop-title {
-        font-size: 2.2rem;
-    }
-    .workshop-subtitle {
-        font-size: 1.8rem;
-    }
-}
-
-@media (max-width: 375px) {
-    .workshop-title {
-        font-size: 1.8rem;
-    }
-    .workshop-subtitle {
-        font-size: 1.5rem;
-    }
-}
-
-/* Úprava pre vertikálny priestor */
-.header-container {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
-}
-
+/* Header Background */
 .header-background {
     position: absolute;
     top: 0;
@@ -120,336 +80,10 @@ body {
     z-index: -1;
     opacity: 0.7;
     transition: background-image 1s ease-in-out;
-    transform: scale(1.4);;
-}
-footer {
-      background: #111;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
-    
-    footer p {
-    color: #fff;
+    transform: scale(1.4);
 }
 
-    .footer-link {
-      color: #3498db;
-      text-decoration: none;
-      margin-top: 10px;
-      display: inline-block;
-      transition: color 0.3s;
-    }
-    
-    .footer-link:hover {
-      color: #2980b9;
-      text-decoration: underline;
-    }
-
-.copyright {
-    font-size: 0.8rem;
-    opacity: 0.8;
-    margin-top: 15px;
-}
-/* Základné štýly pre header */
-.header-container {
-  position: relative;
-  min-height: 70vh;
-  height: auto;
-  overflow: hidden;
-  padding-top: 60px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.header {
-  width: 100%;
-  padding: 20px;
-  text-align: center;
-}
-
-.header-title {
-  font-size: 5rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #fff;
-  display: inline-block;
-  line-height: 1.05;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-}
-
-/* Responzívne úpravy */
-@media (max-width: 1024px) {
-  .header-title {
-    font-size: 4rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .header-title {
-    font-size: 3rem;
-    line-height: 1.1;
-  }
-  
-  .header-container {
-    min-height: 50vh;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-title {
-    font-size: 2.2rem;
-    line-height: 1.15;
-    padding: 0 10px;
-  }
-}
-
-@media (max-width: 375px) {
-  .header-title {
-    font-size: 1.8rem;
-  }
-}
-
-/* Zabránenie pretekaniu textu */
-.header-title br {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .header-title br {
-    display: block;
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .footer-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-/* Základné responzívne nastavenia */
-@media (max-width: 768px) {
-    /* Header a navigácia */
-    .top-bar {
-        height: 50px;
-        padding: 0 10px;
-    }
-    
-    .social-icon {
-        width: 25px;
-        height: 25px;
-    }
-    
-    .logo-img {
-        height: 35px;
-    }
-    
-    /* Hlavný obsah */
-    .header {
-        font-size: 2.5em;
-        padding: 20px;
-    }
-    
-    .header-container {
-        height: 60vh;
-    }
-    
-    .header-background {
-        transform: scale(1.2);
-    }
-    
-    /* Textové sekcie */
-    .text-section {
-        padding: 20px;
-        margin: 30px auto;
-        font-size: 0.95em;
-    }  
-
-    .text-section h2 {
-        font-size: 1.8em;
-    }
-    
-    /* Mapa */
-    .clickable-city {
-        padding: 4px 8px;
-        font-size: 0.7em;
-    }
-    
-    /* Tabuľka */
-    .schedule-table {
-        font-size: 0.9em;
-    }
-    
-    .schedule-table th, 
-    .schedule-table td {
-        padding: 6px;
-    }
-    
-    /* Tlačidlá */
-    .register-btn {
-        padding: 10px 18px;
-        font-size: 0.9em;
-    }
-}
-
-@media (max-width: 480px) {
-    /* Extra malé obrazovky */
-    .header {
-        font-size: 2em;
-    }
-    
-    .header-container {
-        height: 50vh;
-    }
-    
-    .text-section {
-        padding: 15px;
-        margin: 20px 10px;
-    }
-    
-    .text-section h2 {
-        font-size: 1.5em;
-    }
-    
-    /* Optimalizácia tabuľky */
-    .schedule-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-    
-    /* Mapa - zmena pozície tlačidiel */
-    .clickable-city {
-        font-size: 0.6em;
-    }
-    
-    /* Bratislava */
-    .clickable-city:nth-child(1) {
-        top: 65%;
-        left: 5%;
-    }
-    
-    /* Nitra */
-    .clickable-city:nth-child(2) {
-        top: 60%;
-        left: 18%;
-    }
-    
-    /* Košice */
-    .clickable-city:nth-child(3) {
-        top: 45%;
-        left: 70%;
-    }
-    
-    /* Poprad */
-    .clickable-city:nth-child(4) {
-        top: 25%;
-        left: 53%;
-    }
-}
-
-/* Špeciálne úpravy pre dotykové zariadenia */
-@media (hover: none) {
-    .clickable-city, 
-    .register-btn, 
-    .social-icon, 
-    .logo-img {
-        animation: none !important;
-    }
-    
-    .clickable-city:hover, 
-    .register-btn:hover, 
-    .social-icon:hover, 
-    .logo-img:hover {
-        transform: none !important;
-    }
-}
-
-/* Optimalizácia pre vertikálne zobrazenie */
-@media (orientation: portrait) {
-    .header-container {
-        height: 60vh;
-    }
-    
-    .header-background {
-        transform: scale(1.3);
-    }
-}
-
-/* Optimalizácia pre horizontálne zobrazenie */
-@media (orientation: landscape) and (max-height: 500px) {
-    .header-container {
-        height: 100vh;
-    }
-    
-    .header {
-        font-size: 3em;
-    }
-}
-.workshop-card {
-    cursor: pointer;
-    /* ostatné štýly ostávajú rovnaké */
-}
-
-/* Animácie */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-@keyframes slideInFromLeft {
-    from { transform: translateX(-50px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes colorChange {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Hlavička s animáciou */
-.header {
-    font-family: 'Oswald', sans-serif;
-    color: #ffffff;
-    padding: 40px 20px;
-    font-weight: 1000;
-    text-align: center;
-    font-size: 5em;  /* Zväčšené */
-    letter-spacing: 0x; 
-    position: relative;
-    animation: fadeIn 1s ease-out;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(1px); /* Efekt rozostrenia */
-}
-
-.header::after {
-    content: '';
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 3px;
-    background: linear-gradient(90deg, #ffffff, #ffffff, #ffffff);
-    background-size: 200% 200%;
-    animation: colorChange 3s ease infinite;
-}
-
+/* Social Icons */
 .social-icons {
     display: flex;
     gap: 15px;
@@ -468,6 +102,7 @@ footer {
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.7));
 }
 
+/* Logo */
 .logo-container {
     position: absolute;
     left: 50%;
@@ -485,16 +120,13 @@ footer {
 .logo-img:hover {
     transform: scale(1.05);
 }
-    .right-spacer {
-    width: calc(15px * 3 + 28px * 3); /* Rovnaká šírka ako sociálne ikonky */
-}
 
-/* Textové sekcie s animáciami */
+/* Content Sections */
 .text-section {
     max-width: 850px;
     margin: 50px auto;
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.048); /* znížená opacity */
+    background-color: rgba(255, 255, 255, 0.048);
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
     line-height: 1.7;
@@ -511,61 +143,7 @@ footer {
     transform: translateY(0);
 }
 
-.text-section h2 {
-    letter-spacing: 0.2px;
-    font-family: 'Oswald', sans-serif;
-    color: #ffffff;
-    margin-bottom: 20px;
-    font-size: 2.2em;
-    font-weight: 1000;
-    position: relative;
-    display: inline-block;
-}
-
-.text-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, #000000, transparent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-}
-
-.text-section:hover h2::after {
-    transform: scaleX(1);
-}
-
-.text-section ul {
-    padding-left: 20px;
-    text-align: left;
-}
-p {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.1em; /* Môžete upraviť veľkosť */
-    line-height: 1.6; /* Lepšia čitateľnosť pre typewriter font */
-}
-
-/* Pre zoznamy */
-.text-section ul li {
-    font-family: 'Oswald', sans-serif;
-}
-
-/* Pre tabuľky */
-.schedule-table td {
-    font-family: 'Oswald', sans-serif;
-}
-
-/* Pre zvýraznený text */
-strong {
-    font-family: 'Oswald', sans-serif;
-    font-weight: bold; /* Typewriter fonty často nemajú rôzne weighty */
-}
-
-/* Mapa s animáciou */
+/* Map */
 .map-container {
     margin: 60px auto 30px;
     width: 100%;
@@ -595,7 +173,7 @@ strong {
     transform: scale(1.01);
 }
 
-/* Tlačidlá s animáciami */
+/* City Links */
 .clickable-city {
     position: absolute;
     background: linear-gradient(135deg, #000000, #252525);
@@ -617,7 +195,7 @@ strong {
     box-shadow: 0 0 15px rgba(5, 0, 0, 0.8);
 }
 
-/* Registračné tlačidlo */
+/* Buttons */
 .register-btn {
     padding: 12px 24px;
     font-size: 1em;
@@ -652,66 +230,15 @@ strong {
     left: 100%;
 }
 
-/* Ostatné štýly */
-strong {
-    color: #dddcdc;
-    transition: all 0.3s ease;
-}
-
-strong:hover {
-    text-shadow: 0 0 5px rgba(53, 53, 53, 0.5);
-}
-
-em {
-    color: #ffffff;
-    font-style: italic;
-}
-
-/* Responzívne štýly */
-@media (max-width: 600px) {
-    .text-section {
-        padding: 20px;
-        font-size: 1em;
-    }
-
-    .header {
-        font-size: 2em;
-    }
-    
-    .clickable-city {
-        font-size: 0.7em;
-        padding: 4px 8px;
-    }
-    .schedule-table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        white-space: nowrap;
-        font-size: 0.95em;
-        margin-top: 10px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        background: rgba(255,255,255,0.85);
-    }
-    .schedule-table th, .schedule-table td {
-        padding: 8px 12px;
-        font-size: 0.95em;
-        min-width: 100px;
-    }
-}
-
-/* Zlepšenie viditeľnosti tabuľky na mobile */
+/* Table */
 .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center;
     background: rgba(255,255,255,0.85);
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.schedule-table {
-width: 100%;
-border-collapse: collapse;
-margin-top: 20px;
-text-align: center;
 }
 
 .schedule-table th, .schedule-table td {
@@ -729,6 +256,39 @@ text-align: center;
     cursor: not-allowed;
     box-shadow: none;
 }
+
+/* Footer */
+footer {
+    background: #111;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+footer p {
+    color: #fff;
+}
+
+.footer-link {
+    color: #3498db;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 15px;
+}
+
+/* Background */
 .main-background {
     position: fixed;
     top: 0;
@@ -739,164 +299,167 @@ text-align: center;
     background: url('photos/pozadia/pozadie_workshopy.png') center/cover no-repeat;
     opacity: 1;
     pointer-events: none;
-    will-change: transform; /* Optimalizácia pre animáciu */
-    transform: translateZ(0); /* Aktivuje hardvérové zrýchlenie */
-    background-attachment: fixed; /* Dôležité pre paralax */
+    will-change: transform;
+    transform: translateZ(0);
+    background-attachment: fixed;
 }
+
 .content-wrapper {
+    padding-top: 60px;
     position: relative;
     z-index: 1;
 }
-.header-container, .top-bar {
-    position: relative;
-    z-index: 2;
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Optimalizácia top baru a hlavičky pre mobily */
-@media (max-width: 800px) {
-    .top-bar {
-        background: #000 !important;
-        min-height: 90px !important;
-        height: auto !important;
-        padding: 18px 0 10px 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 0 !important;
-        position: relative !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes colorChange {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .workshop-title, .header-title {
+        font-size: 4rem;
     }
-    .logo-container {
-        margin-bottom: 0 !important;
-        z-index: 1 !important;
-        position: relative !important;
-        padding-top: 8px !important;
-        padding-bottom: 8px !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
+    .workshop-subtitle {
+        font-size: 3rem;
     }
-    .logo-img {
-        max-width: 120px !important;
-        height: auto !important;
-        margin: 0 auto !important;
-        display: block !important;
+}
+
+@media (max-width: 768px) {
+    .workshop-title, .header-title {
+        font-size: 3rem;
+        line-height: 1.1;
     }
-    .social-icons {
-        display: flex !important;
-        justify-content: center !important;
-        gap: 18px !important;
-        margin-bottom: 8px !important;
-        z-index: 2 !important;
-        position: relative !important;
-    }
-    .header {
-        font-size: 2.1em !important;
-        padding: 18px 10px 10px 10px !important;
-        text-align: center !important;
-        word-break: break-word;
-        line-height: 1.15 !important;
-    }
-    .header span {
-        font-size: 2.1em !important;
-        letter-spacing: 1px !important;
-        padding: 0 10px !important;
-        display: block !important;
+    .workshop-subtitle {
+        font-size: 2.3rem;
     }
     .header-container {
-        padding: 0 !important;
-        min-height: 90px !important;
-        height: auto !important;
+        min-height: 50vh;
     }
-    .content-wrapper {
-        padding: 0 2vw !important;
+    
+    /* Mobile Top Bar */
+    .top-bar {
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 15px;
+        background: rgba(0, 0, 0, 0.9);
+        justify-content: space-between;
+        
     }
-    .text-section {
-        padding: 15px !important;
-        margin: 20px 10px !important;
-        font-size: 1em !important;
+    
+    .logo-container {
+        margin-right: auto; /* logo ide úplne vľavo */
     }
-    .text-section h2 {
-        font-size: 1.2em !important;
-        padding: 0 2px !important;
-        text-align: left !important;
+
+    .logo-img {
+        height: 60px; /* zväčšenie loga */
     }
-    .map-container {
-        padding: 10px 0 !important;
+
+    .social-icons {
+        display: flex;
+        gap: 12px;
+        margin-left: auto; /* ikonky idú úplne vpravo */
+        align-items: center;
     }
-    .slovakia-map {
-        width: 100% !important;
-        height: auto !important;
-        max-width: 400px !important;
-        margin: 0 auto !important;
-        display: block !important;
+
+    .social-icon {
+        width: 24px;
+        height: 24px;
     }
-    .clickable-city {
-        font-size: 1rem !important;
-        padding: 2px 6px !important;
+    
+    .header-container {
+        padding-top: 60px;
     }
-    .schedule-table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        font-size: 0.98em !important;
-        margin-top: 10px !important;
-        border-radius: 8px !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
-        background: rgba(255,255,255,0.85) !important;
+}
+
+@media (max-width: 480px) {
+    .workshop-title, .header-title {
+        font-size: 2.2rem;
+        line-height: 1.15;
+        padding: 0 10px;
     }
-    .schedule-table thead {
-        display: none !important;
+    .workshop-subtitle {
+        font-size: 1.8rem;
     }
-    .schedule-table tbody, .schedule-table tr {
-        display: block !important;
-        width: 100% !important;
+    
+    .logo-img {
+        height: 28px;
     }
-    .schedule-table tr {
-        margin-bottom: 18px !important;
-        border-radius: 12px !important;
-        box-shadow: 0 2px 8px rgba(49,0,0,0.08) !important;
-        background: rgba(255,255,255,0.13) !important;
-        padding: 10px 8px !important;
+    
+    .social-icon {
+        margin-left: auto;
+        width: 22px;
+        height: 22px;
     }
-    .schedule-table td {
-        display: block !important;
-        width: 100% !important;
-        padding: 8px 6px !important;
-        border: none !important;
-        background: none !important;
-        color: #222 !important;
-        font-size: 1em !important;
-        min-width: 0 !important;
-        word-break: break-word !important;
+    
+    .top-bar {
+        padding: 0 10px;
     }
-    .schedule-table td[data-label="Mesto"] strong {
-        font-size: 1em !important;
-        white-space: normal !important;
-        word-break: break-word !important;
-        max-width: 180px !important;
-        display: inline-block !important;
+}
+
+@media (max-width: 375px) {
+    .workshop-title, .header-title {
+        font-size: 1.8rem;
     }
-    .register-btn {
-        width: auto !important;
-        min-width: 90px !important;
-        max-width: 140px !important;
-        font-size: 0.95em !important;
-        padding: 8px 0 !important;
-        margin: 8px 0 !important;
-        display: block !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+    .workshop-subtitle {
+        font-size: 1.5rem;
     }
-    .registered-count {
-        font-size: 1em !important;
-        margin-bottom: 4px !important;
+}
+
+/* Touch Device Adjustments */
+@media (hover: none) {
+    .clickable-city, 
+    .register-btn, 
+    .social-icon, 
+    .logo-img {
+        animation: none !important;
     }
-    footer {
-        font-size: 0.95em !important;
-        text-align: center !important;
-        padding: 12px 0 !important;
+    
+    .clickable-city:hover, 
+    .register-btn:hover, 
+    .social-icon:hover, 
+    .logo-img:hover {
+        transform: none !important;
+    }
+}
+
+/* Orientation Adjustments */
+@media (orientation: portrait) {
+    .header-container {
+        height: 60vh;
+    }
+    
+    .header-background {
+        transform: scale(1.3);
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .header-container {
+        height: 100vh;
+    }
+    
+    .header {
+        font-size: 3em;
     }
 }
