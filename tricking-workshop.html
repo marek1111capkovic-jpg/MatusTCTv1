@@ -62,7 +62,7 @@
       .register-btn {
         padding: 8px 22px;
         border-radius: 8px;
-        background: #2b0000;
+        background: #42a5f5;
         color: #fff;
         font-weight: 600;
         border: none;
@@ -115,7 +115,7 @@
         padding: 12px 15px;
         text-align: center;
         font-weight: bold;
-        color: #2b0000;
+        color: #01c020;
         background: rgba(255, 255, 255, 0.8);
       }
 
@@ -139,7 +139,7 @@
       }
 
       .register-btn {
-        background: #2b0000;
+        background: #42a5f5;
         color: white;
       }
 
@@ -165,7 +165,7 @@
         width: 100%;
         height: 100%;
         background-image: url('photos/pozadia/pozadie_workshopy.png');
-        background-size: cover;
+        background-size: contain;
         background-position: center;
         background-attachment: scroll;
         opacity: 0.99; /* Nižšia priehľadnosť, aby neodvádzal pozornosť */
@@ -332,7 +332,7 @@
     .schedule-table td[data-label="Stav"] {
       text-align: center;
       font-weight: bold;
-      color: #444;
+      color: #21e642;
       padding: 8px;
       background: #1f1f1f;
     }
@@ -347,7 +347,7 @@
     }
     
     .register-btn {
-      background: #680000;
+      background: #42a5f5;
       color: #fff;
       padding: 10px 14px;
       font-size: 0.9rem;
@@ -437,7 +437,7 @@
             <h2><img src="photos/ikonky/info_ikona.png" alt="Info" style="height:1.5em;vertical-align:-0.35em;margin-right:8px;">Čo je Tricking Workshop?</h2>
             <p>
                 Akcia, na ktorej ti otvoríme dvere do sveta <strong>Trickingu</strong> a pre tých skúsenejších poradíme ako sa stať ešte lepšími. 
-                Okrem naučenia sa základov Trickingu si odnesieš aj vedomosti, ktoré využiješ vo svojom tréningu. 
+                Naučíme ta základy trickingu a ako pracovať zo strachom, čo využiješ vo svojom tréningu. 
                 Taktiež bude možnosť si zakúpiť exkluzívny <strong>Matus TCT merch</strong>, ktorý sa bude predávať iba na workshopoch.
             </p>
             <p>
@@ -451,8 +451,7 @@
         <div class="text-section">
             <h2><img src="photos/ikonky/info_ikona.png" alt="Tricking" style="height:1.5em;vertical-align:middle;margin-right:8px;">Čo je tricking?</h2>
             <p>
-                Tricking je moderná pohybová disciplína, ktorá spája akrobatické prvky z gymnastiky, bojových umení a tanca.
-              Je to vizuálne pôsobivý šport, v ktorom ide o plynulé kombinácie sált, kopov a otočiek – všetko vykonané s dôrazom na techniku, kreativitu a osobný štýl.
+              Tricking je moderná pohybová disciplína, ktorá spája akrobatické prvky z gymnastiky, bojových umení a tanca.
               Je to vizuálne pôsobivý šport, v ktorom ide o plynulé kombinácie sált, kopov a otočiek – všetko vykonané s dôrazom na techniku, kreativitu a osobný štýl.
             </p>
             <video controls style="max-width:100%; margin-top: 20px;">
@@ -494,8 +493,12 @@
                     </div>
                     <div class="schedule-status">Voľné miesta</div>
                     <div class="schedule-actions">
-                        <button class="register-btn">Registrovať</button>
+                      <a href="registracia.html">
+                        <button class="register-btn">Registrovať</button>  
+                      </a>
+                      <a href="bratislava.html">
                         <button class="info-btn">Viac info</button>
+                      </a>
                     </div>
                 </div>
                 
@@ -507,8 +510,12 @@
                     </div>
                     <div class="schedule-status">Voľné miesta</div>
                     <div class="schedule-actions">
+                      <a href="registracia.html">
                         <button class="register-btn">Registrovať</button>
+                      </a>
+                      <a href="nitra.html">
                         <button class="info-btn">Viac info</button>
+                      </a>
                     </div>
                 </div>
                 
@@ -520,8 +527,12 @@
                     </div>
                     <div class="schedule-status">Voľné miesta</div>
                     <div class="schedule-actions">
+                      <a href="registracia.html">
                         <button class="register-btn">Registrovať</button>
+                      </a>
+                      <a href="prievidza.html">
                         <button class="info-btn">Viac info</button>
+                      </a>
                     </div>
                 </div>
                 
@@ -533,8 +544,12 @@
                     </div>
                     <div class="schedule-status">Voľné miesta</div>
                     <div class="schedule-actions">
+                      <a href="registracia.html">
                         <button class="register-btn">Registrovať</button>
+                      </a>
+                      <a href="poprad.html">
                         <button class="info-btn">Viac info</button>
+                      </a>
                     </div>
                 </div>
                 
@@ -546,8 +561,12 @@
                     </div>
                     <div class="schedule-status">Voľné miesta</div>
                     <div class="schedule-actions">
+                      <a href="registracia.html">
                         <button class="register-btn">Registrovať</button>
+                      </a>
+                      <a href="kosice.html">
                         <button class="info-btn">Viac info</button>
+                      </a>
                     </div>
                 </div>
             </div>
@@ -728,30 +747,6 @@
                 });
             });
         });
-
-        const photos = [
-            'photos/mainfoto/1.jpg',
-            'photos/mainfoto/2.jpg',
-            'photos/mainfoto/3.jpg',
-            'photos/mainfoto/4.jpg',
-            'photos/mainfoto/5.jpg',
-            'photos/mainfoto/6.jpg',
-            'photos/mainfoto/7.jpg',
-            'photos/mainfoto/8.jpg',
-            'photos/mainfoto/9.jpg',
-        ];
-        
-        const bgElement = document.querySelector('.header-background');
-        let currentPhoto = 0;
-        
-        // Nastavíme prvú fotku
-        bgElement.style.backgroundImage = `url('${photos[currentPhoto]}')`;
-        
-        // Meníme fotky každé 2 sekundy
-        setInterval(() => {
-            currentPhoto = (currentPhoto + 1) % photos.length;
-            bgElement.style.backgroundImage = `url('${photos[currentPhoto]}')`;
-        }, 4000);
     </script>
 </body>
 </html>
