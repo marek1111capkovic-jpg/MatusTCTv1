@@ -407,6 +407,7 @@ footer p {
     
     .header-container,
     .content-wrapper {
+        background-color: #000000;
         padding-top: 30px; /* alebo viac, podľa potreby */
     }
 
