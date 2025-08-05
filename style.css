@@ -48,6 +48,7 @@ body {
 
 /* Header Content */
 .header {
+    background-color: black;
     width: 100%;
     padding: 20px;
     text-align: center;
@@ -75,6 +76,7 @@ body {
 
 /* Header Background */
 .header-background {
+    background-color: black;
     position: absolute;
     top: 0;
     left: 0;
@@ -362,7 +364,8 @@ footer p {
     
     /* Mobile Top Bar */
     body {
-    padding-top: 40px;
+        background-color: #000000;
+        padding-top: 40px;
     }
     .top-bar {
         height: 60px;
