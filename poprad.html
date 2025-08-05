@@ -36,14 +36,26 @@
         }
         
         /* Responzívne úpravy */
-        @media (max-width: 768px) {
-            .header {
-                font-size: 3em;
-                padding: 20px; /* no extra top padding */
+        @media (max-width: 800px) {
+            body {
+                background-image: url('photos/pozadia/POPRAD_POZADIE_MOBIL.png');
+                background-size: cover;
             }
 
-            .header-container {
-                padding-top: 60px; /* height of top-bar */
+            .text-section, .top-bar, footer {
+                background-color: rgba(0, 0, 0, 0.0);
+            }
+
+            .header {
+                font-size: 3em;
+                padding: 80px 20px;
+                font-family: 'Oswald', sans-serif;
+                color: #ffffff;
+                font-weight: 1000;
+                text-align: center;
+                letter-spacing: 2px;
+                position: relative;
+                text-transform: uppercase;
             }
         }
         
