@@ -48,7 +48,7 @@ body {
 
 /* Header Content */
 .header {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.082);
     width: 100%;
     padding: 20px;
     text-align: center;
