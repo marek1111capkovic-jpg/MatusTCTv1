@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tricking Workshopy - Slovensko</title>
     <link rel="stylesheet" href="style.css"> 
+
     <style>
       /* Pôvodné štýly... */
        .schedule-table {
@@ -187,7 +188,9 @@
         padding: 2rem 1rem;
         max-width: 800px;
         margin: 0 auto;
-        }
+        z-index: 10; /* zvýšenie z-index */
+        position: relative; /* aby z-index fungoval */
+      }
 
       .text-section-cena h2 {
         font-size: 3.5rem;
@@ -474,7 +477,7 @@
             <!--<a href="bratislava.html" class="clickable-city" style="top: 72%; left: 1%;">Bratislava</a>
             <a href="nitra.html" class="clickable-city" style="top: 62%; left: 20%;">Nitra</a>-->
             <a href="kosice.html"  class="clickable-city" style="top: 48%; left: 72%;">Košice</a>
-            <a href="poprad.html" class="clickable-city" style="top: 25%; left: 57%;">Poprad</a>
+            <!--<a href="poprad.html" class="clickable-city" style="top: 25%; left: 57%;">Poprad</a>-->
 
             <svg style="display: none;">
                 <filter id="remove-white" color-interpolation-filters="sRGB">
@@ -492,26 +495,8 @@
 
         <div class="text-section">
             <h2><img src="photos/ikonky/calendar_ikona.png" alt="Termíny" style="height:1.5em;vertical-align:middle;margin-right:8px;">Termíny a Registrácie</h2>
-            
-            <div class="schedule-container">
-                
-                <!-- Poprad -->
-                <div class="schedule-card">
-                    <div class="schedule-date">5.10. 12:00 - Poprad</div>
-                    <div class="schedule-image">
-                        <img src="photos/pozadia/pozadiashortcut/POPRAD.png" alt="Poprad">
-                    </div>
-                    <div class="schedule-status">Voľné miesta</div>
-                    <div class="schedule-actions">
-                      <a href="registracia.html">
-                        <button class="register-btn">Registrovať</button>
-                      </a>
-                      <a href="poprad.html">
-                        <button class="info-btn">Viac info</button>
-                      </a>
-                    </div>
-                </div>
-                
+
+
                 <!-- Košice -->
                 <div class="schedule-card">
                     <div class="schedule-date">12.10. 12:00 - Košice</div>
@@ -568,10 +553,8 @@
             <p>
                 V prípade zabudnutia prihlášky je možné ju podpísať priamo na mieste.
             </p>
-            
         </div>
-
-          <div class="text-section-cena">
+        <div class="text-section-cena">
             <h2><strong>CENA 40€</strong><br></h2>
             <p>
                 <strong>Ako zaplatím za workshop?</strong><br>
@@ -703,5 +686,3 @@
     </script>
 </body>
 </html>
-
-
