@@ -291,6 +291,8 @@
                 </div>
             </label>
         </div>
+        <!-- Workshop selection error (shown if user tries to submit without choosing a workshop) -->
+        <div id="workshopError" class="error-message" style="display:none;"></div>
       </div>
       
       <!-- Section 1: Personal Information -->
@@ -403,11 +405,11 @@
             <input type="text" id="parentLastName" name="parentLastName">
           </div>
         </div>
-        
-        <div class="form-group">
-          <label for="parentPhone">Telefónne číslo na rodiča</label>
-          <input type="tel" id="parentPhone" name="parentPhone">
-        </div>
+
+          <div class="form-group">
+            <label for="parentPhone">Telefónne číslo na rodiča</label>
+            <input type="tel" id="parentPhone" name="parentPhone">
+          </div>
       </div>
       
       <!-- Terms and conditions checkbox -->
@@ -477,7 +479,17 @@
         
         return false; // Zabráni odoslaniu formulára
       }
-      
+
+      // Check that a workshop/location was selected
+      const selectedWorkshop = document.querySelector('input[name="workshopCity"]:checked');
+      if (!selectedWorkshop) {
+        const we = document.getElementById('workshopError');
+        we.textContent = 'Vyberte miesto konania workshopu, bez vyplnenia sa prihlásiť nedá.';
+        we.style.display = 'block';
+        we.scrollIntoView({ behavior: 'smooth' });
+        return false;
+      }
+
       // Ak je vek OK, skryjeme chybovú hlášku ak bola zobrazená
       document.getElementById('ageError').style.display = 'none';
       
