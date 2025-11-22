@@ -1,0 +1,249 @@
+/* Shared city styles moved from individual HTML files */
+
+/* Bratislava */
+body.city-bratislava {
+    background-image: url('photos/pozadia/BRATISLAVA_POZADIE.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+body.city-bratislava .text-section,
+body.city-bratislava .top-bar,
+body.city-bratislava footer {
+    background-color: rgba(0, 0, 0, 0.836);
+}
+body.city-bratislava .header {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    padding: 100px 20px;
+    font-weight: 1000;
+    text-align: center;
+    font-size: 5em;
+    letter-spacing: 2px;
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.075);
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.034);
+}
+@media (max-width: 800px) {
+    body.city-bratislava {
+        background-image: url('photos/pozadia/BRATISLAVA_POZADIE_MOBIL.png');
+    }
+    body.city-bratislava .text-section,
+    body.city-bratislava .top-bar,
+    body.city-bratislava footer {
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+    body.city-bratislava .header {
+        font-size: 3em;
+        padding: 80px 20px;
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+}
+@media (max-width: 480px) {
+    body.city-bratislava .header {
+        font-size: 2.5em;
+        padding: 60px 15px;
+    }
+}
+
+/* Prievidza */
+body.city-prievidza {
+    background-image: url('photos/pozadia/PRIEVIDZA_POZADIE.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+body.city-prievidza .text-section,
+body.city-prievidza .top-bar,
+body.city-prievidza footer {
+    background-color: rgba(0, 0, 0, 0.74);
+}
+body.city-prievidza .header {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    padding: 100px 20px;
+    font-weight: 1000;
+    text-align: center;
+    font-size: 5em;
+    letter-spacing: 2px;
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 800px) {
+    body.city-prievidza {
+        background-image: url('photos/pozadia/PRIEVIDZA_POZADIE_MOBIL.png');
+    }
+    body.city-prievidza .text-section,
+    body.city-prievidza .top-bar,
+    body.city-prievidza footer {
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+    body.city-prievidza .header {
+        font-size: 3em;
+        padding: 80px 20px;
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+}
+@media (max-width: 480px) {
+    body.city-prievidza .header {
+        font-size: 2.5em;
+        padding: 60px 15px;
+    }
+}
+
+/* Poprad */
+body.city-poprad {
+    background-image: url('photos/pozadia/POPRAD_POZADIE.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+body.city-poprad .text-section,
+body.city-poprad .top-bar,
+body.city-poprad footer {
+    background-color: rgba(0, 0, 0, 0.74);
+}
+body.city-poprad .header {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    padding: 100px 20px;
+    font-weight: 1000;
+    text-align: center;
+    font-size: 5em;
+    letter-spacing: 2px;
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 800px) {
+    body.city-poprad {
+        background-image: url('photos/pozadia/POPRAD_POZADIE_MOBIL.png');
+    }
+    body.city-poprad .text-section,
+    body.city-poprad .top-bar,
+    body.city-poprad footer {
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+    body.city-poprad .header {
+        font-size: 3em;
+        padding: 80px 20px;
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+}
+@media (max-width: 480px) {
+    body.city-poprad .header {
+        font-size: 2.5em;
+        padding: 15px; /* no extra top padding */
+    }
+    body.city-poprad .header-container {
+        padding-top: 60px;
+    }
+}
+
+/* Košice */
+body.city-kosice {
+    background-image: url('photos/pozadia/KOSICE_POZADIE.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+body.city-kosice .text-section,
+body.city-kosice .top-bar,
+body.city-kosice footer {
+    background-color: rgba(0, 0, 0, 0.74);
+}
+body.city-kosice .header {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    padding: 100px 20px;
+    font-weight: 1000;
+    text-align: center;
+    font-size: 5em;
+    letter-spacing: 2px;
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 800px) {
+    body.city-kosice {
+        background-image: url('photos/pozadia/KOSICE_POZADIE_MOBIL.png');
+    }
+    body.city-kosice .text-section,
+    body.city-kosice .top-bar,
+    body.city-kosice footer {
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+    body.city-kosice .header {
+        font-size: 3em;
+        padding: 80px 20px;
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+}
+@media (max-width: 480px) {
+    body.city-kosice .header {
+        font-size: 2.5em;
+        padding: 60px 15px;
+    }
+}
+
+/* Nitra */
+body.city-nitra {
+    background-image: url('photos/pozadia/NITRA_POZADIE.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+body.city-nitra .text-section,
+body.city-nitra .top-bar,
+body.city-nitra footer {
+    background-color: rgba(0, 0, 0, 0.74);
+}
+body.city-nitra .header {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    padding: 100px 20px;
+    font-weight: 1000;
+    text-align: center;
+    font-size: 5em;
+    letter-spacing: 2px;
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 800px) {
+    body.city-nitra {
+        background-image: url('photos/pozadia/NITRA_POZADIE_MOBIL.png');
+    }
+    body.city-nitra .text-section,
+    body.city-nitra .top-bar,
+    body.city-nitra footer {
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+    body.city-nitra .header {
+        font-size: 3em;
+        padding: 80px 20px;
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+}
+@media (max-width: 480px) {
+    body.city-nitra .header {
+        font-size: 2.5em;
+        padding: 60px 15px;
+    }
+}

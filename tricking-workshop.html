@@ -7,408 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tricking Workshopy - Slovensko</title>
     <link rel="stylesheet" href="style.css"> 
-
-    <style>
-      /* Pôvodné štýly... */
-       .schedule-table {
-          width: 100%;
-          border-collapse: separate;
-          border-spacing: 0;
-          margin: 30px 0;
-          font-size: 1.1rem;
-          background: rgba(255,255,255,0.07);
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 4px 24px rgba(49,0,0,0.10);
-        }
-        
-        .schedule-table th, 
-        .schedule-table td {
-          padding: 14px 10px;
-          border: none;
-        }
-        
-        .schedule-table th {
-          background: #000000;
-          color: #fff;
-          font-weight: 700;
-        }
-        
-        .schedule-table td {
-          background: rgba(0,0,0,0.04);
-          color: #ffffff;
-        }
-        
-        .schedule-table .actions-row {
-          display: none; /* Skryjeme actions-row na desktope */
-        }
-      .schedule-table tbody tr {
-        transition: background 0.2s, box-shadow 0.2s;
-      }
-      .schedule-table tbody tr:hover {
-        background: #ffe5e5;
-        box-shadow: 0 2px 12px rgba(104,0,0,0.10);
-      }
-      .schedule-table td a {
-        padding: 7px 18px;
-        border-radius: 8px;
-        background: #fff6f6;
-        color: #2b0000;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background 0.2s, color 0.2s;
-      }
-      .schedule-table td a:hover {
-        background: #2b0000;
-        color: #fff;
-      }
-      .register-btn {
-        padding: 8px 22px;
-        border-radius: 8px;
-        background: #42a5f5;
-        color: #fff;
-        font-weight: 600;
-        border: none;
-        cursor: pointer;
-        transition: background 0.2s, transform 0.2s;
-      }
-      .register-btn:hover {
-        background: #3d0404;
-        transform: translateY(-2px);
-      }
-      .registered-count {
-        font-weight: 700;
-        color: #222;
-        letter-spacing: 1px;
-      }
-      .full .registered-count {
-        color: #b30000;
-        font-weight: 700;
-      }
-      .schedule-container {
-        margin: 30px 0;
-      }
-
-      .schedule-card {
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        margin-bottom: 20px;
-      }
-
-      .schedule-date {
-        background: #2b0000;
-        color: white;
-        padding: 12px 15px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-align: center;
-      }
-
-      .schedule-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-top: 1px solid #eee;
-        border-bottom: 1px solid #eee;
-      }
-
-      .schedule-status {
-        padding: 12px 15px;
-        text-align: center;
-        font-weight: bold;
-        color: #01c020;
-        background: rgba(255, 255, 255, 0.8);
-      }
-
-      .schedule-actions {
-        display: flex;
-        justify-content: space-between;
-        padding: 15px;
-        background: white;
-        border-top: 1px solid #eee;
-      }
-
-      .register-btn, .info-btn {
-        padding: 12px 20px;
-        border: none;
-        border-radius: 6px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s;
-        flex: 1;
-        margin: 0 5px;
-      }
-
-      .register-btn {
-        background: #42a5f5;
-        color: white;
-      }
-
-      .info-btn {
-        background: #680000;
-        color: white;
-      }
-
-      .register-btn:hover, .info-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-      /* Nové štýly pre pozadie */
-      body {
-        position: relative;
-        background-color: #f9f9f9;
-      }
-      
-      .page-background {
-        position: absolute;
-        top: 0px;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('photos/pozadia/pozadie_workshopy.png');
-        background-size: cover;
-        background-position: center top;
-        background-attachment: scroll;
-        opacity: 0.99; /* Nižšia priehľadnosť, aby neodvádzal pozornosť */
-        z-index: -1;
-        pointer-events: none;
-      }
-      
-      .content-wrapper {
-        position: relative;
-        z-index: 1;
-        background-color: rgba(0, 0, 0, 0.199);
-      }
-
-      .text-section-cena {
-        color: white;
-        text-align: center;
-        padding: 2rem 1rem;
-        max-width: 800px;
-        margin: 0 auto;
-        z-index: 10; /* zvýšenie z-index */
-        position: relative; /* aby z-index fungoval */
-      }
-
-      .text-section-cena h2 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        }
-
-      .text-section-cena p {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        margin-bottom: 1.2rem;
-      }
-
-      .text-section-cena .highlight {
-        font-weight: bold;
-        color: #ffd700; /* Gold/yellow text */
-        font-size: 1.2rem;
-      }
-
-      .info-button {
-        display: inline-block;
-        background-color: #680000 ;     /* Bright red */
-        color: #fff ;                   /* White text */
-        text-align: center;
-        padding: 0.5rem 1rem;
-        font-weight: 600;
-        text-decoration: none;
-        border-radius: 2px;
-        transition: background-color 0.3s ease !important;
-      }
-
-      .info-button:hover {
-        background-color: #a80000;     /* Darker on hover */
-      }
-      @media (max-width: 1080px) {
-        .content-wrapper {
-          background-color: rgba(0, 0, 0, 0.096);
-          padding: 0 15px;
-        }
-        
-        .schedule-card {
-          border-radius: 10px;
-        }
-        
-        .register-btn, .info-btn {
-          padding: 10px 15px;
-          font-size: 0.9rem;
-        }
-        .page-background {
-          background-image: url('photos/pozadia/pozadie_workshopy_mobile.png');
-          background-size: cover;
-          background-clip: scroll;
-        }
-        
-      }
-      @media (max-width: 1080px) {
-        
-        .header {
-            font-size: 2.1em !important;
-            padding: 18px 10px 10px 10px !important;
-            text-align: center !important;
-            word-break: break-word;
-            line-height: 1.15 !important;
-            width: 100% !important;
-        }
-        .header span {
-            font-size: 2.1em !important;
-            letter-spacing: 1px !important;
-            padding: 0 10px !important;
-            display: block !important;
-            width: 100% !important;
-        }
-        .header-container {
-            padding: 0 !important;
-            min-height: 90px !important;
-            height: auto !important;
-            width: 100% !important;
-        }
-        .content-wrapper {
-          background-color: rgba(0, 0, 0, 0.096);
-            padding: 0 2vw !important;
-        }
-        .text-section {
-          padding: 15px !important;
-          margin: 20px 10px !important;
-          font-size: 1em !important;
-        }
-        .text-section h2 {
-          font-size: 1.6rem !important;
-          padding: 0 2px !important;
-          text-align: left !important;
-        }
-        .map-container {
-          padding: 10px 0 !important;
-        }
-        .slovakia-map {
-          width: 100% !important;
-          height: auto !important;
-          max-width: 400px !important;
-          margin: 0 auto !important;
-          display: block !important;
-        }
-        .clickable-city {
-          font-size: 0.5rem !important;
-          padding: 2px 6px !important;
-        }
-        .schedule-table {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          background: transparent;
-          box-shadow: none;
-    }
-    
-    .schedule-table thead {
-      display: none;
-    }
-    
-    .schedule-table tbody,
-    .schedule-table tr {
-      display: flex;
-      flex-direction: column;
-      background: #1f1f1f;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-    }
-    
-    .schedule-table td {
-      display: block;
-      border: none;
-      padding: 0;
-      margin: 0;
-      background: none;
-      color: #333;
-    }
-    
-    .schedule-table td[data-label="Dátum"] {
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-align: center;
-      padding: 12px 10px 6px;
-      background: #1f1f1f;
-      color: #222;
-    }
-    
-    .schedule-table td[data-label="Obrázok"] img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    .schedule-table td[data-label="Stav"] {
-      text-align: center;
-      font-weight: bold;
-      color: #21e642;
-      padding: 8px;
-      background: #1f1f1f;
-    }
-    
-    .schedule-table .actions-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 14px;
-      background: #1f1f1f;
-      border-top: 1px solid #ddd;
-    }
-    
-    .register-btn {
-      background: #42a5f5;
-      color: #fff;
-      padding: 10px 14px;
-      font-size: 0.9rem;
-      border: none;
-      border-radius: 6px;
-      min-width: 45%;
-      text-align: center;
-    }
-    
-    .more-info-btn {
-      background: #6c757d;
-      color: #fff;
-      padding: 10px 14px;
-      font-size: 0.9rem;
-      border: none;
-      border-radius: 6px;
-      min-width: 45%;
-      text-align: center;
-    }
-      
-        .registered-count {
-          font-size: 1rem !important;
-          margin-bottom: 4px;
-        }
-        footer {
-          font-size: 0.95rem !important;
-          text-align: center !important;
-          padding: 12px 0 !important;
-        }
-        .schedule-table td[data-label="Mesto"] strong {
-          font-size: 1em;
-          white-space: normal;
-          word-break: break-word;
-          max-width: 180px;
-          display: inline-block;
-          color: #ffffff;
-        }
-        .schedule-table td[data-label="Dátum"] {
-          font-size: 1em;
-          white-space: normal;
-          word-break: break-word;
-          max-width: 180px;
-          display: inline-block;
-          color: #ffffff;
-        }
-        
-      }
-    </style>
 </head>
 
 <body>
@@ -443,22 +41,26 @@
         <div class="header">
             <h1 class="workshop-title">Matus TCT</h1>
             <h2 class="workshop-subtitle">Tricking Workshop</h2>
+            <div class="title-underline" aria-hidden="true"></div> <!-- pridaná jemná čiara pod nadpisom -->
         </div>
 
         <!-- Ostatný obsah zostáva rovnaký... -->
         <div class="text-section">
             <h2><img src="photos/ikonky/info_ikona.png" alt="Info" style="height:1.5em;vertical-align:-0.35em;margin-right:8px;">Čo je Tricking Workshop?</h2>
             <p>
-                Akcia, na ktorej ti otvoríme dvere do sveta <strong>Trickingu</strong> a pre tých skúsenejších poradíme ako sa stať ešte lepšími. 
-                Naučíme ta základy trickingu a ako pracovať so strachom, čo využiješ vo svojom tréningu. 
-                Taktiež bude možnosť si zakúpiť exkluzívny <strong>Matus TCT merch</strong>, ktorý sa bude predávať iba na workshopoch.
+                Akcia, na ktorej ti otvoríme dvere do sveta <strong>Trickingu</strong> a pre tých skúsenejších poradíme ako sa stať ešte lepšími.
             </p>
+            <p><strong>Naučíme ťa:</strong></p>
+            <ul>
+                <li>základy trickingu</li>
+                <li>posilovať a stretchovať</li>
+                <li>prekonávať strach</li>
+                <li>pracovať so stresom</li>
+            </ul>
             <p>
-                Tréning prebieha podľa bezpečnej metodiky a je vhodný pre úplných začiatočníkov aj pokročilých. Nezáleží na výške, váhe ani skúsenostiach - hlavná je chuť sa hýbať!
+                Tréning prebieha podľa bezpečnej metodiky a je vhodný pre úplných začiatočníkov aj pokročilých. Nezáleží na výške, váhe ani skúsenostiach !
             </p>
-            <p>
-                <strong>Workshop je určený pre účastníkov od 6 rokov.</strong>
-            </p>
+            
         </div>
 
         <div class="text-section">
@@ -566,11 +168,11 @@
             <p><strong>12:00 - Začiatok registrácie</strong> (prineste si podpísanú prihlášku)</p>
             <ul>
                 <li>možnosť zakúpiť si Matus TCT merch</li>
-                <li>spoločné fotenie</li>
                 <li>Tricking vystúpenie</li>
                 <li>tréning Tricking základov v skupinách</li>
                 <li>nácvik sált s istením</li>
                 <li>posilňovacie cvičenia s vlastnou váhou na spevnenie tela</li>
+                <li>spoločné fotenie</li>
             </ul>
             <p><strong>16:00 - Ukončenie workshopu</strong></p>
         </div>
@@ -597,6 +199,9 @@
             </p>
             <p>
                 V prípade zabudnutia prihlášky je možné ju podpísať priamo na mieste.
+            </p>
+            <p>
+                <strong>Workshop je určený pre účastníkov od 6 rokov.</strong>
             </p>
         </div>
         <div class="text-section-cena">
@@ -697,6 +302,22 @@
                 heading.style.animation = `fadeIn 0.5s ease-out ${index * 0.2 + 0.3}s forwards`;
                 heading.style.opacity = '0';
             });
+
+            // Pozorovateľ pre title-underline: spusti animáciu iba keď header vstúpi do viewportu, len raz
+            const titleUnderline = document.querySelector('.title-underline');
+            const headerEl = document.querySelector('.header');
+            if (titleUnderline && headerEl) {
+                const headerObserver = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            titleUnderline.classList.add('active'); // spustí underlineGrow + shimmer raz
+                            obs.unobserve(entry.target); // zabezpečí, že sa spustí len raz
+                        }
+                    });
+                }, { threshold: 0.5 }); // prah upraviteľný podľa potreby
+
+                headerObserver.observe(headerEl);
+            }
         });
 
         // Efekt pre tlačidlá miest
