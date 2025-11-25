@@ -6,6 +6,7 @@ body {
     font-family: 'Oswald', sans-serif;
     color: #ffffff;
     overflow-x: hidden;
+    position: relative;
 }
 
 /* Top Bar */
@@ -23,12 +24,14 @@ body {
     padding: 0 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
+
 .text-section h2 {
     font-size: 2.5rem;
     font-weight: 750;
     color: #ffffff;
     margin-bottom: 20px;
 }
+
 /* Header Container */
 .header-container {
     position: relative;
@@ -130,7 +133,7 @@ body {
 
 /* Content Sections */
 .text-section {
-     max-width: 850px;
+    max-width: 850px;
     margin: 50px auto;
     padding: 30px;
     background-color: rgba(255, 255, 255, 0.048);
@@ -202,19 +205,20 @@ body {
     box-shadow: 0 0 15px rgba(5, 0, 0, 0.8);
 }
 
-/* Buttons */
+/* Buttons - consolidated */
 .register-btn {
     padding: 12px 24px;
     font-size: 1em;
     border-radius: 8px;
-    background: linear-gradient(135deg, #020000, #363636);
-    color: white;
+    background: #42a5f5;
+    color: #fff;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+    font-weight: 600;
 }
 
 .register-btn::before {
@@ -235,6 +239,17 @@ body {
 
 .register-btn:hover::before {
     left: 100%;
+}
+
+.info-btn {
+    background: #680000;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
 /* New: subtle secondary button for "Viac info o akcii" */
@@ -261,31 +276,99 @@ body {
     justify-content: center;
 }
 
-/* Table */
+/* Table / Schedule (consolidated) */
 .schedule-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    text-align: center;
-    background: rgba(255,255,255,0.85);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 30px 0;
+    font-size: 1.1rem;
+    background: rgba(255,255,255,0.07);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(49,0,0,0.10);
 }
 
 .schedule-table th, .schedule-table td {
-    border: 1px solid #000000;
-    padding: 10px;
+    padding: 14px 10px;
+    border: none;
 }
 
-.schedule-table tr.full td {
-    background-color: rgba(44, 43, 43, 0.4);
-    color: #000000;
+.schedule-table th {
+    background: #000000;
+    color: #fff;
+    font-weight: 700;
 }
 
-.schedule-table button[disabled] {
-    background: #777;
-    cursor: not-allowed;
-    box-shadow: none;
+.schedule-table td {
+    background: rgba(0,0,0,0.04);
+    color: #ffffff;
+}
+
+.schedule-table tbody tr {
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.schedule-table tbody tr:hover {
+    background: #ffe5e5;
+    box-shadow: 0 2px 12px rgba(104,0,0,0.10);
+}
+
+.schedule-table td a {
+    padding: 7px 18px;
+    border-radius: 8px;
+    background: #fff6f6;
+    color: #2b0000;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.schedule-table td a:hover {
+    background: #2b0000;
+    color: #fff;
+}
+
+/* Schedule cards */
+.schedule-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.schedule-date {
+    background: #2b0000;
+    color: white;
+    padding: 12px 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.schedule-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.schedule-status {
+    padding: 12px 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #01c020;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.schedule-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #eee;
 }
 
 /* Footer */
@@ -319,7 +402,7 @@ footer p {
     margin-top: 15px;
 }
 
-/* Background */
+/* Background & page wrapper (single definitions) */
 .main-background {
     position: fixed;
     top: 0;
@@ -335,10 +418,70 @@ footer p {
     background-attachment: fixed;
 }
 
+.page-background {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('photos/pozadia/pozadie_workshopy.png');
+    background-size: cover;
+    background-position: center top;
+    background-attachment: scroll;
+    opacity: 0.99;
+    z-index: -1;
+    pointer-events: none;
+}
+
 .content-wrapper {
     padding-top: 60px;
     position: relative;
     z-index: 1;
+    background-color: rgba(0, 0, 0, 0.199);
+}
+
+/* Price section */
+.text-section-cena {
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+}
+
+.text-section-cena h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.text-section-cena p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+.text-section-cena .highlight {
+    font-weight: bold;
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+.info-button {
+    display: inline-block;
+    background-color: #680000;
+    color: #fff;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.3s ease !important;
+}
+
+.info-button:hover {
+    background-color: #a80000;
 }
 
 /* Animations */
@@ -364,7 +507,7 @@ footer p {
     100% { background-position: 0% 50%; }
 }
 
-/* Jemná čiara pod nadpisom - teraz bez automatickej animácie */
+/* Title underline */
 .title-underline {
     width: 48%;
     height: 2px;
@@ -373,17 +516,15 @@ footer p {
     border-radius: 2px;
     position: relative;
     overflow: hidden;
-    transform-origin: center center; /* rozbalenie zo stredu */
+    transform-origin: center center;
     transform: scaleX(0);
     opacity: 1;
 }
 
-/* Animácia spustená len keď sa pridá trieda .active (pri scrollovaní) */
 .title-underline.active {
     animation: underlineGrow 0.8s cubic-bezier(.2,.9,.2,1) 0s forwards;
 }
 
-/* shimmer element je neviditeľný, kým nie je aktivovaný */
 .title-underline::before {
     content: "";
     position: absolute;
@@ -397,22 +538,11 @@ footer p {
     opacity: 0;
 }
 
-/* shimmer sa spustí iba raz po aktivácii */
 .title-underline.active::before {
     opacity: 0.95;
     animation: shimmer 1s ease-in-out 0.25s 1 forwards;
 }
 
-/* mierna úprava pre mobilné zobrazenie */
-@media (max-width: 480px) {
-    .title-underline {
-        width: 70%;
-        margin: 12px auto 0;
-        height: 1.6px;
-    }
-}
-
-/* kľúčové snímky animácií */
 @keyframes underlineGrow {
     from { transform: scaleX(0); opacity: 0.0; }
     to   { transform: scaleX(1); opacity: 1; }
@@ -428,7 +558,7 @@ footer p {
 @media (max-width: 1024px) {
     .workshop-title, .header-title {
         font-size: 4rem;
-        margin: 18px 0
+        margin: 18px 0;
     }
     .workshop-subtitle {
         font-size: 3rem;
@@ -439,7 +569,7 @@ footer p {
     .workshop-title, .header-title {
         font-size: 3rem;
         line-height: 1.1;
-        margin: 18px 0
+        margin: 18px 0;
     }
     .workshop-subtitle {
         font-size: 2.8rem;
@@ -447,10 +577,9 @@ footer p {
     .header-container {
         min-height: 50vh;
     }
-    
+
     /* Mobile Top Bar */
     body {
-        background-color: #000000;
         padding-top: 40px;
     }
     .top-bar {
@@ -464,25 +593,23 @@ footer p {
         padding: 0 15px;
         background: rgba(0, 0, 0, 0.9);
         justify-content: space-between;
-        
     }
-    
+
     .logo-container {
-        margin-left: -160px; /* logo ide úplne vľavo */
+        margin-left: -160px;
     }
 
     .logo-img {
-        transform:scale(1.6); /* mierne zväčšenie loga */
-        height: 50px; /* zväčšenie loga */
+        transform: scale(1.6);
+        height: 50px;
     }
     .logo-img:hover{
-        transform:scale(1.7); 
+        transform: scale(1.7);
     }
     .social-icons {
         display: flex;
         gap: 12px;
-        margin-left: 250px; /* ikonky idú úplne vpravo */
-
+        margin-left: 250px;
         align-items: center;
     }
 
@@ -490,13 +617,32 @@ footer p {
         width: 24px;
         height: 24px;
     }
-    
+
     .header-container,
     .content-wrapper {
         background-color: #000000;
-        padding-top: 30px; /* alebo viac, podľa potreby */
+        padding-top: 30px;
     }
 
+    .content-wrapper {
+        background-color: rgba(0, 0, 0, 0.096);
+        padding: 0 15px;
+    }
+
+    .schedule-card {
+        border-radius: 10px;
+    }
+
+    .register-btn, .info-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .page-background {
+        background-image: url('photos/pozadia/pozadie_workshopy_mobile.png');
+        background-size: cover;
+        background-clip: scroll;
+    }
 }
 
 @media (max-width: 480px) {
@@ -504,22 +650,22 @@ footer p {
         font-size: 2.2rem;
         line-height: 1.15;
         padding: 0 10px;
-        margin: 18px 0
+        margin: 18px 0;
     }
     .workshop-subtitle {
         font-size: 1.8rem;
     }
-    
+
     .logo-img {
         height: 28px;
     }
-    
+
     .social-icon {
         margin-left: auto;
         width: 22px;
         height: 22px;
     }
-    
+
     .top-bar {
         padding: 0 10px;
     }
@@ -536,16 +682,16 @@ footer p {
 
 /* Touch Device Adjustments */
 @media (hover: none) {
-    .clickable-city, 
-    .register-btn, 
-    .social-icon, 
+    .clickable-city,
+    .register-btn,
+    .social-icon,
     .logo-img {
         animation: none !important;
     }
-    
-    .clickable-city:hover, 
-    .register-btn:hover, 
-    .social-icon:hover, 
+
+    .clickable-city:hover,
+    .register-btn:hover,
+    .social-icon:hover,
     .logo-img:hover {
         transform: none !important;
     }
@@ -556,7 +702,7 @@ footer p {
     .header-container {
         height: 60vh;
     }
-    
+
     .header-background {
         transform: scale(1.3);
     }
@@ -566,407 +712,172 @@ footer p {
     .header-container {
         height: 100vh;
     }
-    
+
     .header {
         font-size: 3em;
     }
 }
-/* Pôvodné štýly... */
-       .schedule-table {
-          width: 100%;
-          border-collapse: separate;
-          border-spacing: 0;
-          margin: 30px 0;
-          font-size: 1.1rem;
-          background: rgba(255,255,255,0.07);
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 4px 24px rgba(49,0,0,0.10);
-        }
-        
-        .schedule-table th, 
-        .schedule-table td {
-          padding: 14px 10px;
-          border: none;
-        }
-        
-        .schedule-table th {
-          background: #000000;
-          color: #fff;
-          font-weight: 700;
-        }
-        
-        .schedule-table td {
-          background: rgba(0,0,0,0.04);
-          color: #ffffff;
-        }
-        
-        .schedule-table .actions-row {
-          display: none; /* Skryjeme actions-row na desktope */
-        }
-      .schedule-table tbody tr {
-        transition: background 0.2s, box-shadow 0.2s;
-      }
-      .schedule-table tbody tr:hover {
-        background: #ffe5e5;
-        box-shadow: 0 2px 12px rgba(104,0,0,0.10);
-      }
-      .schedule-table td a {
-        padding: 7px 18px;
-        border-radius: 8px;
-        background: #fff6f6;
-        color: #2b0000;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background 0.2s, color 0.2s;
-      }
-      .schedule-table td a:hover {
-        background: #2b0000;
-        color: #fff;
-      }
-      .register-btn {
-        padding: 8px 22px;
-        border-radius: 8px;
-        background: #42a5f5;
-        color: #fff;
-        font-weight: 600;
-        border: none;
-        cursor: pointer;
-        transition: background 0.2s, transform 0.2s;
-      }
-      .register-btn:hover {
-        background: #3d0404;
-        transform: translateY(-2px);
-      }
-      .registered-count {
-        font-weight: 700;
-        color: #222;
-        letter-spacing: 1px;
-      }
-      .full .registered-count {
-        color: #b30000;
-        font-weight: 700;
-      }
-      .schedule-container {
-        margin: 30px 0;
-      }
 
-      .schedule-card {
-        background: rgba(255, 255, 255, 0.9);
+/* Mobile layout for schedule table - consolidated transformations */
+@media (max-width: 1080px) {
+    .header {
+        font-size: 2.1em !important;
+        padding: 18px 10px 10px 10px !important;
+        text-align: center !important;
+        word-break: break-word;
+        line-height: 1.15 !important;
+        width: 100% !important;
+    }
+    .header span {
+        font-size: 2.1em !important;
+        letter-spacing: 1px !important;
+        padding: 0 10px !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    .header-container {
+        padding: 0 !important;
+        min-height: 90px !important;
+        height: auto !important;
+        width: 100% !important;
+    }
+    .content-wrapper {
+        background-color: rgba(0, 0, 0, 0.096);
+        padding: 0 2vw !important;
+    }
+    .text-section {
+        padding: 15px !important;
+        margin: 20px 10px !important;
+        font-size: 1em !important;
+    }
+    .text-section h2 {
+        font-size: 1.6rem !important;
+        padding: 0 2px !important;
+        text-align: left !important;
+    }
+    .map-container {
+        padding: 10px 0 !important;
+    }
+    .slovakia-map {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 400px !important;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+    .clickable-city {
+        font-size: 0.5rem !important;
+        padding: 2px 6px !important;
+    }
+    .schedule-table {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .schedule-table thead {
+        display: none;
+    }
+
+    .schedule-table tbody,
+    .schedule-table tr {
+        display: flex;
+        flex-direction: column;
+        background: #1f1f1f;
         border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         overflow: hidden;
-        margin-bottom: 20px;
-      }
+    }
 
-      .schedule-date {
-        background: #2b0000;
-        color: white;
-        padding: 12px 15px;
-        font-size: 1.2rem;
+    .schedule-table td {
+        display: block;
+        border: none;
+        padding: 0;
+        margin: 0;
+        background: none;
+        color: #333;
+    }
+
+    .schedule-table td[data-label="Dátum"] {
+        font-size: 1.1rem;
         font-weight: bold;
         text-align: center;
-      }
+        padding: 12px 10px 6px;
+        background: #1f1f1f;
+        color: #222;
+    }
 
-      .schedule-image img {
+    .schedule-table td[data-label="Obrázok"] img {
         width: 100%;
         height: auto;
         display: block;
-        border-top: 1px solid #eee;
-        border-bottom: 1px solid #eee;
-      }
+    }
 
-      .schedule-status {
-        padding: 12px 15px;
+    .schedule-table td[data-label="Stav"] {
         text-align: center;
         font-weight: bold;
-        color: #01c020;
-        background: rgba(255, 255, 255, 0.8);
-      }
+        color: #21e642;
+        padding: 8px;
+        background: #1f1f1f;
+    }
 
-      .schedule-actions {
+    .schedule-table .actions-row {
         display: flex;
         justify-content: space-between;
-        padding: 15px;
-        background: white;
-        border-top: 1px solid #eee;
-      }
+        align-items: center;
+        padding: 12px 14px;
+        background: #1f1f1f;
+        border-top: 1px solid #ddd;
+    }
 
-      .register-btn, .info-btn {
-        padding: 12px 20px;
+    .register-btn {
+        background: #42a5f5;
+        color: #fff;
+        padding: 10px 14px;
+        font-size: 0.9rem;
         border: none;
         border-radius: 6px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s;
-        flex: 1;
-        margin: 0 5px;
-      }
-
-      .register-btn {
-        background: #42a5f5;
-        color: white;
-      }
-
-      .info-btn {
-        background: #680000;
-        color: white;
-      }
-
-      .register-btn:hover, .info-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-      /* Nové štýly pre pozadie */
-      body {
-        position: relative;
-        background-color: #f9f9f9;
-      }
-      
-      .page-background {
-        position: absolute;
-        top: 0px;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('photos/pozadia/pozadie_workshopy.png');
-        background-size: cover;
-        background-position: center top;
-        background-attachment: scroll;
-        opacity: 0.99; /* Nižšia priehľadnosť, aby neodvádzal pozornosť */
-        z-index: -1;
-        pointer-events: none;
-      }
-      
-      .content-wrapper {
-        position: relative;
-        z-index: 1;
-        background-color: rgba(0, 0, 0, 0.199);
-      }
-
-      .text-section-cena {
-        color: white;
+        min-width: 45%;
         text-align: center;
-        padding: 2rem 1rem;
-        max-width: 800px;
-        margin: 0 auto;
-        z-index: 10; /* zvýšenie z-index */
-        position: relative; /* aby z-index fungoval */
-      }
+    }
 
-      .text-section-cena h2 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        }
-
-      .text-section-cena p {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        margin-bottom: 1.2rem;
-      }
-
-      .text-section-cena .highlight {
-        font-weight: bold;
-        color: #ffd700; /* Gold/yellow text */
-        font-size: 1.2rem;
-      }
-
-      .info-button {
-        display: inline-block;
-        background-color: #3b0000 ;     /* Bright red */
-        color: #fff ;                   /* White text */
-        text-align: center;
-        padding: 0.5rem 1rem;
-        font-weight: 600;
-        text-decoration: none;
-        border-radius: 2px;
-        transition: background-color 0.3s ease !important;
-      }
-
-      .info-button:hover {
-        background-color: #a80000;     /* Darker on hover */
-      }
-      @media (max-width: 1080px) {
-        .content-wrapper {
-          background-color: rgba(0, 0, 0, 0.096);
-          padding: 0 15px;
-        }
-        
-        .schedule-card {
-          border-radius: 10px;
-        }
-        
-        .register-btn, .info-btn {
-          padding: 10px 15px;
-          font-size: 0.9rem;
-        }
-        .page-background {
-          background-image: url('photos/pozadia/pozadie_workshopy_mobile.png');
-          background-size: cover;
-          background-clip: scroll;
-        }
-        
-      }
-      @media (max-width: 1080px) {
-        
-        .header {
-            font-size: 2.1em !important;
-            padding: 18px 10px 10px 10px !important;
-            text-align: center !important;
-            word-break: break-word;
-            line-height: 1.15 !important;
-            width: 100% !important;
-        }
-        .header span {
-            font-size: 2.1em !important;
-            letter-spacing: 1px !important;
-            padding: 0 10px !important;
-            display: block !important;
-            width: 100% !important;
-        }
-        .header-container {
-            padding: 0 !important;
-            min-height: 90px !important;
-            height: auto !important;
-            width: 100% !important;
-        }
-        .content-wrapper {
-          background-color: rgba(0, 0, 0, 0.096);
-            padding: 0 2vw !important;
-        }
-        .text-section {
-          padding: 15px !important;
-          margin: 20px 10px !important;
-          font-size: 1em !important;
-        }
-        .text-section h2 {
-          font-size: 1.6rem !important;
-          padding: 0 2px !important;
-          text-align: left !important;
-        }
-        .map-container {
-          padding: 10px 0 !important;
-        }
-        .slovakia-map {
-          width: 100% !important;
-          height: auto !important;
-          max-width: 400px !important;
-          margin: 0 auto !important;
-          display: block !important;
-        }
-        .clickable-city {
-          font-size: 0.5rem !important;
-          padding: 2px 6px !important;
-        }
-        .schedule-table {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          background: transparent;
-          box-shadow: none;
-    }
-    
-    .schedule-table thead {
-      display: none;
-    }
-    
-    .schedule-table tbody,
-    .schedule-table tr {
-      display: flex;
-      flex-direction: column;
-      background: #1f1f1f;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-    }
-    
-    .schedule-table td {
-      display: block;
-      border: none;
-      padding: 0;
-      margin: 0;
-      background: none;
-      color: #333;
-    }
-    
-    .schedule-table td[data-label="Dátum"] {
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-align: center;
-      padding: 12px 10px 6px;
-      background: #1f1f1f;
-      color: #222;
-    }
-    
-    .schedule-table td[data-label="Obrázok"] img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    .schedule-table td[data-label="Stav"] {
-      text-align: center;
-      font-weight: bold;
-      color: #21e642;
-      padding: 8px;
-      background: #1f1f1f;
-    }
-    
-    .schedule-table .actions-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 14px;
-      background: #1f1f1f;
-      border-top: 1px solid #ddd;
-    }
-    
-    .register-btn {
-      background: #42a5f5;
-      color: #fff;
-      padding: 10px 14px;
-      font-size: 0.9rem;
-      border: none;
-      border-radius: 6px;
-      min-width: 45%;
-      text-align: center;
-    }
-    
     .more-info-btn {
-      background: #3b0000;
-      color: #fff;
-      padding: 10px 14px;
-      font-size: 0.9rem;
-      border: none;
-      border-radius: 6px;
-      min-width: 45%;
-      text-align: center;
+        background: #6c757d;
+        color: #fff;
+        padding: 10px 14px;
+        font-size: 0.9rem;
+        border: none;
+        border-radius: 6px;
+        min-width: 45%;
+        text-align: center;
     }
-      
-        .registered-count {
-          font-size: 1rem !important;
-          margin-bottom: 4px;
-        }
-        footer {
-          font-size: 0.95rem !important;
-          text-align: center !important;
-          padding: 12px 0 !important;
-        }
-        .schedule-table td[data-label="Mesto"] strong {
-          font-size: 1em;
-          white-space: normal;
-          word-break: break-word;
-          max-width: 180px;
-          display: inline-block;
-          color: #ffffff;
-        }
-        .schedule-table td[data-label="Dátum"] {
-          font-size: 1em;
-          white-space: normal;
-          word-break: break-word;
-          max-width: 180px;
-          display: inline-block;
-          color: #ffffff;
-        }
-        
-      }
+
+    .registered-count {
+        font-size: 1rem !important;
+        margin-bottom: 4px;
+    }
+    footer {
+        font-size: 0.95rem !important;
+        text-align: center !important;
+        padding: 12px 0 !important;
+    }
+    .schedule-table td[data-label="Mesto"] strong {
+        font-size: 1em;
+        white-space: normal;
+        word-break: break-word;
+        max-width: 180px;
+        display: inline-block;
+        color: #ffffff;
+    }
+    .schedule-table td[data-label="Dátum"] {
+        font-size: 1em;
+        white-space: normal;
+        word-break: break-word;
+        max-width: 180px;
+        display: inline-block;
+        color: #ffffff;
+    }
+}
+
