@@ -18,6 +18,8 @@
       color: #fff;
       font-family: 'Oswald', sans-serif;
       overflow-x: hidden;
+      padding-top: 80px; /* posun obsahu pod fixed header */
+      -webkit-font-smoothing:antialiased;
     }
 
     /* HEADER */
@@ -25,20 +27,30 @@
       position: fixed;
       top: 0;
       left: 0;
+      right: 0;
       width: 100%;
       height: 80px;
       background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, transparent 100%);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 40px;
-      z-index: 1000;
+      padding: 0 20px;
+      z-index: 9999; /* vyšší než ostatné elementy */
       transition: all 0.3s ease;
+    }
+    header img {
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
     }
 
     header.scrolled {
-      background: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.096);
+      backdrop-filter: blur(2px);
       height: 70px;
     }
 
@@ -49,11 +61,8 @@
     nav a {
       text-decoration: none;
       color: #fff;
-      margin: 0 20px;
+      margin: 0 15px;
       font-weight: 400;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
       transition: all 0.3s ease;
       position: relative;
     }
@@ -403,34 +412,24 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* FOOTER */
     footer {
-      background: #0a0a0a;
+      background: #111;
       text-align: center;
-      padding: 40px 20px;
-      border-top: 1px solid #222;
+      padding: 20px;
+      font-size: 0.9rem;
     }
-
-    .footer-content {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 20px;
-    }
-
-    .footer-links a {
-      color: #ccc;
+    
+    .footer-link {
+      color: #3498db;
       text-decoration: none;
-      transition: color 0.3s ease;
+      margin-top: 10px;
+      display: inline-block;
+      transition: color 0.3s;
     }
-
-    .footer-links a:hover {
-      color: #ff4444;
+    
+    .footer-link:hover {
+      color: #2980b9;
+      text-decoration: underline;
     }
 
     .copyright {
@@ -441,13 +440,18 @@
     /* RESPONSIVE */
     @media (max-width: 768px) {
       header {
-        padding: 0 20px;
-        height: 70px;
+        padding: 0 16px;
+        height: 64px; /* menší header na mobile */
       }
+      body { padding-top: 64px; } /* prispôsobiť posun obsahu */
 
+      /* zobrazíme navigáciu na mobile (môžeš upraviť štýl podľa potreby) */
       nav {
-        display: none;
+        display: flex;
+        gap: 12px;
+        align-items: center;
       }
+      nav a { font-size: 0.95rem; margin: 0 8px; }
 
       .hero h1 {
         font-size: 3rem;
@@ -494,15 +498,20 @@
   <!-- Header -->
   <header>
     <a href="../index.html" class="logo">
-      <img src="../photos/TCT logo.png" alt="Matus TCT" class="logo-img" >
+      <img src="../photos/TCT logo.png" alt="Matus TCT" class="logo-img">
     </a>
+    <nav>
+      <a href="../tricking-workshop.html">Workshopy</a>
+      <a href="../index.html">Domov</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h1>MATUS TCT</h1>
-      <p>Preskúmajte úžasné momenty z našich workshopov. Každá fotka rozpráva príbeh inšpirácie a tvorivosti.</p>
+      <h1>TCT</h1>
+      <h1>FOTOGALÉRIA</h1>
     </div>
     <div class="scroll-indicator">
       <i class="fas fa-chevron-down"></i>
@@ -545,17 +554,9 @@
   </div>
 
   <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="#gallery-section">Galéria</a>
-        <a href="#about">O nás</a>
-        <a href="#contact">Kontakt</a>
-      </div>
-      <div class="copyright">
-        &copy; 2024 Workshop Fotogaléria. Všetky práva vyhradené.
-      </div>
-    </div>
+  <footer id="kontakt">
+    <p>© 2025 Matus TCT | Kontakt: matustct@gmail.com</p>
+    <a href="../obchodne-podmienky.pdf" class="footer-link">Obchodné podmienky</a>
   </footer>
 
   <script>
@@ -699,17 +700,17 @@
       }
     }
 
-    // Smooth scrolling for navigation
+    // Smooth scrolling for internal anchors; allow normal navigation for external/relative links
     document.querySelectorAll('nav a, .footer-links a').forEach(link => {
       link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        if(targetId.startsWith('#')) {
-          const targetElement = document.querySelector(targetId);
-          if(targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-          }
+        const targetHref = link.getAttribute('href') || '';
+        if (targetHref.startsWith('#')) {
+          e.preventDefault();
+          const targetElement = document.querySelector(targetHref);
+          if(targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+          return;
         }
+        // If href is anchor on same page but with page prefix (../index.html#video), let browser handle navigation
       });
     });
 
