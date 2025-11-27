@@ -338,28 +338,6 @@
       color: #ccc;
     }
 
-    .lb .close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: #fff;
-      font-size: 2rem;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-      z-index: 2001;
-    }
-
-    .lb .close:hover {
-      background: rgba(255, 68, 68, 0.8);
-      transform: rotate(90deg);
-    }
-
     .lb .controls {
       position: absolute;
       top: 50%;
@@ -533,9 +511,6 @@
 
   <!-- Lightbox -->
   <div id="lightbox" class="lb" role="dialog" aria-modal="true" aria-label="Zväčšený obrázok">
-    <button class="close" id="lbClose" title="Zavrieť">
-      <i class="fas fa-times"></i>
-    </button>
     <div class="lb-content">
       <img id="lbImg" alt="">
       <div class="lb-info">
@@ -569,7 +544,6 @@
     const lbImg = document.getElementById('lbImg');
     const lbTitle = document.getElementById('lbTitle');
     const lbCounter = document.getElementById('lbCounter');
-    const lbClose = document.getElementById('lbClose');
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
 
@@ -650,7 +624,6 @@
     }
 
     // Event listeners
-    lbClose.addEventListener('click', closeLightbox);
     nextBtn.addEventListener('click', () => showNext(1));
     prevBtn.addEventListener('click', () => showNext(-1));
     
