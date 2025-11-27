@@ -368,6 +368,27 @@
       transform: scale(1.1);
     }
 
+    /* Close button (X) v pravom hornom rohu lightboxu */
+    .lb .close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(255,255,255,0.06);
+      border: none;
+      color: #fff;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      cursor: pointer;
+      z-index: 2002;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+    .lb .close:hover { transform: rotate(90deg); background: rgba(255,68,68,0.9); color:#fff; }
+
     .loading {
       text-align: center;
       padding: 60px 20px;
@@ -413,6 +434,21 @@
     .copyright {
       color: #666;
       font-size: 0.9rem;
+    }
+
+    /* Mobilné / touch vylepšenia: povoliť plynulé natívne scrollovanie potiahnutím */
+    .gallery {
+      -webkit-overflow-scrolling: touch; /* plynulé scrollovanie na iOS */
+      touch-action: pan-y; /* povoliť vertikálne ťahanie (scroll) */
+      -ms-touch-action: pan-y;
+    }
+    
+    /* Fotky nechajú prebehnúť vertikálne gesto (nezachytávajú ho) */
+    .photo,
+    .photo img {
+      touch-action: pan-y;
+      -webkit-user-drag: none; /* zabráni ťahaniu obrázka ako drag */
+      user-select: none;
     }
 
     /* RESPONSIVE */
@@ -470,6 +506,9 @@
         border-radius: 10px;
       }
     }
+
+    /* Skryť header počas prehliadania lightboxu */
+    body.lightbox-open header { display: none !important; }
   </style>
 </head>
 <body>
@@ -511,6 +550,10 @@
 
   <!-- Lightbox -->
   <div id="lightbox" class="lb" role="dialog" aria-modal="true" aria-label="Zväčšený obrázok">
+    <button class="close" id="lbClose" title="Zavrieť">
+      <i class="fas fa-times" aria-hidden="true"></i>
+      <span class="sr-only" style="position:absolute;left:-9999px;">Zavrieť</span>
+    </button>
     <div class="lb-content">
       <img id="lbImg" alt="">
       <div class="lb-info">
@@ -544,6 +587,7 @@
     const lbImg = document.getElementById('lbImg');
     const lbTitle = document.getElementById('lbTitle');
     const lbCounter = document.getElementById('lbCounter');
+    const lbClose = document.getElementById('lbClose'); // <- znovu pridané tlačidlo X
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
 
@@ -605,12 +649,14 @@
       lbTitle.textContent = p.title || 'Fotka';
       lbCounter.textContent = `${currentIndex + 1} / ${photos.length}`;
       lb.classList.add('visible');
+      document.body.classList.add('lightbox-open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox(){ 
       lb.classList.remove('visible'); 
       lbImg.src = '';
+      document.body.classList.remove('lightbox-open');
       document.body.style.overflow = 'auto';
     }
 
@@ -624,6 +670,7 @@
     }
 
     // Event listeners
+    if (lbClose) lbClose.addEventListener('click', closeLightbox);
     nextBtn.addEventListener('click', () => showNext(1));
     prevBtn.addEventListener('click', () => showNext(-1));
     
