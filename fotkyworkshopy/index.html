@@ -42,17 +42,9 @@
       height: 70px;
     }
 
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-      letter-spacing: 2px;
-    }
+    .logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
 
-    .logo span {
-      color: #ff4444;
-    }
+    .logo-img { height:56px; width:auto; display:block; }
 
     nav a {
       text-decoration: none;
@@ -271,10 +263,8 @@
       color: #fff;
     }
 
-    .photo-size {
-      font-size: 0.9rem;
-      color: #ccc;
-    }
+    /* skryť veľkosť fotky (nebudeme ju zobrazovať) */
+    .photo-size { display: none !important; }
 
     /* ENHANCED LIGHTBOX */
     .lb {
@@ -503,18 +493,15 @@
 <body>
   <!-- Header -->
   <header>
-    <a href="#" class="logo">GALÉRIA<span>WORKSHOP</span></a>
-    <nav>
-      <a href="#gallery-section">Fotky</a>
-      <a href="#about">O Workshopoch</a>
-      <a href="#contact">Kontakt</a>
-    </nav>
+    <a href="../index.html" class="logo">
+      <img src="../photos/TCT logo.png" alt="Matus TCT" class="logo-img" >
+    </a>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h1>WORKSHOP FOTOGALÉRIA</h1>
+      <h1>MATUS TCT</h1>
       <p>Preskúmajte úžasné momenty z našich workshopov. Každá fotka rozpráva príbeh inšpirácie a tvorivosti.</p>
     </div>
     <div class="scroll-indicator">
@@ -623,12 +610,8 @@
         title.className = 'photo-title';
         title.textContent = p.title || 'Fotka';
 
-        const size = document.createElement('div');
-        size.className = 'photo-size';
-        size.textContent = p.size || '';
-
+        // už nepridávame element so šírkou/veľkosťou - skrytý cez CSS
         info.appendChild(title);
-        info.appendChild(size);
         overlay.appendChild(info);
         photoDiv.appendChild(img);
         photoDiv.appendChild(overlay);
