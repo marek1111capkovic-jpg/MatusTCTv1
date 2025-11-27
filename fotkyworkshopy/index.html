@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fotky Workshopy — Galéria</title>
+  <style>
+    /* jednoduchá responzívna masonry galéria */
+    body { font-family: system-ui, Arial; margin:0; background:#111; color:#eee; }
+    header { padding:1rem; text-align:center; background:#0d0d0d; border-bottom:1px solid #222; }
+    .desc { max-width:900px; margin:0.5rem auto 1.2rem; color:#bbb; text-align:center; }
+
+    .gallery {
+      column-count: 1;
+      column-gap: 1rem;
+      padding: 1rem;
+      max-width:1200px;
+      margin: 0 auto 4rem;
+    }
+    @media (min-width:600px){ .gallery { column-count: 2; } }
+    @media (min-width:900px){ .gallery { column-count: 3; } }
+    @media (min-width:1300px){ .gallery { column-count: 4; } }
+
+    .photo {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #222;
+      cursor: zoom-in;
+    }
+    .photo img { width:100%; height:auto; display:block; vertical-align:middle; transition: transform .25s ease; }
+    .photo:hover img { transform: scale(1.03); }
+
+    .caption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: .45rem .6rem;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 60%);
+      color:#fff; font-size:0.9rem;
+    }
+
+    /* lightbox */
+    .lb {
+      position: fixed; inset:0; display:none; align-items:center; justify-content:center;
+      background: rgba(0,0,0,0.85); z-index:1000;
+    }
+    .lb.visible { display:flex; }
+    .lb img { max-width:95%; max-height:85%; border-radius:6px; box-shadow:0 8px 40px rgba(0,0,0,0.6); }
+    .lb .controls { position:absolute; top:50%; transform:translateY(-50%); width:100%; display:flex; justify-content:space-between; pointer-events:none; }
+    .lb button { pointer-events:auto; background:transparent; border:0; color:#fff; font-size:2rem; width:56px; height:56px; cursor:pointer; opacity:0.85; }
+    .lb .close { position:absolute; top:12px; right:12px; font-size:1.6rem; background:transparent; border:0; color:#fff; cursor:pointer; }
+    .loading { text-align:center; padding:2rem; color:#999; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fotky z workshopov</h1>
+  </header>
+  <p class="desc">Galéria načítava fotografie z Google Photos cez tvoj endpoint. Klikni na obrázok pre zväčšenie a prehliadanie.</p>
+
+  <main>
+    <div id="gallery" class="gallery" aria-live="polite"></div>
+    <div id="loading" class="loading">Načítavam fotografie…</div>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lb" role="dialog" aria-modal="true" aria-label="Zväčšený obrázok">
+    <button class="close" id="lbClose" title="Zavrieť">✕</button>
+    <div class="controls">
+      <button id="prev" title="Predchádzajúci">‹</button>
+      <button id="next" title="Ďalší">›</button>
+    </div>
+    <img id="lbImg" alt="">
+  </div>
+
+  <script>
+    // Uprav tu na URL tvojej služby (Apps Script/webhook) čo vráti JSON pole:
+    // [ { "url":"https://...jpg", "title":"Popis" }, ... ]
+    const API_URL = 'https://script.google.com/macros/s/AKfycbx1Owr41VTmonhvEtuNFsihexb5hBYHbaar6JicSAQneFMkfTCrKsAStWXQV8icIj-kVA/exec';
+
+    const gallery = document.getElementById('gallery');
+    const loadingEl = document.getElementById('loading');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    let photos = [];
+    let currentIndex = 0;
+
+    function renderPhotos(list){
+      gallery.innerHTML = '';
+      list.forEach((p, i) => {
+        const fig = document.createElement('figure');
+        fig.className = 'photo';
+        fig.dataset.index = i;
+
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.alt = p.title || `Fotka ${i+1}`;
+        img.src = p.url;
+
+        const cap = document.createElement('figcaption');
+        cap.className = 'caption';
+        cap.textContent = p.title || '';
+
+        fig.appendChild(img);
+        if(p.title) fig.appendChild(cap);
+
+        fig.addEventListener('click', () => openLightbox(i));
+        gallery.appendChild(fig);
+      });
+    }
+
+    function openLightbox(index){
+      currentIndex = index;
+      const p = photos[index];
+      lbImg.src = p.url;
+      lbImg.alt = p.title || '';
+      lb.classList.add('visible');
+    }
+    function closeLightbox(){ lb.classList.remove('visible'); lbImg.src=''; }
+
+    function showNext(delta){
+      currentIndex = (currentIndex + delta + photos.length) % photos.length;
+      const p = photos[currentIndex];
+      lbImg.src = p.url;
+      lbImg.alt = p.title || '';
+    }
+
+    // keyboard & controls
+    lbClose.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', () => showNext(1));
+    prevBtn.addEventListener('click', () => showNext(-1));
+    lb.addEventListener('click', (e) => { if(e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if(!lb.classList.contains('visible')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowRight') showNext(1);
+      if(e.key === 'ArrowLeft') showNext(-1);
+    });
+
+    // načítanie z API
+    async function load(){
+      loadingEl.textContent = 'Načítavam fotografie…';
+      try {
+        if(!API_URL || API_URL.includes('PASTE_YOUR_ENDPOINT')) {
+          loadingEl.innerHTML = 'Nezadaný API_URL. Nasad ho do premenné <code>API_URL</code> v skripte.';
+          return;
+        }
+        const res = await fetch(API_URL, {cache: 'no-store'});
+        if(!res.ok) throw new Error(res.status + ' ' + res.statusText);
+        const data = await res.json();
+        if(!Array.isArray(data) || data.length === 0){
+          loadingEl.textContent = 'Žiadne fotografie nájdené.';
+          return;
+        }
+        photos = data;
+        renderPhotos(photos);
+        loadingEl.style.display = 'none';
+      } catch(err){
+        console.error(err);
+        loadingEl.textContent = 'Chyba pri načítaní fotografií. Skontroluj API endpoint a CORS.';
+      }
+    }
+
+    load();
+  </script>
+</body>
+</html>
