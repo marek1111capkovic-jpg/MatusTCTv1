@@ -18,7 +18,7 @@
     document.getElementById('buy').addEventListener('click', async () => {
       try {
         // uprav URL na tvoju Vercel deployovanú funkciu
-        const res = await fetch('https://tvoj-vercel-app.vercel.app/api/create-checkout-session', {
+        const res = await fetch('https://matus-tc-tv1.vercel.app/api/create-checkout-session', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
