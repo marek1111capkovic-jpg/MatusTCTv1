@@ -15,27 +15,37 @@
   <button id="buy">Kúpiť teraz</button>
 
   <script>
-    document.getElementById('buy').addEventListener('click', async () => {
-      try {
-        // uprav URL na tvoju Vercel deployovanú funkciu
-        const res = await fetch('https://matus-tc-tv1.vercel.app/api/create-checkout-session', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            priceId: 'price_XXXXXXXXXXXXXXXX', // zmeň na svoj price_id
-            quantity: 1
-          })
-        });
-        const data = await res.json();
-        if (data.url) {
-          window.location = data.url;
-        } else {
-          alert('Chyba pri vytváraní platby: ' + (data.error || 'unknown'));
-        }
-      } catch (err) {
-        alert('Network error: ' + err.message);
-      }
+document.getElementById('buy').addEventListener('click', async () => {
+  try {
+    console.log('🔄 Začínam platbu...');
+    
+    const res = await fetch('https://matus-tc-tv1.vercel.app/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        priceId: 'price_XXXXXXXXXXXXXXXX', // zmeň na svoj price_id
+        quantity: 1
+      })
     });
-  </script>
+    
+    console.log('✅ Response status:', res.status);
+    console.log('✅ Response ok:', res.ok);
+    
+    const data = await res.json();
+    console.log('✅ Response data:', data);
+    
+    if (data.url) {
+      console.log('🎯 Presmerúvam na Stripe Checkout...');
+      window.location = data.url;
+    } else {
+      console.error('❌ Chyba z API:', data);
+      alert('Chyba pri vytváraní platby: ' + (data.error || 'unknown'));
+    }
+  } catch (err) {
+    console.error('❌ Network error:', err);
+    alert('Network error: ' + err.message);
+  }
+});
+</script>
 </body>
 </html>
