@@ -1,36 +1,48 @@
-// create-checkout-session.js
-import Stripe from 'stripe';
+import Stripe from "stripe";
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
+  // --- CORS ---
   res.setHeader("Access-Control-Allow-Origin", "https://www.matustct.sk");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
-  // Preflight request (OPTIONS)
+  // Preflight
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
+  // --- END CORS ---
 
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
   try {
-    const { priceId, quantity = 1 } = req.body;
-
-    // create Checkout session
     const session = await stripe.checkout.sessions.create({
-      line_items: [{ price: priceId, quantity }],
-      mode: 'payment', // 'subscription' for recurring
-      payment_method_types: ['card'],
-      success_url: `${process.env.FRONTEND_SUCCESS_URL}?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: process.env.FRONTEND_CANCEL_URL,
+      mode: "payment",
+      payment_method_types: ["card"],
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: "Test Produkt",
+            },
+            unit_amount: 500,
+          },
+          quantity: 1,
+        },
+      ],
+      success_url: "https://www.matustct.sk/platba/frontend/success.html",
+      cancel_url: "https://www.matustct.sk/platba/frontend/cancel.html",
     });
 
-    // return URL to frontend
-    res.status(200).json({ url: session.url });
+    res.status(200).json({ id: session.id });
   } catch (err) {
-    console.error('Stripe create session error:', err);
+    console.error(err);
     res.status(500).json({ error: err.message });
   }
 }
+
