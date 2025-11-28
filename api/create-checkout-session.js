@@ -30,7 +30,7 @@ export default async function handler(req, res) {
             product_data: {
               name: "Test Produkt",
             },
-            unit_amount: 500,
+            unit_amount: 500, // 5.00 EUR
           },
           quantity: 1,
         },
@@ -39,9 +39,14 @@ export default async function handler(req, res) {
       cancel_url: "https://www.matustct.sk/platba/frontend/cancel.html",
     });
 
-    res.status(200).json({ id: session.id });
+    // DÔLEŽITÉ: Vráťte aj URL, nie len ID!
+    res.status(200).json({ 
+      id: session.id,
+      url: session.url  // ← TOTO PŘIDAJTE
+    });
+    
   } catch (err) {
-    console.error(err);
+    console.error("Stripe error:", err);
     res.status(500).json({ error: err.message });
   }
 }

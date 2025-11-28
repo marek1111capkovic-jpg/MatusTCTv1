@@ -17,33 +17,39 @@
   <script>
 document.getElementById('buy').addEventListener('click', async () => {
   try {
-    console.log('🔄 Začínam platbu...');
-    
+    const button = document.getElementById('buy');
+    button.disabled = true;
+    button.textContent = 'Pripravujeme platbu...';
+
     const res = await fetch('https://matus-tc-tv1.vercel.app/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        priceId: 'price_XXXXXXXXXXXXXXXX', // zmeň na svoj price_id
+        priceId: 'price_XXXXXXXXXXXXXXXX', // VAŠE SKUTOČNÉ PRICE ID
         quantity: 1
       })
     });
     
-    console.log('✅ Response status:', res.status);
-    console.log('✅ Response ok:', res.ok);
-    
     const data = await res.json();
-    console.log('✅ Response data:', data);
+    console.log('✅ Stripe response:', data);
     
     if (data.url) {
-      console.log('🎯 Presmerúvam na Stripe Checkout...');
-      window.location = data.url;
+      // Priamy redirect na Stripe Checkout
+      window.location.href = data.url;
+    } else if (data.id) {
+      // Fallback - vytvoríme URL manualne
+      window.location.href = `https://checkout.stripe.com/c/pay/${data.id}`;
     } else {
-      console.error('❌ Chyba z API:', data);
-      alert('Chyba pri vytváraní platby: ' + (data.error || 'unknown'));
+      alert('Chyba: ' + JSON.stringify(data));
+      button.disabled = false;
+      button.textContent = 'Kúpiť teraz';
     }
+    
   } catch (err) {
-    console.error('❌ Network error:', err);
-    alert('Network error: ' + err.message);
+    console.error('❌ Error:', err);
+    alert('Chyba siete: ' + err.message);
+    document.getElementById('buy').disabled = false;
+    document.getElementById('buy').textContent = 'Kúpiť teraz';
   }
 });
 </script>
