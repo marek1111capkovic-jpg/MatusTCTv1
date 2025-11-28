@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platba - MatustCT.sk</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        .payment-form {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .payment-request-button {
+            margin: 20px 0;
+        }
+        #card-element {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #5469d4;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #3a4bc1;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-form">
+        <h2>Dokončenie platby</h2>
+        
+        <!-- Tlačidlo pre Apple Pay/Google Pay -->
+        <div id="payment-request-button" class="payment-request-button">
+            <!-- Stripe sem vloží tlačidlo -->
+        </div>
+
+        <div style="text-align: center; margin: 10px 0;">ALEBO</div>
+
+        <!-- Klasická platba kartou -->
+        <form id="payment-form">
+            <div id="card-element">
+                <!-- Stripe Elements sem vloží kartový formulár -->
+            </div>
+            <button type="submit" id="submit-button">Zaplatiť</button>
+            <div id="card-errors" role="alert"></div>
+        </form>
+
+        <div id="payment-status" style="margin-top: 20px;"></div>
+    </div>
+
+    <script src="../payment.js"></script>
+</body>
+</html>
