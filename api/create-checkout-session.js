@@ -30,7 +30,7 @@ export default async function handler(req, res) {
             product_data: {
               name: "Test Produkt",
             },
-            unit_amount: 500, // 5.00 EUR
+            unit_amount: 4000,
           },
           quantity: 1,
         },

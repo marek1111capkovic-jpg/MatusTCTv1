@@ -1,1 +1,59 @@
-<!doctype html><html><body><h1>Platba prebehla úspešne</h1><p>Ďakujeme — vaša platba bola prijatá.</p></body></html>
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Platba úspešná — Matus TCT</title>
+  <style>
+    :root{--bg:#0a0a0a;--card:#0f0f0f;--accent:#ff4444;--muted:#cfcfcf}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:#fff}
+    .wrap{min-height:100%;display:flex;flex-direction:column}
+    header{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:linear-gradient(180deg,rgba(0,0,0,0.6),transparent)}
+    header .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-weight:700}
+    header .logo img{height:44px;width:auto;display:block}
+    main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px}
+    .card{max-width:880px;width:100%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35));border-radius:14px;padding:36px;box-shadow:0 20px 50px rgba(0,0,0,0.6);text-align:center;border:1px solid rgba(255,255,255,0.03)}
+    .kicker{color:var(--muted);margin-bottom:8px;font-weight:600}
+    h1{font-size:2.4rem;margin:8px 0 12px;color:#fff}
+    p.lead{color:#e5e5e5;margin-bottom:20px;line-height:1.5}
+    .actions{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:10px;border:0;cursor:pointer;text-decoration:none;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#b22a2a);color:#fff;box-shadow:0 8px 30px rgba(178,42,42,0.14)}
+    .btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .meta{margin-top:16px;color:#bdbdbd;font-size:0.95rem}
+    footer{padding:18px;text-align:center;color:#999;font-size:0.85rem;border-top:1px solid rgba(255,255,255,0.02)}
+    @media(max-width:640px){h1{font-size:1.6rem}.card{padding:20px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="../../index.html">
+        <img src="../../photos/TCT logo.png" alt="Matus TCT">
+        Matus TCT
+      </a>
+      <nav style="display:flex;gap:14px;align-items:center">
+        <a href="../../tricking-workshop/" style="color:#fff;text-decoration:none;font-weight:600">Workshopy</a>
+        <a href="../../index.html#kontakt" style="color:#fff;text-decoration:none">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card" role="main" aria-labelledby="succTitle">
+        <div class="kicker">Platba dokončená</div>
+        <h1 id="succTitle">Platba prebehla úspešne</h1>
+        <p class="lead">Ďakujeme — vaša platba bola prijatá a vaša registrácia je potvrdená. Čoskoro vám príde potvrdzovací e‑mail s ďalšími informáciami.</p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="../../index.html">Späť na domov</a>
+          <a class="btn btn-secondary" href="../../tricking-workshop/">Viac o workshopoch</a>
+        </div>
+
+        <div class="meta">Máte otázky? Napíšte nám: <a href="mailto:matustct@gmail.com" style="color:#fff;text-decoration:underline">matustct@gmail.com</a></div>
+      </section>
+    </main>
+
+    <footer>© 2025 Matus TCT — všetky práva vyhradené</footer>
+  </div>
+</body>
+</html>

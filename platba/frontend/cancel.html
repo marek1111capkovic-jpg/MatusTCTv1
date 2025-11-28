@@ -1,1 +1,57 @@
-<!doctype html><html><body><h1>Platba zrušená</h1><p>Platba neprebehla. Skúste to znova.</p></body></html>
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Platba zrušená — Matus TCT</title>
+  <style>
+    :root{--bg:#0a0a0a;--accent:#ff4444;--muted:#cfcfcf}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:#fff}
+    .wrap{min-height:100%;display:flex;flex-direction:column}
+    header{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:linear-gradient(180deg,rgba(0,0,0,0.6),transparent)}
+    header .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-weight:700}
+    main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px}
+    .card{max-width:820px;width:100%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35));border-radius:14px;padding:36px;box-shadow:0 20px 50px rgba(0,0,0,0.6);text-align:center;border:1px solid rgba(255,255,255,0.03)}
+    .kicker{color:var(--muted);margin-bottom:8px;font-weight:600}
+    h1{font-size:2.2rem;margin:8px 0 12px;color:#fff}
+    p.lead{color:#e5e5e5;margin-bottom:20px;line-height:1.5}
+    .actions{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:10px;border:0;cursor:pointer;text-decoration:none;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#b22a2a);color:#fff}
+    .btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    footer{padding:18px;text-align:center;color:#999;font-size:0.85rem;border-top:1px solid rgba(255,255,255,0.02)}
+    @media(max-width:640px){h1{font-size:1.5rem}.card{padding:20px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="../../index.html">
+        <img src="../../photos/TCT logo.png" alt="Matus TCT" style="height:44px">
+        Matus TCT
+      </a>
+      <nav style="display:flex;gap:14px;align-items:center">
+        <a href="../../tricking-workshop/" style="color:#fff;text-decoration:none;font-weight:600">Workshopy</a>
+        <a href="../../index.html#kontakt" style="color:#fff;text-decoration:none">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card" role="main" aria-labelledby="cancelTitle">
+        <div class="kicker">Platba zrušená</div>
+        <h1 id="cancelTitle">Platba nebola dokončená</h1>
+        <p class="lead">Platobný proces bol zrušený alebo neúspešný. Ak chceš, môžeš skúsiť zaplatiť znova alebo nás kontaktovať pre pomoc.</p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="../../registracia.html">Skúsiť znova</a>
+          <a class="btn btn-secondary" href="../../index.html">Späť na domov</a>
+        </div>
+
+        <div style="margin-top:16px;color:#bdbdbd">Potrebujete pomoc? <a href="mailto:matustct@gmail.com" style="color:#fff;text-decoration:underline">matustct@gmail.com</a></div>
+      </section>
+    </main>
+
+    <footer>© 2025 Matus TCT — všetky práva vyhradené</footer>
+  </div>
+</body>
+</html>
