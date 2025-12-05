@@ -247,3 +247,51 @@ body.city-nitra .header {
         padding: 60px 15px;
     }
 }
+/* Praha */
+body.city-praha {
+    background-image: url('photos/pozadia/PRAHA_POZADIE.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+body.city-praha .text-section,
+body.city-praha .top-bar,
+body.city-praha footer {
+    background-color: rgba(0, 0, 0, 0.836);
+}
+body.city-praha .header {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    padding: 100px 20px;
+    font-weight: 1000;
+    text-align: center;
+    font-size: 5em;
+    letter-spacing: 2px;
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.075);
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.034);
+}
+@media (max-width: 800px) {
+    body.city-praha {
+        background-image: url('photos/pozadia/PRAHA_POZADIE.jpg');
+    }
+    body.city-praha .text-section,
+    body.city-praha .top-bar,
+    body.city-praha footer {
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+    body.city-praha .header {
+        font-size: 3em;
+        padding: 80px 20px;
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+}
+@media (max-width: 480px) {
+    body.city-praha .header {
+        font-size: 2.5em;
+        padding: 60px 15px;
+    }
+}
