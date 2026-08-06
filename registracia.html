@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sk">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -336,7 +337,7 @@
       <p>Načítavam dostupnosť...</p>
     </div>
 
-    <form id = "form" style="display: none;" action="https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec"
+    <form id = "form" style="display: none;" action="https://script.google.com/macros/s/AKfycbxmpDLAc4kaB5Fdfkzc1M-j_QjX0dnSW8DRuGhbybkRo27yFfE_WDfippIg-u9f13vnsg/exec"
           method="POST"
           target="hidden_iframe"
           onsubmit="return validateForm()">
@@ -535,6 +536,13 @@
         </div>
       </div>
       
+      <div class="form-group">
+        <div
+            class="g-recaptcha"
+            data-sitekey="6LeQv3gtAAAAABeIcaumkpBLziFMxTbw6NynexiQ">
+        </div>
+      </div>  
+
       <button type="submit" class="submit-btn">Odoslať prihlášku</button>
       <div id="loading-spinner" style="display:none; text-align:center; margin-top:20px;">
         <div style="display:inline-block;">
@@ -638,6 +646,14 @@ function validateForm() {
   // 1. Sync payment method
   syncPaymentHidden();
 
+  // CAPTCHA CHECK
+  const captchaResponse = grecaptcha.getResponse();
+
+  if (captchaResponse.length === 0) {
+    alert('Prosím potvrďte, že nie ste robot.');
+    return false;
+  }
+
   // 1.a Email validácia
   const emailEl = document.getElementById('email');
   const emailErrorDiv = document.getElementById('emailError');
@@ -709,6 +725,10 @@ function validateForm() {
     // Získame všetky dáta z formulára
     const form = document.getElementById('form');
     const formData = new FormData(form);
+    formData.append(
+      'g-recaptcha-response',
+      grecaptcha.getResponse()
+      );
     const data = Object.fromEntries(formData);
     
     console.log('Sending form data to GAS for online payment:', data);
@@ -816,7 +836,7 @@ function validateForm() {
     };
 
     // GAS URL - používame JSONP namiesto fetch kvôli CORS
-    const gasUrl = "https://script.google.com/macros/s/AKfycbxzVDmkZSBlHFL7e33Bu0_PEaLGssNM2YUe79GD_yYBDB_yGM3aCfOOs3YMqvjYlL-_4Q/exec";
+    const gasUrl = "https://script.google.com/macros/s/AKfycbxmpDLAc4kaB5Fdfkzc1M-j_QjX0dnSW8DRuGhbybkRo27yFfE_WDfippIg-u9f13vnsg/exec";
 
     window.addEventListener('DOMContentLoaded', () => {
       console.log('DOM loaded, initializing...');
