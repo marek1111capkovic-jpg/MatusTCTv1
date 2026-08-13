@@ -363,6 +363,14 @@ body {
     background: rgba(255, 255, 255, 0.8);
 }
 
+.schedule-status-full {
+    padding: 12px 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #c00101;
+    background: rgba(255, 255, 255, 0.8);
+}
+
 .schedule-actions {
     display: flex;
     justify-content: space-between;
